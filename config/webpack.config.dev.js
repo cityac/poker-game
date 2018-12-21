@@ -43,9 +43,10 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
     require.resolve('style-loader'),
     {
-      loader: require.resolve('css-loader'),
+      loader: require.resolve('typings-for-css-modules-loader'),
       options: cssOptions,
     },
+
     {
       // Options for PostCSS as we reference these options twice
       // Adds vendor prefixing based on your specified browser support in
@@ -209,10 +210,18 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+
+          {
+            test: /\.tsx?$/,
+            include: paths.appSrc,
+            loader: 'awesome-typescript-loader',
+            exclude: /node_modules/,
+          },
+
           // Process application JS with Babel.
           // The preset includes JSX, Flow, and some ESnext features.
           {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
+            test: /\.(js|mjs|jsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
@@ -284,9 +293,11 @@ module.exports = {
             use: getStyleLoaders({
                 importLoaders: 1,
                 modules: true,
+                namedExport: true,
                 localIdentName: '[name]__[local]__[hash:base64:5]'
             }),
           },
+
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
@@ -294,6 +305,7 @@ module.exports = {
             use: getStyleLoaders({
               importLoaders: 1,
               modules: true,
+              namedExport: true,
               getLocalIdent: getCSSModuleLocalIdent,
             }),
           },
@@ -305,7 +317,11 @@ module.exports = {
           {
             test: sassRegex,
             exclude: sassModuleRegex,
-            use: getStyleLoaders({ importLoaders: 2 }, 'sass-loader'),
+            use: getStyleLoaders({ 
+              importLoaders: 2,
+              modules: true,
+              namedExport: true
+            }, 'sass-loader'),
           },
           // Adds support for CSS Modules, but using SASS
           // using the extension .module.scss or .module.sass
@@ -315,6 +331,7 @@ module.exports = {
               {
                 importLoaders: 2,
                 modules: true,
+                namedExport: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
               'sass-loader'

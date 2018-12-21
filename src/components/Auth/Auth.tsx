@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
-import classes from './Auth.css';
+import * as classes from './Auth.css';
 
 import { Redirect } from 'react-router-dom';
 
 import * as actions from '../../store/actions';
 
-class Auth extends Component {
+export interface AuthProps {
+  onLogin(path: string): void;
+  isAuthenticated: boolean;
+  authRedirectPath: string;
+}
+
+class Auth extends Component<AuthProps> {
   login = (path) => {
     this.props.onLogin(path);
   };
@@ -14,7 +21,6 @@ class Auth extends Component {
   render() {
     let authRedirect;
     if (this.props.isAuthenticated) {
-      debugger;
       authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
 
