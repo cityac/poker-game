@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "prettier"
+      ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "legacyDecorators": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "no-debugger": "off"
+    },
+    "overrides": [
+        {
+          "files": [ "bin/*.js", "lib/*.js" ],
+          "excludedFiles": ["./src/serviceWorker.js"],
+          "rules": {
+            "quotes": [ 2, "single" ]
+          }
+        }
+      ],
+    "settings": {
+        "import/resolver": {
+          "alias": [
+              ["~", "./src"]
+          ]
+        }
+      }
+}
