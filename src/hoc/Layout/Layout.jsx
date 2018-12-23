@@ -20,10 +20,15 @@ class Layout extends Component {
   };
 
   render() {
+    const { showToolbar, isAuthenticated, children } = this.props;
+    const mainClasses = [classes.Content];
+    
+    mainClasses.push(showToolbar ? classes.Margin : classes.NoMargin);
+
     return (
       <div >
-        <Toolbar isAuth={this.props.isAuthenticated} drawerToggleClicked={this.sideDrawerToggleHandler} />
-        <main className={classes.Content}>{this.props.children}</main>
+        {showToolbar ? <Toolbar isAuth={isAuthenticated} drawerToggleClicked={this.sideDrawerToggleHandler}/> : null}
+        <main className={mainClasses.join(' ')}>{children}</main>
       </div>
     );
   }
@@ -32,6 +37,7 @@ class Layout extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
+    showToolbar: !state.welcome.game
   };
 };
 

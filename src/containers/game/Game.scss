@@ -1,11 +1,30 @@
 .Content {
   background-color: black;
-  height: calc(100% - 56px);
+  height: calc(100%);
 }
 
 .Game {
-  height: 95vh;
+  height: 100vh;
   background: url(../../assets/images/table.png) no-repeat ;
   background-size: contain;
   background-position: center;
+  position: relative;
+
+}
+
+.NavLink:link,
+.NavLink:visited {
+  background-color: rgb(8, 12, 49);
+  border-radius: 20px;
+  bottom: 5px;
+  left: 5px;
+  position: absolute;
+  padding: 5px 30px;
+  text-decoration: none;
+  color: rgb(161, 158, 158);
+  transition: all 0.3s;
+}
+.NavLink:hover {
+  transition: all 0.3s;
+  transform: translateY(-3px);
 }
