@@ -1,0 +1,104 @@
+{
+    "rules": {
+        "array-type": [true, "array-simple"],
+        "ban-types": [
+            true,
+            ["Object", "Avoid using the `Object` type. Did you mean `object`?"],
+            ["Function", "Avoid using the `Function` type. Prefer a specific function type, like `() => void`."],
+            ["Boolean", "Avoid using the `Boolean` type. Did you mean `boolean`?"],
+            ["Number", "Avoid using the `Number` type. Did you mean `number`?"],
+            ["String", "Avoid using the `String` type. Did you mean `string`?"],
+            ["Symbol", "Avoid using the `Symbol` type. Did you mean `symbol`?"]
+        ],
+        "class-name": true,
+        "comment-format": [
+            true,
+            "check-space"
+        ],
+        "curly": true,
+        "eofline": true,
+        "indent": [
+            true,
+            "spaces"
+        ],
+        "max-line-length": [
+            true,
+            120
+        ],
+        "object-literal-shorthand": true,
+        "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+        "no-consecutive-blank-lines": true,
+        "no-construct": true,
+        "no-eval": true,
+        "no-internal-module": true,
+        "no-trailing-whitespace": true,
+        "no-unsafe-finally": true,
+        "no-var-keyword": true,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-else",
+            "check-catch",
+            "check-finally",
+            "check-whitespace"
+        ],
+        "one-variable-per-declaration": true,
+        "prefer-const": true,
+        "semicolon": [
+            true,
+            "always",
+            "ignore-bound-class-methods"
+        ],
+        "space-before-function-paren": [
+            true,
+            {
+                "anonymous": "never",
+                "asyncArrow": "always",
+                "constructor": "never",
+                "method": "never",
+                "named": "never"
+            }
+        ],
+        "trailing-comma": [
+            true,
+            {
+                "esSpecCompliant": true,
+                "multiline": "always",
+                "singleline": "never"
+            }
+        ],
+        "triple-equals": [
+            true,
+            "allow-null-check"
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double",
+            "avoid-escape"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            }
+        ],
+        "variable-name": [
+            true,
+            "ban-keywords"
+        ],
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-type",
+            "check-preblock"
+        ]
+    }
+}
