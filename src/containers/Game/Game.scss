@@ -1,0 +1,130 @@
+@import '../../sass/mixins';
+
+.Game {
+  height: 100vh;
+
+  .Board {
+    background-color: rgb(20, 146, 20);
+    height: 99vh;
+    padding: 1vh 0.5vw 2vh;
+    min-width: 300px;
+    
+    display: grid;
+    justify-content: center;
+    
+    grid-template-rows: 
+      [table-start] repeat(4,[row-start]  15vh [row-end]) 
+      [table-end fold-start] 27vh
+      [fold-end footer-start] 8vh
+      [footer-end];
+    
+    grid-template-columns: 
+      [col-start]1fr
+      [col-end col-start] 35% 
+      [col-end col-start]1fr
+      [grid-end];
+    
+    grid-gap: 5px;
+  }
+
+  .Item {
+    font-size: 1.5vh;
+    font-family: sans-serif;
+    color: #ddd;
+    
+    
+    &__Player1 {
+      // background-color: orangered;
+      @include center-right;
+    }
+    
+    &__Player2 {
+      // background-color: blueviolet;
+      @include center-left;
+    
+    }
+    
+    &__Player3 {
+      // background-color: palevioletred;
+      @include center-left
+    }
+    
+    &__Player4 {
+      // background-color: goldenrod;
+      @include center-right;
+    }
+    
+    &__Player5 {
+      // background-color: green;
+      @include center-left
+    }
+    
+    &__Player6 {
+      // background-color: red;
+      @include center-right;
+    }
+    
+    &__Player7{
+      // background-color: black;
+      @include center-right;
+    }
+    
+    &__Player8 {
+      // background-color: blueviolet;
+      @include center-left;
+    }
+    
+    &__Player__me {
+      // background-color: goldenrod;
+      @include center-center;
+    }
+
+    &__Next {
+      // background-color: yellowgreen;
+      position: relative;
+      @include top-center;
+    }
+    
+    &__Flop {
+      // background-color: royalblue;
+      grid-area: row-start 2 / col-start 2 / row-end 3 / col-end 2;
+      @include center-center;
+    }
+    
+    &__Fold {
+      background-color: yellowgreen;
+      grid-area: fold-start / col-start 1 / fold-end / grid-end;
+    }
+    
+    &__Footer {
+      // background-color: yellowgreen;
+      grid-area: footer-start / col-start 1 / footer-end/ grid-end;
+      padding: 1vh;
+      display: flex;
+      justify-content: space-between;
+      // margin-bottom: 1vh;
+
+      // .NavButton {
+      //   display: inline-block;
+      // }
+
+      // .NavLink:link,
+      // .NavLink:visited {
+      //   display: block;
+      //   color: #ddd;
+      //   border: 4px solid #ddd;
+      //   text-decoration: none;
+      //   border-radius: 50%;
+      //   font-size: 3vh;
+      //   width: 6vh;
+      //   height: 6vh;
+      //   box-sizing: border-box;
+      //   text-align: center;
+      //   padding: .7vh;
+      // }
+    }
+  }
+}
+
+  
+

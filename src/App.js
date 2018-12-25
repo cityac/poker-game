@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 
 import Layout from './hoc/Layout/Layout';
 
-import Game from './containers/game/Game';
-import Welcome from './containers/welcome/Welcome';
+import Game from './containers/Game/Game';
+import Welcome from './containers/Welcome/Welcome';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
+
+import './utils/avatar';
 
 class App extends Component {
   render() {

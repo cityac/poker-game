@@ -1,0 +1,44 @@
+@mixin center-center {
+  align-self: center;
+  justify-self: center;
+}
+
+@mixin center-left {
+  align-self: center;
+  justify-self: left;
+}
+
+@mixin center-right {
+  align-self: center;
+  justify-self: right;
+}
+
+@mixin top-right {
+  align-self: flex-start;
+  justify-self: right;
+}
+
+@mixin top-left {
+  align-self: flex-start;
+  justify-self: left;
+}
+
+@mixin top-center {
+  align-self: flex-start;
+  justify-self: center;
+}
+
+@mixin bottom-right {
+  align-self: flex-end;
+  justify-self: right;
+}
+
+@mixin bottom-left {
+  align-self: flex-end;
+  justify-self: left;
+}
+
+@mixin bottom-center {
+  align-self: flex-end;
+  justify-self: center;
+}
