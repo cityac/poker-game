@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+const queryString = require('query-string');
 
 import { switchGameMode } from '../../store/actions';
-import { toggleFullScreen, joinCss } from '../../utils';
+import { fullScreen, joinCss } from '../../utils';
 
 import * as css from './Game.scss';
 import PlayerCard from '../../components/Game/PlayerCard/PlayerCard';
@@ -15,10 +15,11 @@ import BackButton from '../../components/Game/BackButton/BackButton';
 export interface GameProps {
   message: string;
   switchGameModeDispatch?(on: boolean): void,
+  history?: any;
 }
 
 @connect(
-  ({ game }) : GameProps => ({
+  ({ game, router }) : GameProps => ({
     message: game.message,
   }),
   dispatch => ({
@@ -27,8 +28,14 @@ export interface GameProps {
 )
 export default class Game extends Component<GameProps> {
 
-  componentDidMount() {
-    toggleFullScreen(true);
+  componentWillMount() {
+    // avoid call fullscreen api with no user iteraction
+    // dirty hack 
+    // need to find better solution
+    if(window.previousLocation && this.props.history.action !== 'POP') {
+      fullScreen(true);
+    }
+
     this.props.switchGameModeDispatch(true);
   }
 
@@ -113,7 +120,7 @@ export default class Game extends Component<GameProps> {
           </div>
           <div className={joinCss(css.Item, css.Item__Fold)}>FOLD:</div>
           <div className={joinCss(css.Item, css.Item__Footer)}>
-              <BackButton />
+              <BackButton  to={window.previousLocation.pathname}/>
               <ChatButton />
           </div>
         </div>
@@ -122,7 +129,7 @@ export default class Game extends Component<GameProps> {
   }
 
   componentWillUnmount() {
-    toggleFullScreen();
+    fullScreen(false);
     this.props.switchGameModeDispatch(false);
   }
 }

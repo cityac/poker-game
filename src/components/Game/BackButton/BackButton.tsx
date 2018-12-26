@@ -3,8 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import * as css from './BackButton.scss';
 
-const BackButton = () => (
-    <NavLink className={css.BackButton} to='/real-money'></NavLink>
+interface BackButtonProps {
+  to: string,
+}
+
+const BackButton = (props: BackButtonProps) => (
+  <NavLink className={css.BackButton} to={props.to}></NavLink>
 );
 
 export default BackButton;

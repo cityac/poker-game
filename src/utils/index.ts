@@ -1,7 +1,7 @@
 import { joinCss } from './cssUtils';
-import { toggleFullScreen } from './fullscreenUtils';
+import { fullScreen } from './fullscreenUtils';
 
 export {
   joinCss,
-  toggleFullScreen
+  fullScreen
 }

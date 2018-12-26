@@ -27,7 +27,7 @@ class Auth extends Component<AuthProps> {
     return (
       <div className={classes.Auth}>
         {authRedirect}
-        <button onClick={() => this.login('/game')}>Login</button>
+        <button onClick={() => this.login('/casino')}>Login</button>
       </div>
     );
   }

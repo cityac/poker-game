@@ -14,10 +14,15 @@ import Logout from './components/Auth/Logout/Logout';
 import './utils/avatar';
 
 class App extends Component {
+
+  componentDidUpdate() {
+    window.previousLocation = this.props.location;
+  }
   render() {
     let routes = (
       <Switch>
         <Route path="/auth" exact component={Auth} />
+        <Route path="/game" exact component={Game} />
         <Redirect to="/auth" />
       </Switch>
     );

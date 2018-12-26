@@ -12,3 +12,7 @@
     webkitRequestFullScreen:Function,
     msRequestFullscreen:Function,
   }
+
+  declare interface Window {
+    previousLocation: any;
+  }
