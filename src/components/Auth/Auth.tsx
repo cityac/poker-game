@@ -5,7 +5,7 @@ import * as classes from './Auth.css';
 
 import { Redirect } from 'react-router-dom';
 
-import * as actions from '../../store/actions';
+import * as actions from '~/store/actions/index';
 
 export interface AuthProps {
   onLogin(path: string): void;

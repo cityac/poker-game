@@ -6,9 +6,9 @@ import { NavLink } from 'react-router-dom';
 import * as css from './PlayerCard.scss';
 
 import Bet from './Bet/Bet';
-import User, { GamerStatus } from '../../../models/user';
+import User, { GamerStatus } from '~/models/user';
 import Avatar from './Avatar/Avatar';
-import { joinCss } from '../../../utils';
+import { joinCss } from '~/utils';
 
 export interface PlayerCardProps {
   user: User,
@@ -61,7 +61,6 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     
     return (
       <div className={css.PlayerCard}>
-        
         {this.renderUserInfo()}
         {this.renderBet()}
       </div>

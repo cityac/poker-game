@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./dist/",
+        "baseUrl": "src",
         "sourceMap": true,
         "noImplicitAny": false,
         "resolveJsonModule": true,
@@ -10,7 +11,10 @@
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
-        "lib": ["es2015", "dom"]
+        "lib": ["es2015", "dom"],
+        "paths": {
+            "~/*": [ "*" ],
+        }
     },
     "include": [
         "./src/@types/*.d.ts",

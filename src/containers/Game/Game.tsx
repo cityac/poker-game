@@ -2,15 +2,13 @@ import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { switchGameMode } from '../../store/actions';
-import { fullScreen, joinCss } from '../../utils';
-import { GamerStatus } from '../../models/user';
-import * as css from './Game.scss';
-import PlayerCard from '../../components/Game/PlayerCard/PlayerCard';
-
-import ChatButton from '../../components/Game/ChatButton/ChatButton';
-import BackButton from '../../components/Game/BackButton/BackButton';
+import { switchGameMode } from '~/store/actions';
+import { fullScreen, joinCss } from '~/utils';
+import { GamerStatus } from '~/models/user';
+import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Footer from './Footer/Footer';
+
+import * as css from './Game.scss';
 
 export interface GameProps {
   message: string,
@@ -53,6 +51,7 @@ export default class Game extends Component<GameProps> {
                 name: 'Stanislav', 
                 avatar: '/static/media/Stan.1523e137.png',
                 status: GamerStatus.ACTIVE,
+                dealer: true,
                 bet: '2.0',
                 balance: 98.2}}/>
           </div>

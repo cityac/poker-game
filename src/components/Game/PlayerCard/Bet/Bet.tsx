@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import styled from 'styled-components';
-import * as img from '../../../../assets/images/chip.png';
+import * as img from '~/assets/images/chip.png';
 
 interface BetProps {
   position: BetPosition
