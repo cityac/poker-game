@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 import styled from 'styled-components';
+
 import * as img from '~/assets/images/chip.png';
+import Position from '../position';
 
 interface BetProps {
-  position: BetPosition
+  position: Position
   amount: string,
-}
-
-interface BetPosition {
-  x: string,
-  y: string
 }
 
 const StyledBet= styled.div`

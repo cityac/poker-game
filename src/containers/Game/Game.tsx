@@ -51,7 +51,6 @@ export default class Game extends Component<GameProps> {
                 name: 'Stanislav', 
                 avatar: '/static/media/Stan.1523e137.png',
                 status: GamerStatus.ACTIVE,
-                dealer: true,
                 bet: '2.0',
                 balance: 98.2}}/>
           </div>
@@ -64,6 +63,7 @@ export default class Game extends Component<GameProps> {
                 name: 'Sergei', 
                 avatar: '/static/media/Stan.1523e137.png',
                 status: GamerStatus.ACTIVE,
+                dealer: true,
                 bet: '2.0',
                 balance: 48.2}}/>
           </div>
