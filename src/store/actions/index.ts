@@ -17,4 +17,9 @@ export const switchGameMode = (on: boolean) => {
   return {
     type: on ? actionTypes.GAME_MODE_ON : actionTypes.GAME_MODE_OFF
   }
-} 
+}
+
+export const setGameBackPath = path => ({
+  type: actionTypes.SET_GAME_BACK_PATH,
+  payload: path
+})

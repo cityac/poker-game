@@ -4,6 +4,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import './App.scss';
 
+import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
 import Game from './containers/Game/Game';
@@ -14,15 +15,25 @@ import Logout from './components/Auth/Logout/Logout';
 import './utils/avatar';
 
 class App extends Component {
-
   componentDidUpdate() {
-    window.previousLocation = this.props.location;
+
   }
+
+  getSnapshotBeforeUpdate() {
+    const { onSetGameBackPath, location } = this.props;
+
+    if (!location.pathname.match(/^\/game/)) {
+      onSetGameBackPath(location.pathname);
+    }
+    window.previousLocation = location;
+
+    return null;
+  }
+
   render() {
     let routes = (
       <Switch>
         <Route path="/auth" exact component={Auth} />
-        <Route path="/game" exact component={Game} />
         <Redirect to="/auth" />
       </Switch>
     );
@@ -59,9 +70,15 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
+  };
+};
+
 export default withRouter(
   connect(
     mapStateToProps,
-    null,
+    mapDispatchToProps,
   )(App),
 );

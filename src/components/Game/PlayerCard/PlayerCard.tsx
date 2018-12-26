@@ -6,11 +6,9 @@ import { NavLink } from 'react-router-dom';
 import * as css from './PlayerCard.scss';
 
 import Bet from './Bet/Bet';
-import User from '../../../models/user';
+import User, { GamerStatus } from '../../../models/user';
 import Avatar from './Avatar/Avatar';
-import { userInfo } from 'os';
 import { joinCss } from '../../../utils';
-import { clearScreenDown } from 'readline';
 
 export interface PlayerCardProps {
   user: User,
@@ -19,20 +17,53 @@ export interface PlayerCardProps {
 }
 
 export default class PlayerCard extends Component<PlayerCardProps> {
-  render() {
-    const { userX, betY, user: { name, avatar , balance} } = this.props;
-    const classesUser = joinCss(css.User, userX === 'left' ? css.FloatLeft : css.FloatRight);
+  renderBet() {
+    const { userX, betY, user: { status, bet} } = this.props;
     const betX = userX === 'left' ? 'right' : 'left';
+    return  (
+      status === GamerStatus.ACTIVE && bet
+      ? <Bet position={{x: betX, y: betY}} amount={bet}/>
+      : null
+    );
+  }
+
+  renderUserInfo() {
+    const { userX, user: { name, avatar , balance, status} } = this.props;
+    const classesUser = joinCss(
+      css.User, 
+      userX === 'left' ? css.FloatLeft : css.FloatRight,
+      status !== GamerStatus.ACTIVE ? css.UserInactive : '');
+    
+    let info;
+    if (status === GamerStatus.ACTIVE) {
+      info = (
+        <React.Fragment>
+          <div>{name}</div>
+          <div>{balance}</div>
+        </React.Fragment>
+      )
+    } else {
+      info = (
+        <div>{status}</div>
+      )
+    }
+    return (
+      <div className={classesUser}>
+        <Avatar url={avatar}/>
+        <div className={css.UserInfo}>
+          {info}
+        </div>
+      </div>
+    )
+  }
+
+  render() {
+    
     return (
       <div className={css.PlayerCard}>
-        <div className={classesUser}>
-          <Avatar url={avatar}/>
-          <div className={css.UserInfo}>
-            <div>{name}</div>
-            <div>{balance}</div>
-          </div>
-        </div>
-        <Bet position={{x: betX, y: betY}} amount='2.0'/>
+        
+        {this.renderUserInfo()}
+        {this.renderBet()}
       </div>
     )
   }
