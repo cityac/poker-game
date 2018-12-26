@@ -320,7 +320,8 @@ module.exports = {
             use: getStyleLoaders({ 
               importLoaders: 2,
               modules: true,
-              namedExport: true
+              namedExport: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
             }, 'sass-loader'),
           },
           // Adds support for CSS Modules, but using SASS

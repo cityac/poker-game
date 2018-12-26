@@ -30,7 +30,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     const { userX, user: { dealer } } = this.props;
     const dealerButtonX = userX === 'left' ? 'right' : 'left';
     return (
-      dealer || true
+      dealer
       ? <DealerButton position={{x: dealerButtonX}} />
       : null
     );
