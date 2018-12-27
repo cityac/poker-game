@@ -9,6 +9,7 @@ import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Footer from './Footer/Footer';
 
 import * as css from './Game.scss';
+import Card from '../../components/Game/Flop/Card/Card';
 
 export interface GameProps {
   message: string,
@@ -77,7 +78,17 @@ export default class Game extends Component<GameProps> {
                 status: GamerStatus.ACTIVE,
                 balance: 100.8}}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Flop)}>FLOP:</div>
+          <div className={joinCss(css.Item, css.Item__Flop)}>
+            <div>
+              <Card name="diamond_jack"/>
+              <Card name="club_jack"/>
+              <Card name="spade_jack"/>
+            </div>  
+            <div style={{textAlign: "center"}}> 
+              <Card name="diamond_10"/>
+              <Card name="club_9"/>
+            </div> 
+          </div>
           <div className={joinCss(css.Item, css.Item__Player4)}>
             <PlayerCard 
               userX='right' 

@@ -210,7 +210,10 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-
+          // {
+          //   test: /\.svg$/,
+          //   loader: require.resolve('url-loader')
+          // },
           {
             test: /\.tsx?$/,
             include: paths.appSrc,
