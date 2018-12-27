@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import  icons from "./svg-cards.svg";
+import  icons from "~/assets/images/svg-cards.svg";
 
 const getStyle = () => {
   const mw = window.matchMedia( "(max-width: 500px)" );
@@ -9,13 +9,13 @@ const getStyle = () => {
 
   if (mw.matches || mh.matches) {
     style = {
-      width: '40px',
-      height: '60px',
+      width: '50px',
+      height: '80px',
     }
   } else {
     style = {
-      width: '60px',
-      height: '90px',
+      width: '100px',
+      height: '150px',
     }
   }
   return style;

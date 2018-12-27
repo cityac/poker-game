@@ -3,6 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import * as img from '~/assets/images/chip.png';
+
 import Position from '../position';
 
 interface BetProps {
@@ -22,7 +23,16 @@ const StyledBet= styled.div`
   }
   position: absolute;
   top: ${(props: {top: string}) => props.top}
-  left: ${(props: any) => props.left}
+
+  left: ${(props: any) => {
+    return props.position === 'left' ? '13vmin' : 'n/a'
+  }}
+
+  right: ${(props: any) => {
+    return props.position === 'right' ? '13vmin' : 'n/a'
+  }}
+
+
   display: flex;
   font-size: 2vh;
   justify-content: center;
@@ -32,9 +42,8 @@ const StyledBet= styled.div`
 
 const Bet = (props: BetProps) => {
   const top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
-  const left = props.position.x === 'left' ? '0' : '18vw';
   return (
-    <StyledBet left={left} top={top}>{props.amount}</StyledBet>
+    <StyledBet position={props.position.x} top={top}>{props.amount}</StyledBet>
   )
 };
 

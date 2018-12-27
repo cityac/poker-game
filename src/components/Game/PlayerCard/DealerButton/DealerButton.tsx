@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import styled from 'styled-components';
+import Position from '../position';
 
-
-interface BetProps {
+interface DealerButtonProps {
   position: Position
 }
 
@@ -16,9 +16,17 @@ const Circle = styled.div`
   width: 2vh;
   height: 2vh;
   position: absolute;
-  left: ${(props: {left: string}) => props.left};
   top: -2vh;
-`;// border: 1px solid white;
+
+  left: ${(props: {position: string}) => {
+    return props.position === 'left' ? '7vmin' : 'n/a'
+  }}
+
+  right: ${(props: any) => {
+    return props.position === 'right' ? '7vmin' : 'n/a'
+  }}
+`;
+
 const Letter = styled.div`
   font-size: 1vh;
   font-weight: bold;
@@ -28,11 +36,10 @@ const Letter = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const DealerButton = (props) => {
-  const left = props.position.x === 'left' ? '-9vw' : '6.5vw';
+const DealerButton = (props: DealerButtonProps) => {
   return (
   <span style={{position:'relative'}}>
-      <Circle left={left} >
+      <Circle position={props.position.x}>
         <Letter>D</Letter>
       </Circle>
     </span>

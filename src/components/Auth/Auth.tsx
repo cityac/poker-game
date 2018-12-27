@@ -9,13 +9,16 @@ import * as actions from '~/store/actions/index';
 
 export interface AuthProps {
   onLogin(path: string): void;
+  onSetGameBackPath(path: string): void;
   isAuthenticated: boolean;
   authRedirectPath: string;
 }
 
 class Auth extends Component<AuthProps> {
   login = (path) => {
-    this.props.onLogin(path);
+    const { onLogin, onSetGameBackPath } = this.props;
+    onLogin(path);
+    onSetGameBackPath('/welcome');
   };
 
   render() {
@@ -27,7 +30,7 @@ class Auth extends Component<AuthProps> {
     return (
       <div className={classes.Auth}>
         {authRedirect}
-        <button onClick={() => this.login('/casino')}>Login</button>
+        <button onClick={() => this.login('/game')}>Login</button>
       </div>
     );
   }
@@ -43,6 +46,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (path) => dispatch(actions.login(path)),
+    onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
   };
 };
 

@@ -3,12 +3,20 @@
 .Game {
   //height: 100vh;
 
+
   .Board {
     box-sizing: border-box;
     background-color: rgb(20, 146, 20);
     height: 100vh;
     padding: 1vh 0.5vw 2vh;
-    min-width: 300px;
+    
+    &_Mobile {
+      min-width: 360px;
+    }
+
+    &_Browser {
+      min-width: 500px;
+    }
     
     display: grid;
     justify-content: center;

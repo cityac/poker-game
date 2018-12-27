@@ -22,7 +22,7 @@ class App extends Component {
   getSnapshotBeforeUpdate() {
     const { onSetGameBackPath, location } = this.props;
 
-    if (!location.pathname.match(/^\/game/)) {
+    if (!location.pathname.match(/^\/[game | path]/) ) {
       onSetGameBackPath(location.pathname);
     }
     window.previousLocation = location;
@@ -42,6 +42,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/auth" exact component={Auth} />
+          <Route path="/welcome" exact component={Welcome} />
           <Route path="/real-money" component={Welcome} />
           <Route path="/fast-forward" component={Welcome} />
           <Route path="/sit-and-go" component={Welcome} />

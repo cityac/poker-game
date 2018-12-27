@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { isMobile } from 'react-device-detect'
+
 import { switchGameMode } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
 import { GamerStatus } from '~/models/user';
@@ -10,6 +12,7 @@ import Footer from './Footer/Footer';
 
 import * as css from './Game.scss';
 import Card from '../../components/Game/Flop/Card/Card';
+import Flop from '../../components/Game/Flop/Flop';
 
 export interface GameProps {
   message: string,
@@ -41,9 +44,10 @@ export default class Game extends Component<GameProps> {
   }
 
   render() {
+    // const isMobile = true;
     return (
       <div className={css.Game}>
-        <div className={css.Board}>
+        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser)} >
           <div className={joinCss(css.Item, css.Item__Player1)}>
             <PlayerCard 
               userX='left'
@@ -79,15 +83,7 @@ export default class Game extends Component<GameProps> {
                 balance: 100.8}}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Flop)}>
-            <div>
-              <Card name="diamond_jack"/>
-              <Card name="club_jack"/>
-              <Card name="spade_jack"/>
-            </div>  
-            <div style={{textAlign: "center"}}> 
-              <Card name="diamond_10"/>
-              <Card name="club_9"/>
-            </div> 
+            <Flop />
           </div>
           <div className={joinCss(css.Item, css.Item__Player4)}>
             <PlayerCard 

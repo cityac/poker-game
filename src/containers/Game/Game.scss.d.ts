@@ -1,5 +1,7 @@
 export const Game: string;
 export const Board: string;
+export const Board_Mobile: string;
+export const Board_Browser: string;
 export const Item: string;
 export const Item__Player1: string;
 export const Item__Player2: string;

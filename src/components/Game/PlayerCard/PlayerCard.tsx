@@ -8,6 +8,7 @@ import { joinCss } from '~/utils';
 
 import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
+import TwoBacks from './TwoBacks/TwoBacks';
 
 export interface PlayerCardProps {
   user: User,
@@ -18,22 +19,29 @@ export interface PlayerCardProps {
 export default class PlayerCard extends Component<PlayerCardProps> {
   renderBet() {
     const { userX, betY, user: { status, bet} } = this.props;
-    const betX = userX === 'left' ? 'right' : 'left';
     return  (
       status === GamerStatus.ACTIVE && bet
-      ? <Bet position={{x: betX, y: betY}} amount={bet}/>
+      ? <Bet position={{x: userX, y: betY}} amount={bet}/>
       : null
     );
   }
 
   renderDealerButton() {
     const { userX, user: { dealer } } = this.props;
-    const dealerButtonX = userX === 'left' ? 'right' : 'left';
     return (
       dealer
-      ? <DealerButton position={{x: dealerButtonX}} />
+      ? <DealerButton position={{x: userX}} />
       : null
     );
+  }
+
+  renderTwoBacksCards() {
+    const { userX, user: { dealer } } = this.props;
+    return (
+      // TODO: add condition here. More requirements needed
+      <TwoBacks position={{x: userX}} />
+    );
+    
   }
 
   renderUserInfo() {
@@ -50,6 +58,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
           <div>{name}</div>
           <div>{balance}</div>
           {this.renderDealerButton()}
+          {this.renderTwoBacksCards()}
         </React.Fragment>
       )
     } else {

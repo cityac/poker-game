@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   display: flex;
-  align-self: stretch;
-  flex-direction: column;
+
   align-items: center;
   justify-content: center;
 `;
