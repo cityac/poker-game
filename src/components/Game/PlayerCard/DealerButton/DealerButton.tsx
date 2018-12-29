@@ -16,14 +16,14 @@ const Circle = styled.div`
   width: 2vh;
   height: 2vh;
   position: absolute;
-  top: -2vh;
+  top: -1vh;
 
   left: ${(props: {position: string}) => {
-    return props.position === 'left' ? '7vmin' : 'n/a'
+    return props.position === 'left' ? '7vmin' : 'unset'
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '7vmin' : 'n/a'
+    return props.position === 'right' ? '7vmin' : 'unset'
   }}
 `;
 

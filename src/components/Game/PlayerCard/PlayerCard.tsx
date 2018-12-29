@@ -8,7 +8,8 @@ import { joinCss } from '~/utils';
 
 import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
-import TwoBacks from './TwoBacks/TwoBacks';
+import TwoBacks from './TwoCards/TwoBacks';
+import TwoFronts from './TwoCards/TwoFronts';
 
 export interface PlayerCardProps {
   user: User,
@@ -36,27 +37,38 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderTwoBacksCards() {
-    const { userX, user: { dealer } } = this.props;
+    const { userX , user: { currentUser }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
-      <TwoBacks position={{x: userX}} />
+      currentUser 
+      ? <TwoFronts />
+      : <TwoBacks position={{x: userX}} />
     );
     
   }
 
+  renderName() {
+    const {user: { name, currentUser }} = this.props;
+    return (
+      !currentUser
+      ? <div>{name}</div>
+      : null
+    );
+  }
+
   renderUserInfo() {
-    const { userX, user: { name, avatar , balance, status} } = this.props;
+    const { userX, user: { avatar , balance, status} } = this.props;
     const classesUser = joinCss(
       css.User, 
-      userX === 'left' ? css.FloatLeft : css.FloatRight,
+      userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,
       status !== GamerStatus.ACTIVE ? css.UserInactive : '');
     
     let info;
     if (status === GamerStatus.ACTIVE) {
       info = (
         <React.Fragment>
-          <div>{name}</div>
-          <div>{balance}</div>
+          {this.renderName()}
+          <div className={css.Balance}>{balance}</div>
           {this.renderDealerButton()}
           {this.renderTwoBacksCards()}
         </React.Fragment>

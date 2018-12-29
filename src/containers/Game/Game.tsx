@@ -13,6 +13,8 @@ import Footer from './Footer/Footer';
 import * as css from './Game.scss';
 import Card from '../../components/Game/Flop/Card/Card';
 import Flop from '../../components/Game/Flop/Flop';
+import SvgFlop from '../../components/Game/SvgFlop/SvgFlop';
+import Fold from './Fold/Fold';
 
 export interface GameProps {
   message: string,
@@ -83,7 +85,8 @@ export default class Game extends Component<GameProps> {
                 balance: 100.8}}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Flop)}>
-            <Flop />
+            <Flop label="Pot: 20.2"/>
+            {/* <SvgFlop /> */}
           </div>
           <div className={joinCss(css.Item, css.Item__Player4)}>
             <PlayerCard 
@@ -128,7 +131,18 @@ export default class Game extends Component<GameProps> {
                 status: GamerStatus.ACTIVE,
                 balance: 44.6}}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player__me)}>Me:</div>
+          <div className={joinCss(css.Item, css.Item__Player__me)}>
+            <PlayerCard 
+                userX='center' 
+                betY='top' 
+                user={{
+                  currentUser: true,
+                  name: 'Stan current user', 
+                  // avatar: '/static/media/Stan.1523e137.png',
+                  status: GamerStatus.ACTIVE,
+                  bet: '2.0',
+                  balance: 120.2}}/>
+          </div>
           <div className={joinCss(css.Item, css.Item__Player8)}>
             <PlayerCard 
               userX='right' 
@@ -140,7 +154,9 @@ export default class Game extends Component<GameProps> {
                 bet: '2.0',
                 balance: 24.6}}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Fold)}>FOLD:</div>
+          <div className={joinCss(css.Item, css.Item__Fold)}>
+            <Fold />
+          </div>
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />
           </div>

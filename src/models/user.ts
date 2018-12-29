@@ -7,8 +7,9 @@ export enum GamerStatus {
 }
 export default interface User {
   name: string,
-  avatar: string,
+  avatar?: string,
   balance: number,
+  currentUser?: boolean,
   bet?: string,
   status: GamerStatus,
   dealer?: boolean,

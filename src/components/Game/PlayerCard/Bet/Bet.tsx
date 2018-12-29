@@ -25,11 +25,15 @@ const StyledBet= styled.div`
   top: ${(props: {top: string}) => props.top}
 
   left: ${(props: any) => {
-    return props.position === 'left' ? '13vmin' : 'n/a'
+    return props.position === 'left' ? '14vmin' : props.position === 'center' ? '50%' : 'unset'
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '13vmin' : 'n/a'
+    return props.position === 'right' ? '14vmin' : 'unset'
+  }}
+
+  transform: ${(props: any) => {
+    return props.position === 'center' ? 'translate(-50%);' : 'unset'
   }}
 
 
@@ -41,7 +45,7 @@ const StyledBet= styled.div`
 `;
 
 const Bet = (props: BetProps) => {
-  const top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
+  const top = props.position.x === 'center' ? '-2vh' : props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
   return (
     <StyledBet position={props.position.x} top={top}>{props.amount}</StyledBet>
   )

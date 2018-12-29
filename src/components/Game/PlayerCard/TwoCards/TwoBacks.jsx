@@ -8,17 +8,17 @@ const Div = styled.div`
   position: absolute;
   top: 2.5vh;
   left: ${(props) => {
-    return props.position === 'left' ? '7vmin' : 'n/a'
+    return props.position === 'left' ? '7vmin' : 'unset'
   }}
 
   right: ${(props) => {
-    return props.position === 'right' ? '7vmin' : 'n/a'
+    return props.position === 'right' ? '7vmin' : 'unset'
   }}
 `;
 
 const getSVGStyle = () => {
-  const mw = window.matchMedia( "(max-width: 500px)" );
-  const mh = window.matchMedia( "(max-height: 500px)" );
+  const mw = window.matchMedia( "(max-width: 600px)" );
+  const mh = window.matchMedia( "(max-height: 600px)" );
   let style;
 
   if (mw.matches || mh.matches) {

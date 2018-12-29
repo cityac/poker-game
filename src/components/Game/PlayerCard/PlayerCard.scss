@@ -12,6 +12,10 @@
       align-self: stretch;
       flex-direction: column;
       align-items: center;
+
+      .Balance {
+        order: 1;
+      }
     }
     &Inactive {
       opacity: 0.6;
@@ -24,5 +28,9 @@
 
   .FloatRight{
     float: right;
+  }
+
+  .FloatCenter{
+    display: unset;
   }
 }

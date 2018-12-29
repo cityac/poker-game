@@ -1,21 +1,18 @@
-@import '../../sass/mixins';
+@import '../../sass/main';
 
 .Game {
-  //height: 100vh;
-
-
   .Board {
     box-sizing: border-box;
-    background-color: rgb(20, 146, 20);
+    background-color: $main-background;
     height: 100vh;
-    padding: 1vh 0.5vw 2vh;
+    padding: 1vh 2vw 2vh;
     
     &_Mobile {
       min-width: 360px;
     }
 
     &_Browser {
-      min-width: 500px;
+      min-width: 600px;
     }
     
     display: grid;
@@ -44,12 +41,12 @@
     
     &__Player1 {
       // background-color: orangered;
-      @include center-right;
+      @include bottom-right;
     }
     
     &__Player2 {
       // background-color: blueviolet;
-      @include center-left;
+      @include bottom-left;
     
     }
     
@@ -75,23 +72,23 @@
     
     &__Player7{
       // background-color: black;
-      @include center-right;
+      @include top-right;
     }
     
     &__Player8 {
       // background-color: blueviolet;
-      @include center-left;
+      @include top-left;
     }
     
     &__Player__me {
       // background-color: goldenrod;
-      @include center-center;
+      @include bottom-center;
     }
 
     &__Next {
       // background-color: yellowgreen;
       position: relative;
-      @include top-center;
+      @include center-center;
     }
     
     &__Flop {
@@ -101,7 +98,7 @@
     }
     
     &__Fold {
-      background-color: yellowgreen;
+      // background-color: yellowgreen;
       grid-area: fold-start / col-start 1 / fold-end / grid-end;
     }
     

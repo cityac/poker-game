@@ -1,0 +1,21 @@
+.TwoFronts {
+  justify-content: center;
+  display: flex;
+  
+  text-align: center;
+  
+  &_Browser {
+    max-width: 120px;
+    min-width: 120px;
+    min-height: 90px;
+    max-height: 90px;
+  }
+
+  &_Mobile {
+    max-width: 40vmin;
+    min-width: 40vmin;
+    max-height: 12vmin;
+    min-height: 12vminh;
+  }
+ 
+}

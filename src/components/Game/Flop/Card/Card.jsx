@@ -3,19 +3,19 @@ import * as React from 'react';
 import  icons from "~/assets/images/svg-cards.svg";
 
 const getStyle = () => {
-  const mw = window.matchMedia( "(max-width: 500px)" );
-  const mh = window.matchMedia( "(max-height: 500px)" );
+  const mw = window.matchMedia( "(min-width: 600px)" );
+  const mh = window.matchMedia( "(min-height: 600px)" );
   let style;
 
   if (mw.matches || mh.matches) {
     style = {
-      width: '50px',
-      height: '80px',
+      width: '100px',
+      height: '150px',
     }
   } else {
     style = {
-      width: '100px',
-      height: '150px',
+      width: '50px',
+      height: '80px',
     }
   }
   return style;
