@@ -8,21 +8,13 @@ import { joinCss } from '~/utils';
 import * as css from './SvgFlop.scss';
 
 interface SvgFlopProps {
-
+  cards: Array<any>
 }
 
 interface SvgFlopState {
   cards: Array<any>,
   cardScale: number,
 }
-
-const cards = [
-  {name: "diamond_jack", pos: {x: 0, y: 0}},
-  {name: "club_jack", pos: {x: 0, y: 0}},
-  {name: "spade_jack", pos: {x: 0, y: 0}},
-  {name: "diamond_10", pos: {x: 0, y: 0}},
-  {name: "club_9", pos: {x: 0, y: 0}},
-];
 
 const setCoords = (cards, width, height, scale) => {
   const svgWidht = width / scale;
@@ -92,16 +84,23 @@ class SvgFlop extends Component<SvgFlopProps> {
   }
 
   componentDidMount() {
-    setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight, this.state.cardScale);
-    this.setState({cards});
+    this.setState({cards: [...this.state.cards]});
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {...state, cards: props.cards };
   }
 
   render() {
-    const { cards, cardScale } = this.state;
+    const { cardScale, cards } = this.state;
+    if (this.root.current) { 
+      setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight, this.state.cardScale);
+    }
+
     return (
       <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile: css.SvgFlop_Browser)}>
         <svg ref={this.root}>
-          {cards.map(card => (<SvgCard name={card.name} key={card.name} pos={card.pos} scale={cardScale} />))}
+          {cards.map(card => (<SvgCard name={card.name} key={card.name} pos={card.pos} scale={cardScale}  status={card.status}/>))}
         </svg> 
       </div>
     )

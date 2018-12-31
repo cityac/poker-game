@@ -36,7 +36,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     );
   }
 
-  renderTwoBacksCards() {
+  renderTwoCards() {
     const { userX , user: { currentUser }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
@@ -70,7 +70,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
           {this.renderName()}
           <div className={css.Balance}>{balance}</div>
           {this.renderDealerButton()}
-          {this.renderTwoBacksCards()}
+          {this.renderTwoCards()}
         </React.Fragment>
       )
     } else {

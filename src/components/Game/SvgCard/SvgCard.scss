@@ -1,0 +1,44 @@
+@keyframes deal02 {
+  0% {
+    opacity: 0;
+    transform: translateY(150px) scale(0.2);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(0.2); 
+  }
+}
+
+@keyframes deal03 {
+  0% {
+    opacity: 0;
+    transform: translateY(150px) scale(0.3);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(0.3); 
+  }
+}
+
+.SvgCard {
+  transform: scale(.3); 
+
+  &_Dealing {
+    animation: deal03 0.5s ease-out;
+    transform: translateY(0px) scale(0.3); 
+  }
+
+  @media only screen and (max-width: 600px) and (orientation: portrait),
+          only screen and (max-width: 900px) and (orientation: landscape){
+    &_Dealing {
+      animation: deal02 0.5s ease-out;
+      transform: translateY(0px) scale(0.2); 
+    }
+  }
+}
