@@ -20,8 +20,8 @@
     
     grid-template-rows: 
       [table-start] repeat(4,[row-start]  15.5vh [row-end]) 
-      [table-end fold-start] 27vh
-      [fold-end footer-start] 8vh
+      [table-end round-actions-start] 27vh
+      [round-actions-end footer-start] 8vh
       [footer-end];
     
     grid-template-columns: 
@@ -97,9 +97,9 @@
       @include center-center;
     }
     
-    &__Fold {
+    &__RoundActions {
       // background-color: yellowgreen;
-      grid-area: fold-start / col-start 1 / fold-end / grid-end;
+      grid-area: round-actions-start / col-start 1 / round-actions-end / grid-end;
     }
     
     &__Footer {

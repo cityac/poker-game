@@ -1,0 +1,37 @@
+@import '../../../../sass/main.scss';
+
+.Stepper {
+  padding: 2vmin;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .Slider {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.Button {
+  &_Stepper {
+    border-radius: 50%;
+    width: 6.75vh;
+    height: 5vh;
+
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &_Plus {
+      float: right;
+      background-image: url(../../../../assets/images/add.svg);
+      margin-left: 5vh;
+      
+    }
+    &_Minus {
+      float: left;
+      background-image: url(../../../../assets/images/substract.svg);
+      margin-right: 5vh;
+    }
+  }
+}

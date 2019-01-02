@@ -14,7 +14,7 @@ import * as css from './Game.scss';
 import Card from '../../components/Game/Flop/Card/Card';
 import Flop from '../../components/Game/Flop/Flop';
 import SvgFlop from '../../components/Game/SvgFlop/SvgFlop';
-import Fold from './Fold/Fold';
+import RoundActions from './RoundActions/RoundActions';
 
 export interface GameProps {
   message: string,
@@ -154,8 +154,8 @@ export default class Game extends Component<GameProps> {
                 bet: '2.0',
                 balance: 24.6}}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Fold)}>
-            <Fold />
+          <div className={joinCss(css.Item, css.Item__RoundActions)}>
+            <RoundActions/>
           </div>
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />

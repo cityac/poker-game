@@ -1,0 +1,21 @@
+.Button {
+  border-radius: 10%;
+  flex-grow: 1;
+  width: 10%;
+
+  &:not(:last-child) {
+    margin-right: 2vmin;
+  }
+  
+  &_LabelWrap {
+    display: inline;
+    margin: 0 0.5vw;
+  }
+  
+  @media (min-height: 640px) {
+    &_LabelWrap {
+      display: block ;
+      
+    }
+  }
+}
