@@ -1,0 +1,109 @@
+import * as React  from 'react';
+import { Component, RefObject } from 'react';
+import SvgCard from '../SvgCard/SvgCard';
+
+import { isMobile } from 'react-device-detect';
+import { joinCss } from '~/utils';
+
+import * as css from './SvgFlop.scss';
+
+interface SvgFlopProps {
+  cards: Array<any>
+}
+
+interface SvgFlopState {
+  cards: Array<any>,
+  cardScale: number,
+}
+
+const setCoords = (cards, width, height, scale) => {
+  const svgWidht = width / scale;
+  const svgHeight = height / scale;
+
+  const cardWidth = 169.075;
+  const cardHeight = 244.64;
+  // const gap = (svgHeight / 2 - cardHeight) / 2;
+  const gap = 20;
+
+  
+  const hCenter = svgWidht / 2;
+  const vCenter = svgHeight / 2;
+
+  cards.forEach((card, index) => {
+    let xOffset;
+    switch(index) {
+      case 0:
+        xOffset = (-1.5 * cardWidth - gap);
+      break;
+      case 1:
+        xOffset = cardWidth / -2;
+      break;
+      case 2:
+        xOffset = (0.5 * cardWidth + gap) 
+      break;
+      case 3:
+        xOffset = (-1 * cardWidth - 0.5 * gap)
+      break;
+      case 4:
+        xOffset = (0.5 * gap) 
+      break;
+      default:
+      xOffset = 0;
+      break;
+    }
+
+    card.pos.x = hCenter + xOffset;
+    card.pos.y = gap;
+
+    if (index > 2) {
+      card.pos.y += (vCenter - gap);
+    }
+  });
+}
+
+class SvgFlop extends Component<SvgFlopProps> {
+  root: React.RefObject<SVGSVGElement>;
+  state: SvgFlopState;
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: [],
+      cardScale: this.getSVGScale(),
+    }
+    this.root = React.createRef<SVGSVGElement>();
+  }
+
+  getSVGScale() {
+    const mw = window.matchMedia( "(max-width: 600px)" );
+    const mh = window.matchMedia( "(max-height: 600px)" );
+  
+    if (mw.matches || mh.matches) {
+      return 0.2;
+    }
+    return 0.3;
+  }
+
+  componentDidMount() {
+    this.setState({cards: [...this.state.cards]});
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {...state, cards: props.cards };
+  }
+
+  render() {
+    const { cardScale, cards } = this.state;
+    if (this.root.current) { 
+      setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight, this.state.cardScale);
+    }
+
+    return (
+      <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile: css.SvgFlop_Browser)}>
+        <svg ref={this.root}>
+          {cards.map(card => (<SvgCard name={card.name} key={card.name} pos={card.pos} scale={cardScale}  status={card.status}/>))}
+        </svg> 
+      </div>
+    )
+  }
+}
+export default SvgFlop;

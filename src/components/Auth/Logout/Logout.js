@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../../store/actions';
+import * as actions from '~/store/actions';
 
 class Logout extends Component {
-  componentDidMount() {
-    this.props.onLogout();
+  constructor(props) {
+    super(props);
+    props.onLogout();
   }
 
   render() {
-    return <Redirect to={this.props.authRedirectPath} />;
+    return null;
   }
 }
 const mapStateToProps = (state) => {
   return {
     authRedirectPath: state.auth.authRedirectPath,
+    isAuth: state.auth.token !== null,
   };
 };
 

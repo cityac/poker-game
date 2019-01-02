@@ -1,0 +1,23 @@
+
+.Flop {
+  display: block;
+  
+  text-align: center;
+
+  &_Label {
+    text-align: center;
+  }
+  &_Browser {
+    max-width: 360px;
+    min-width: 360px;
+    min-height: 180px;
+    max-height: 180px;
+  }
+
+  &_Mobile {
+    max-width: 60vmin;
+    min-width: 60vmin;
+    max-height: 30vmin;
+    min-height: 30vmin;
+  }
+}

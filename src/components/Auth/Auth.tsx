@@ -5,17 +5,20 @@ import * as classes from './Auth.css';
 
 import { Redirect } from 'react-router-dom';
 
-import * as actions from '../../store/actions';
+import * as actions from '~/store/actions/index';
 
 export interface AuthProps {
   onLogin(path: string): void;
+  onSetGameBackPath(path: string): void;
   isAuthenticated: boolean;
   authRedirectPath: string;
 }
 
 class Auth extends Component<AuthProps> {
   login = (path) => {
-    this.props.onLogin(path);
+    const { onLogin, onSetGameBackPath } = this.props;
+    onLogin(path);
+    onSetGameBackPath('/welcome');
   };
 
   render() {
@@ -43,6 +46,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (path) => dispatch(actions.login(path)),
+    onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
   };
 };
 

@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 
+import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
-import Game from './containers/game/Game';
-import Welcome from './containers/welcome/Welcome';
+import Game from './containers/Game/Game';
+import Welcome from './containers/Welcome/Welcome';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
 
+import './utils/avatar';
+
 class App extends Component {
+  componentDidUpdate() {
+
+  }
+
+  getSnapshotBeforeUpdate() {
+    const { onSetGameBackPath, location } = this.props;
+
+    if (!location.pathname.match(/^\/[game | path]/) ) {
+      onSetGameBackPath(location.pathname);
+    }
+    window.previousLocation = location;
+
+    return null;
+  }
+
   render() {
     let routes = (
       <Switch>
@@ -24,6 +42,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/auth" exact component={Auth} />
+          <Route path="/welcome" exact component={Welcome} />
           <Route path="/real-money" component={Welcome} />
           <Route path="/fast-forward" component={Welcome} />
           <Route path="/sit-and-go" component={Welcome} />
@@ -52,9 +71,15 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
+  };
+};
+
 export default withRouter(
   connect(
     mapStateToProps,
-    null,
+    mapDispatchToProps,
   )(App),
 );

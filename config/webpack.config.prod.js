@@ -224,6 +224,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      '~': path.resolve(__dirname, paths.appSrc),
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -355,6 +356,7 @@ module.exports = {
             loader: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
+              localIdentName: '[local]__[hash:base64:5]',
             }),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
@@ -385,6 +387,7 @@ module.exports = {
               {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
+                localIdentName: '[local]__[hash:base64:5]',
               },
               'sass-loader'
             ),

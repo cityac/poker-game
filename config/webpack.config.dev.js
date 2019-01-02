@@ -18,7 +18,6 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
-
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -151,6 +150,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      '~': path.resolve(__dirname, paths.appSrc)
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -210,7 +210,10 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-
+          // {
+          //   test: /\.svg$/,
+          //   loader: require.resolve('url-loader')
+          // },
           {
             test: /\.tsx?$/,
             include: paths.appSrc,
@@ -320,7 +323,8 @@ module.exports = {
             use: getStyleLoaders({ 
               importLoaders: 2,
               modules: true,
-              namedExport: true
+              namedExport: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
             }, 'sass-loader'),
           },
           // Adds support for CSS Modules, but using SASS
