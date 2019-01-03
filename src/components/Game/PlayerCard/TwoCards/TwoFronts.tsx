@@ -17,8 +17,8 @@ interface TwoFrontsState {
 }
 
 const cards = [
-  {name: "diamond_10", pos: {x: 0, y: 0}},
-  {name: "club_9", pos: {x: 0, y: 0}},
+  {name: "diamond_10", coord: {x: 0, y: 0}},
+  {name: "club_9", coord: {x: 0, y: 0}},
 ];
 
 const setCoords = (cards, width, height, scale) => {
@@ -48,11 +48,11 @@ const setCoords = (cards, width, height, scale) => {
       break;
     }
 
-    card.pos.x = hCenter + xOffset;
-    card.pos.y = gap;
+    card.coord.x = hCenter + xOffset;
+    card.coord.y = gap;
 
     if (index > 2) {
-      card.pos.y += (vCenter - gap);
+      card.coord.y += (vCenter - gap);
     }
   });
 }
@@ -89,7 +89,7 @@ class TwoFronts extends Component<TwoFrontsProps> {
     return (
       <div className={joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Mobile: css.TwoFronts_Browser)}>
         <svg ref={this.root}>
-          {cards.map(card => (<SvgCard name={card.name} key={card.name} pos={card.pos} scale={cardScale} />))}
+          {cards.map(card => (<SvgCard name={card.name} key={card.name} coord={card.coord} scale={cardScale} />))}
         </svg> 
       </div>
     )

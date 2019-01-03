@@ -22,23 +22,35 @@
   }
   100% {
     opacity: 1;
-    transform: translateY(0px) scale(0.3); 
+    transform: translateY(0px) scale(0.3);
   }
 }
 
 .SvgCard {
-  transform: scale(.3); 
-
-  &_Dealing {
-    animation: deal03 0.5s ease-out;
+  &_Flop {
+    transform: scale(.3); 
+    animation-name: deal03;
+    animation-duration: 1s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
     transform: translateY(0px) scale(0.3); 
+    &_1 {
+      animation-delay: 0;
+    }
+    &_2 {
+      animation-delay: .2s;
+    }
+    &_3 {
+      animation-delay: .4s;
+    }
   }
 
   @media only screen and (max-width: 600px) and (orientation: portrait),
           only screen and (max-width: 900px) and (orientation: landscape){
-    &_Dealing {
-      animation: deal02 0.5s ease-out;
+    &_Flop {
+      animation-name: deal02;
       transform: translateY(0px) scale(0.2); 
     }
   }
 }
+

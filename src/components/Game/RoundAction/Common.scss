@@ -1,0 +1,11 @@
+@import '../../../sass/main.scss';
+
+.Button {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 3vmin;
+  
+  background-color: $fold-action-button-bck-color;
+  border: 1px;
+  color: white;
+}

@@ -1,0 +1,32 @@
+.RoundActions {
+  display: block;
+  font-size: 2vh;
+
+  .Actions {
+    height: 6vh;
+
+    &:last-child {
+      height: 9vh;
+    }
+    padding: 1vmin 15vw;
+    display: flex;
+  }
+
+  .Button {
+    &_Fold {
+      background-color: white;
+      color: black;
+      font-size: 3.8vmin;
+    }
+
+    &_Call{
+      background-color: #33adff;
+      font-size: 3.8vmin;
+    }
+
+    &_Raise {
+      background-color: #ff5c33;
+      font-size: 3.8vmin;
+    }
+  }
+}

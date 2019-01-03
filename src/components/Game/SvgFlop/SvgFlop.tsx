@@ -6,9 +6,12 @@ import { isMobile } from 'react-device-detect';
 import { joinCss } from '~/utils';
 
 import * as css from './SvgFlop.scss';
+import { Card } from '../../../models/card';
 
 interface SvgFlopProps {
-  cards: Array<any>
+  flop: Array<Card>,
+  turn: Card,
+  river: Card,
 }
 
 interface SvgFlopState {
@@ -52,11 +55,13 @@ const setCoords = (cards, width, height, scale) => {
       break;
     }
 
-    card.pos.x = hCenter + xOffset;
-    card.pos.y = gap;
+    if (card) {
+      card.coord.x = hCenter + xOffset;
+      card.coord.y = gap;
 
-    if (index > 2) {
-      card.pos.y += (vCenter - gap);
+      if (index > 2) {
+        card.coord.y += (vCenter - gap);
+      }
     }
   });
 }
@@ -87,8 +92,12 @@ class SvgFlop extends Component<SvgFlopProps> {
     this.setState({cards: [...this.state.cards]});
   }
 
-  static getDerivedStateFromProps(props, state) {
-    return {...state, cards: props.cards };
+  static getDerivedStateFromProps({flop, turn, river}, state) {
+    let cards = flop ? [...flop] : [];
+    turn && cards.push(turn);
+    river && cards.push(river);
+
+    return {...state, cards};
   }
 
   render() {
@@ -100,7 +109,8 @@ class SvgFlop extends Component<SvgFlopProps> {
     return (
       <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile: css.SvgFlop_Browser)}>
         <svg ref={this.root}>
-          {cards.map(card => (<SvgCard name={card.name} key={card.name} pos={card.pos} scale={cardScale}  status={card.status}/>))}
+          {cards.map(card => 
+            (card ? <SvgCard name={card.name} key={card.name} coord={card.coord} scale={cardScale}  status={card.status}/> : null))}
         </svg> 
       </div>
     )

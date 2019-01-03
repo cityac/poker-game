@@ -9,38 +9,43 @@ import { joinCss } from '~/utils';
 import * as css from './Flop.scss';
 import SvgFlop from '../SvgFlop/SvgFlop';
 
-const cards = [
-  {name: "diamond_jack", pos: {x: 0, y: 0}, status: null},
-  {name: "club_jack", pos: {x: 0, y: 0}, status: null},
-  {name: "spade_jack", pos: {x: 0, y: 0}, status: null},
-  {name: "diamond_10", pos: {x: 0, y: 0}, status: null},
-  {name: "club_9", pos: {x: 0, y: 0}, status: null},
-];
+const flopCards = [
+  {name: "diamond_jack", coord: {x: 0, y: 0}, status: 'Flop_1'},
+  {name: "club_jack", coord: {x: 0, y: 0}, status: 'Flop_2'},
+  {name: "spade_jack", coord: {x: 0, y: 0}, status: 'Flop_3'},
+]
+const turnCard = {name: "diamond_10", coord: {x: 0, y: 0}, status: 'Turn'};
+
+const riverCard = {name: "club_9", coord: {x: 0, y: 0}, status: 'River'};
 
 class Flop extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
+      flop: undefined,
+      turn: undefined,
+      river:undefined,
     }
   }
 
-  dealCard() {
-    const currentCards = this.state.cards;
-    const next = currentCards.length;
-
-    if (cards[next]) {
-      cards[next].status = 'dealing';
-      this.setState({cards: [...currentCards, cards[next]]});
+  dealCards = () => {
+    const { flop, turn, river} = this.state;
+    if (!flop) {
+      this.setState({flop: flopCards})
+    } else if(!turn) {
+      this.setState({turn: turnCard});
+    } else if(!river) {
+      this.setState({river: riverCard});
     }
   }
 
   render() { 
+    const { flop, turn, river} = this.state;
     return (
       <div className={joinCss(css.Flop, isMobile ? css.Flop_Mobile: css.Flop_Browser)}>
-      <button onClick={()=> this.dealCard()}>Next Card</button>
+      <button onClick={this.dealCards}>Deal</button>
         <div className={css.Flop_Label}>{this.props.label}</div>
-        <SvgFlop cards={this.state.cards}/>
+        <SvgFlop flop={flop} turn={turn} river={river}/>
       </div>
     );
   }

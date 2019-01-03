@@ -1,3 +1,4 @@
 export function joinCss(...args) {
-  return Array.from(args).join(' ');
-}
+  const styles = Array.isArray(args[0]) ? args[0] : Array.from(args);
+  return styles.join(' ');
+} 
