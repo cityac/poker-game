@@ -40,10 +40,11 @@
     
     
     &__Player1 {
-      // background-color: orangered;
-      @include bottom-right;
+      // background-color: yellowgreen;
+      position: relative;
+      @include top-center;
     }
-    
+
     &__Player2 {
       // background-color: blueviolet;
       @include bottom-left;
@@ -51,45 +52,45 @@
     }
     
     &__Player3 {
-      // background-color: palevioletred;
-      @include center-left
-    }
-    
-    &__Player4 {
       // background-color: goldenrod;
       @include center-right;
     }
     
+    &__Player4 {
+      // background-color: red;
+      @include center-right;
+    }
+    
     &__Player5 {
-      // background-color: green;
-      @include center-left
+      // background-color: blueviolet;
+      @include top-left;
     }
     
     &__Player6 {
-      // background-color: red;
-      @include center-right;
+      // background-color: goldenrod;
+      @include bottom-center;
     }
     
     &__Player7{
       // background-color: black;
       @include top-right;
-    }
+    } 
     
     &__Player8 {
-      // background-color: blueviolet;
-      @include top-left;
-    }
-    
-    &__Player__me {
-      // background-color: goldenrod;
-      @include bottom-center;
+      // background-color: green;
+      @include center-left
     }
 
-    &__Next {
-      // background-color: yellowgreen;
-      position: relative;
-      @include center-center;
+    &__Player9 {
+      // background-color: palevioletred;
+      @include center-left
     }
+
+    &__Player10 {
+      // background-color: orangered;
+      @include bottom-right;
+    }
+
     
     &__Flop {
       // background-color: royalblue;

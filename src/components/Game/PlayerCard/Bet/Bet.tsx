@@ -36,16 +36,19 @@ const StyledBet= styled.div`
     return props.position === 'center' ? 'translate(-50%);' : 'unset'
   }}
 
-
   display: flex;
   font-size: 2vh;
   justify-content: center;
   align-items: center;
-  
 `;
 
 const Bet = (props: BetProps) => {
-  const top = props.position.x === 'center' ? '-2vh' : props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
+  let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
+
+  if (props.position.x === 'center') {
+    top = props.position.y === 'top' ? '-2vh' : '12vh';
+  }
+
   return (
     <StyledBet position={props.position.x} top={top}>{props.amount}</StyledBet>
   )

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import Bet from './Bet/Bet';
-import User, { GamerStatus } from '~/models/user';
+import Player, { PlayerStatus } from '~/models/player';
 import Avatar from './Avatar/Avatar';
 import { joinCss } from '~/utils';
 
@@ -12,23 +12,23 @@ import TwoBacks from './TwoCards/TwoBacks';
 import TwoFronts from './TwoCards/TwoFronts';
 
 export interface PlayerCardProps {
-  user: User,
+  player: Player,
   betY: string,
   userX: string,
 }
 
 export default class PlayerCard extends Component<PlayerCardProps> {
   renderBet() {
-    const { userX, betY, user: { status, bet} } = this.props;
+    const { userX, betY, player: { status, bet} } = this.props;
     return  (
-      status === GamerStatus.ACTIVE && bet
+      status === PlayerStatus.ACTIVE && bet
       ? <Bet position={{x: userX, y: betY}} amount={bet}/>
       : null
     );
   }
 
   renderDealerButton() {
-    const { userX, user: { dealer } } = this.props;
+    const { userX, player: { dealer } } = this.props;
     return (
       dealer
       ? <DealerButton position={{x: userX}} />
@@ -37,7 +37,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderTwoCards() {
-    const { userX , user: { currentUser }} = this.props;
+    const { userX , player: { currentUser }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
       currentUser 
@@ -48,23 +48,31 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderName() {
-    const {user: { name, currentUser }} = this.props;
+    const {player: { name, currentUser }} = this.props;
     return (
       !currentUser
       ? <div>{name}</div>
       : null
     );
   }
+  renderAvatar() {
+    const {player: { avatar, currentUser, progress }} = this.props;
+    return (
+      !currentUser 
+      ? <Avatar url={avatar} percentage={progress}/>
+      : null
+    )
+  }
 
   renderUserInfo() {
-    const { userX, user: { avatar , balance, status} } = this.props;
+    const { userX, player: { avatar , balance, status} } = this.props;
     const classesUser = joinCss(
       css.User, 
       userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,
-      status !== GamerStatus.ACTIVE ? css.UserInactive : '');
+      status !== PlayerStatus.ACTIVE ? css.UserInactive : '');
     
     let info;
-    if (status === GamerStatus.ACTIVE) {
+    if (status === PlayerStatus.ACTIVE) {
       info = (
         <React.Fragment>
           {this.renderName()}
@@ -80,7 +88,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     }
     return (
       <div className={classesUser}>
-        <Avatar url={avatar}/>
+        {this.renderAvatar()}
         <div className={css.UserInfo}>
           {info}
         </div>

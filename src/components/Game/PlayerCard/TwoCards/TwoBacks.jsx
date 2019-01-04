@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   position: absolute;
-  top: 2.5vh;
+  top: 4vh;
   left: ${(props) => {
     return props.position === 'left' ? '7vmin' : 'unset'
   }}
