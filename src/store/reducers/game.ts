@@ -1,8 +1,16 @@
 import { SET_GAME_BACK_PATH, SELECT_TABLE } from '../actions/actionTypes'
 import Player, { PlayerStatus }from '~/models/player';
+import User from '~/models/user';
 import Table, { TableStatus } from '~/models/table';
 import Card from '~/models/card';
 
+interface State {
+  tables: Array<Table>,
+  currentTable: Table,
+  backPath: string,
+}
+
+const findUser = (player: Player): boolean => player.currentUser;
 
 const mockPlayerCards: Array<Card> = [
   {name: "diamond_10", coord: {x: 0, y: 0}},
@@ -45,8 +53,6 @@ const mockPlayers: Array<Player> = [
   },
   {
     place: 5,
-    currentUser: true,
-    cards: mockPlayerCards,
     name: 'Mustafa', 
     avatar: '/static/media/Stan.1523e137.png',
     status: PlayerStatus.ACTIVE,
@@ -72,6 +78,8 @@ const mockPlayers: Array<Player> = [
   {
     place: 8,
     name: 'Konstantin', 
+    currentUser: true,
+    cards: mockPlayerCards,
     avatar: '/static/media/Stan.1523e137.png',
     status: PlayerStatus.AWAY,
     bet: '2.0',
@@ -96,43 +104,70 @@ const mockPlayers: Array<Player> = [
 
 ];
 
-const tables: Array<Table> = [
+const mockTables: Array<Table> = [
   {
     id: '1',
     players: mockPlayers,
-    status: TableStatus.AWAY,
-    playerCards: undefined,
-    current: false
+    // status: TableStatus.AWAY,
+    // playerCards: undefined,
+    current: false,
+    bet: 0,
+    user: mockPlayers.find(findUser) as User,
   },
   {
     id: '2',
     players: mockPlayers,
-    status: TableStatus.PLAYING,
-    playerCards: mockPlayerCards,
+    // status: TableStatus.PLAYING,
+    // playerCards: mockPlayerCards,
     current: true,
+    bet: 0,
+    user: mockPlayers.find(findUser) as User,
   },
   {
     id: '3',
     players: mockPlayers,
-    status: TableStatus.PLAYING,
-    playerCards: mockPlayerCards,
+    // status: TableStatus.PLAYING,
+    // playerCards: mockPlayerCards,
     current: false,
+    bet: 0,
+    user: mockPlayers.find(findUser) as User,
   },
 ];
 
-const initialState = {
-  message: 'This is the game',
-  currentTableId: '1',
-  tables: tables,
+const initialState: State = {
+  tables: mockTables,
+  currentTable: {
+    players: mockTables[0].players,
+    id: '1',
+    bet: 0,
+    user: mockTables[0].players.find(findUser) as User,
+    current: true,
+  },
   backPath: null,
 };
 
-export default (state = initialState, action) => {
+function selectTable(state: State, payload: any): State {
+  const id = payload;
+  const table = state.tables.find(el => el.id === id);
+  const players = table ? table.players : [];
+  const bet = table.bet;
+  const user = table.players.find(findUser) as User;
+  const currentTable: Table = {
+    id,
+    players,
+    bet,
+    user,
+    current: true,
+  }
+  return {...state, currentTable};
+}
+
+export default (state = initialState, action): State => {
   switch(action.type) {
     case SET_GAME_BACK_PATH:
       return { ...state, backPath: action.payload };
     case SELECT_TABLE: 
-      return { ...state, currentTableId: action.payload}
+    return selectTable(state, action.payload)
     default:
         return state;
   }

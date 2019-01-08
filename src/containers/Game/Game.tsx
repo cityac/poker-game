@@ -131,7 +131,7 @@ class Game extends Component<GameProps> {
 }
 
 const mapStateToProps = ({ game }) : GameProps => {
-  const table = game.tables.find(table => table.id === game.currentTableId);
+  const table = game.currentTable;
   const players = table && table.players || [];
   return {
     message: game.message,
