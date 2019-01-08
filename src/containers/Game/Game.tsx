@@ -1,36 +1,40 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { isMobile } from 'react-device-detect'
 
 import { switchGameMode } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
-
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
-import Footer from './Footer/Footer';
+import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
-import * as css from './Game.scss';
-import Card from '../../components/Game/Flop/Card/Card';
-import Flop from '../../components/Game/Flop/Flop';
-import SvgFlop from '../../components/Game/SvgFlop/SvgFlop';
+import Table from '~/models/table';
+
 import RoundActions from './RoundActions/RoundActions';
-import { PlayerStatus } from '../../models/player';
+import Footer from './Footer/Footer';
+
+import * as css from './Game.scss';
 
 export interface GameProps {
   message: string,
   backPath: string,
+  table: Table,
   players: Array<Player>,
   switchGameModeDispatch?(on: boolean): void,
   history?: any;
 }
 
 @connect(
-  ({ game }) : GameProps => ({
-    message: game.message,
-    backPath: game.backPath,
-    players: game.players,
-  }),
+  ({ game }) : GameProps => {
+    const table = game.tables.find(table => table.id === game.currentTableId);
+    const players = table && table.players || [];
+    return {
+      message: game.message,
+      backPath: game.backPath,
+      table,
+      players,
+    }
+  },
   dispatch => ({
     switchGameModeDispatch: (on: boolean): void => dispatch(switchGameMode(on)),
   }),

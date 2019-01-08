@@ -15,10 +15,6 @@ import Logout from './components/Auth/Logout/Logout';
 import './utils/avatar';
 
 class App extends Component {
-  componentDidUpdate() {
-
-  }
-
   getSnapshotBeforeUpdate() {
     const { onSetGameBackPath, location } = this.props;
 
@@ -29,7 +25,11 @@ class App extends Component {
 
     return null;
   }
+  
+  componentDidUpdate() {
 
+  }
+  
   render() {
     let routes = (
       <Switch>

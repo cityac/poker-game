@@ -7,7 +7,7 @@ import { joinCss } from '~/utils'
 
 
 const SvgCard = (props) => {
-  const { coord:  {x, y}, status, scale} = props;
+  const { coord:  {x, y}, status, scale, fill} = props;
   let classNames = [ css.SvgCard ];
 
   const flopReg = /[Flop_.|Turn|River]/;
@@ -20,7 +20,8 @@ const SvgCard = (props) => {
   return (
       <use xlinkHref={`${icons}#${props.name}`} x={x} y={y} 
       transform={`scale(${scale})`}
-      className={joinCss(classNames)} />
+      className={joinCss(classNames)} 
+      fill={fill} />
   )
 };
 

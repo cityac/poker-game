@@ -8,14 +8,15 @@ import { joinCss } from '~/utils';
 
 import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
-import TwoBacks from './TwoCards/TwoBacks';
-import TwoFronts from './TwoCards/TwoFronts';
+import TwoCardsBack from './TwoCards/TwoBacks';
+import TwoCardsFront from './TwoCards/TwoFronts';
 
 export interface PlayerCardProps {
   player: Player,
   betY: string,
   userX: string,
 }
+
 
 export default class PlayerCard extends Component<PlayerCardProps> {
   renderBet() {
@@ -37,12 +38,13 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderTwoCards() {
-    const { userX , player: { currentUser }} = this.props;
+    const { userX , player: { currentUser, cards }} = this.props;
+
     return (
       // TODO: add condition here. More requirements needed
       currentUser 
-      ? <TwoFronts />
-      : <TwoBacks position={{x: userX}} />
+      ? <TwoCardsFront cards={cards} />
+      : <TwoCardsBack position={{x: userX}} />
     );
     
   }
@@ -65,7 +67,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderUserInfo() {
-    const { userX, player: { avatar , balance, status} } = this.props;
+    const { userX, player: { balance, status} } = this.props;
     const classesUser = joinCss(
       css.User, 
       userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,

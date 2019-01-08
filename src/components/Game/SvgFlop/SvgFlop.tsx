@@ -6,7 +6,7 @@ import { isMobile } from 'react-device-detect';
 import { joinCss } from '~/utils';
 
 import * as css from './SvgFlop.scss';
-import { Card } from '../../../models/card';
+import Card from '../../../models/card';
 
 interface SvgFlopProps {
   flop: Array<Card>,

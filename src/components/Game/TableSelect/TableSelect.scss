@@ -1,0 +1,35 @@
+@import '../../../sass/main.scss';
+
+.TableSelect {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 20%;
+  height: 5vh;
+  border: 1px solid $fold-action-button-bck-color;
+  border-radius: 20%;
+  margin: 0 2vw;
+  color: white;
+  background-color: transparent;
+  &_Away {
+    padding-top: 0.3vh;
+    &_Label {
+      text-align: center;
+      font-size: 1.2vh;
+    }
+  }
+  &_Current {
+    border-color: white;
+  }
+  &_New{
+    border-style: dashed;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-image: url(../../../assets/images/table-plus.svg);
+
+  }
+}

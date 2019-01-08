@@ -1,3 +1,5 @@
+import Card from './card';
+
 export enum PlayerStatus {
   ACTIVE = 'ACTIVE',
   AWAY = 'AWAY',
@@ -14,4 +16,5 @@ export default interface Player {
   bet?: string,
   status: PlayerStatus,
   dealer?: boolean,
+  cards?: Array<Card> 
 }
