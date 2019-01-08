@@ -1,4 +1,4 @@
-import { SET_GAME_BACK_PATH, SELECT_TABLE } from '../actions/actionTypes'
+import { SET_GAME_BACK_PATH, SELECT_TABLE, PRESELECT_RAISE} from '../actions/actionTypes'
 import Player, { PlayerStatus }from '~/models/player';
 import User from '~/models/user';
 import Table, { TableStatus } from '~/models/table';
@@ -111,7 +111,9 @@ const mockTables: Array<Table> = [
     // status: TableStatus.AWAY,
     // playerCards: undefined,
     current: false,
-    bet: 0,
+    bet: 10,
+    pot: 20.2,
+
     user: mockPlayers.find(findUser) as User,
   },
   {
@@ -120,7 +122,8 @@ const mockTables: Array<Table> = [
     // status: TableStatus.PLAYING,
     // playerCards: mockPlayerCards,
     current: true,
-    bet: 0,
+    bet: 20,
+    pot: 50,
     user: mockPlayers.find(findUser) as User,
   },
   {
@@ -129,7 +132,8 @@ const mockTables: Array<Table> = [
     // status: TableStatus.PLAYING,
     // playerCards: mockPlayerCards,
     current: false,
-    bet: 0,
+    bet: 80,
+    pot: 190,
     user: mockPlayers.find(findUser) as User,
   },
 ];
@@ -139,7 +143,8 @@ const initialState: State = {
   currentTable: {
     players: mockTables[0].players,
     id: '1',
-    bet: 0,
+    pot: 20.2,
+    bet: 10,
     user: mockTables[0].players.find(findUser) as User,
     current: true,
   },
@@ -151,11 +156,13 @@ function selectTable(state: State, payload: any): State {
   const table = state.tables.find(el => el.id === id);
   const players = table ? table.players : [];
   const bet = table.bet;
+  const pot = table.pot;
   const user = table.players.find(findUser) as User;
   const currentTable: Table = {
     id,
     players,
     bet,
+    pot,
     user,
     current: true,
   }
@@ -167,7 +174,9 @@ export default (state = initialState, action): State => {
     case SET_GAME_BACK_PATH:
       return { ...state, backPath: action.payload };
     case SELECT_TABLE: 
-    return selectTable(state, action.payload)
+      return selectTable(state, action.payload);
+    case PRESELECT_RAISE:
+      return {...state, currentTable: {...state.currentTable, user: {...state.currentTable.user, raiseValue: action.payload}}}
     default:
         return state;
   }

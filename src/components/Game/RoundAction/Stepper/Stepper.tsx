@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { Component }from 'react';
+import { Component } from 'react';
+
 import styled from 'styled-components';
 
 import { joinCss } from '~/utils';
 
 import * as css from './Stepper.scss';
 import * as commonCss from './../Common.scss';
+
+interface StepperProps {
+  value: number,
+  onChangeRaise: Function,
+}
 
 const BackgroundSlider = styled.div`
   position: absolute;
@@ -36,11 +42,7 @@ const Circle = styled.div`
   left: ${(props: {left: string}) => `calc(${props.left} - 2vh);`}
 `;
 
-class Stepper extends Component {
-  state = {
-    value: 50,
-  }
-
+class Stepper extends Component <StepperProps>{
   constructor(props) { 
     super(props);
   }
@@ -53,7 +55,7 @@ class Stepper extends Component {
   }
 
   amend(change) {
-    const { value } = this.state;
+    const { value, onChangeRaise} = this.props;
     let validate;
 
     if(value < 10 ) {
@@ -61,12 +63,14 @@ class Stepper extends Component {
     } else {
       validate  = (v) => Math.min(v, 100);
     }
-    this.setState({value: validate(this.state.value + change)})
+
+    // this.setState({value: validate(value + change)})
+    onChangeRaise(validate(value + change));
   }
 
 
   render() {
-    const { value } = this.state;
+    const { value } = this.props;
     const sliderPercent =  `${value}%`;
     const sliderWidth = `${value}%`;
     return (

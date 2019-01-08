@@ -13,13 +13,16 @@ export const login = (path: string) => {
   };
 };
 
-export const switchGameMode = (on: boolean) => {
-  return {
+export const switchGameMode = (on: boolean) => ({
     type: on ? actionTypes.GAME_MODE_ON : actionTypes.GAME_MODE_OFF
-  }
-}
+})
 
 export const setGameBackPath = path => ({
   type: actionTypes.SET_GAME_BACK_PATH,
   payload: path
+})
+
+export const preselectRaise = (value: number) => ({
+  type: actionTypes.PRESELECT_RAISE,
+  payload: value,
 })

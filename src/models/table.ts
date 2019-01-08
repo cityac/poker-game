@@ -11,6 +11,7 @@ export default interface Table {
   id: string,
   players: Array<Player>,
   user: User,
+  pot: number,
   bet: number,
   // status: TableStatus, should be replaced with user.status
   // playerCards: Array<Card>, should be replaced with user.cards

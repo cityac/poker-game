@@ -1,14 +1,17 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '~/store/actions';
 
 import Stepper from '~/components/Game/RoundAction/Stepper/Stepper';
 import ActionButton from '~/components/Game/RoundAction/ActionButton/ActionButton';
 
 import * as css from './RoundActions.scss';
-const RoundActions = () => {
+const RoundActions = (props) => {
 
   return (
     <div className={css.RoundActions}>
-      <Stepper />
+      <Stepper value={props.raise} onChangeRaise={props.preselectRaise}/>
       <div className={css.Actions}>
         <ActionButton labels={['1/2']} />
         <ActionButton labels={['3/4']} />
@@ -17,11 +20,19 @@ const RoundActions = () => {
       </div>
       <div className={css.Actions}>
         <ActionButton labels={['fold']} className={css.Button_Fold} />
-        <ActionButton labels={['20', 'call']} className={css.Button_Call} />
-        <ActionButton labels={['80', 'raise to']} className={css.Button_Raise} />
+        <ActionButton labels={[props.bet.toString(), 'call']} className={css.Button_Call} />
+        <ActionButton labels={[props.raise.toString(), 'raise to']} className={css.Button_Raise} />
       </div>
     </div>
   )
 }
 
-export default RoundActions;
+const mapStateToProps = ({game}) => ({
+  raise: game.currentTable.user.raiseValue || game.currentTable.bet,
+  bet: game.currentTable.bet,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  preselectRaise: value => dispatch(actions.preselectRaise(value)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(RoundActions);
