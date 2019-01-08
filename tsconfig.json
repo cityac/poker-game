@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./dist/",
-        "baseUrl": "src",
+        "baseUrl": "./",
         "sourceMap": true,
         "noImplicitAny": false,
         "resolveJsonModule": true,
@@ -13,7 +13,7 @@
         "jsx": "react",
         "lib": ["es2015", "dom"],
         "paths": {
-            "~/*": [ "*" ],
+            "~/*": [ "src/*" ],
         }
     },
     "include": [

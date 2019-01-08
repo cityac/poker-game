@@ -24,6 +24,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -39,6 +41,7 @@
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
+    "jest-cli": "^23.6.0",
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
@@ -61,6 +64,7 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
+    "react-test-render": "^1.1.1",
     "redux": "^4.0",
     "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
@@ -84,6 +88,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "test:dev": "node scripts/test.js --verbose",
+    "test:coverage": "node scripts/test.js --coverage",
     "lint": "yarn lint-js&&yarn lint-ts",
     "lint-js": "eslint 'src/**/*.{js,jsx}'",
     "lint-ts": "tslint 'src/**/*.{ts,tsx}'",
@@ -99,6 +105,7 @@
     "not op_mini all"
   ],
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
@@ -124,7 +131,8 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "^~(.*)$": "<rootDir>/src$1"
     },
     "moduleFileExtensions": [
       "web.js",
@@ -137,11 +145,6 @@
       "web.jsx",
       "jsx",
       "node"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   }
 }
