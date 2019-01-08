@@ -24,22 +24,7 @@ export interface GameProps {
   history?: any;
 }
 
-@connect(
-  ({ game }) : GameProps => {
-    const table = game.tables.find(table => table.id === game.currentTableId);
-    const players = table && table.players || [];
-    return {
-      message: game.message,
-      backPath: game.backPath,
-      table,
-      players,
-    }
-  },
-  dispatch => ({
-    switchGameModeDispatch: (on: boolean): void => dispatch(switchGameMode(on)),
-  }),
-)
-export default class Game extends Component<GameProps> {
+class Game extends Component<GameProps> {
 
   componentWillMount() {
     // avoid call fullscreen api with no user iteraction
@@ -144,3 +129,19 @@ export default class Game extends Component<GameProps> {
     this.props.switchGameModeDispatch(false);
   }
 }
+
+const mapStateToProps = ({ game }) : GameProps => {
+  const table = game.tables.find(table => table.id === game.currentTableId);
+  const players = table && table.players || [];
+  return {
+    message: game.message,
+    backPath: game.backPath,
+    table,
+    players,
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  switchGameModeDispatch: (on: boolean): void => dispatch(switchGameMode(on)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Game)

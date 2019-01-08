@@ -2,6 +2,10 @@ vendor/
 node_modules/
 npm-debug.log
 
+# unit tests
+coverage/
+**/__snapshots__/
+
 #builds
 build/
 

@@ -96,7 +96,6 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
   }
 
   render() {
-    debugger;
     const { cards, cardScale, style} = this.state;
     return (
       <div className={joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Mobile: css.TwoFronts_Browser)}>
