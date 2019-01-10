@@ -50,7 +50,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderName() {
-    const {player: { name, currentUser }} = this.props;
+    const { player: { currentUser, user: {name} } } = this.props;
     return (
       !currentUser
       ? <div>{name}</div>
@@ -58,7 +58,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     );
   }
   renderAvatar() {
-    const {player: { avatar, currentUser, progress }} = this.props;
+    const {player: { user: { avatar } , currentUser, progress }} = this.props;
     return (
       !currentUser 
       ? <Avatar url={avatar} percentage={progress}/>
@@ -101,10 +101,12 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   render() {
     
     return (
-      <div className={css.PlayerCard}>
+      this.props.player 
+      ? <div className={css.PlayerCard}>
         {this.renderUserInfo()}
         {this.renderBet()}
       </div>
+      : null
     )
   }
 }
