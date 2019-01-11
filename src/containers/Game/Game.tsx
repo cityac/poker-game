@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { isMobile } from 'react-device-detect'
 
-import { switchGameMode } from '~/store/actions';
+import { switchGameMode, initGame } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
@@ -16,12 +16,12 @@ import Footer from './Footer/Footer';
 import * as css from './Game.scss';
 
 export interface GameProps {
-  message: string,
   backPath: string,
-  table: Table,
   players: Array<Player>,
-  switchGameModeDispatch?(on: boolean): void,
+  pot: number,
   history?: any;
+  switchGameModeDispatch?(on: boolean): void,
+  onInitGame?(): void,
 }
 
 class Game extends Component<GameProps> {
@@ -37,13 +37,16 @@ class Game extends Component<GameProps> {
     this.props.switchGameModeDispatch(true);
   }
 
+  componentDidMount() {
+    this.props.onInitGame();
+  }
+
   playerByPlace = place => {
     return this.props.players.find(player => player.place === place);
   }
 
   render() {
-    // const isMobile = true;
-    const { players } = this.props;
+    const { players, pot } = this.props;
     const { playerByPlace } = this;
     return (
       <div className={css.Game}>
@@ -73,7 +76,7 @@ class Game extends Component<GameProps> {
               player={players[8]}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Flop)}>
-            <Flop label="Pot: 20.2"/>
+            <Flop label={`Pot: ${pot}`}/>
             {/* <SvgFlop /> */}
           </div>
           <div className={joinCss(css.Item, css.Item__Player3)}>
@@ -114,7 +117,7 @@ class Game extends Component<GameProps> {
           </div>
           {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
           <div className={joinCss(css.Item, css.Item__RoundActions)}>
-            <RoundActions/>
+            <RoundActions />
           </div>
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />
@@ -130,18 +133,17 @@ class Game extends Component<GameProps> {
   }
 }
 
-const mapStateToProps = ({ game }) : GameProps => {
-  const table = game.tables.find(table => table.id === game.currentTableId);
-  const players = table && table.players || [];
+const mapStateToProps = ({ game, table }) : GameProps => {
+  const players = table.players || [];
   return {
-    message: game.message,
     backPath: game.backPath,
-    table,
+    pot: table.pot,
     players,
   }
 };
 
 const mapDispatchToProps = dispatch => ({
   switchGameModeDispatch: (on: boolean): void => dispatch(switchGameMode(on)),
+  onInitGame: () => dispatch(initGame()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Game)

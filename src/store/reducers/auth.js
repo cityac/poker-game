@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   token: null,
-  userId: null,
+  userId: 1,
   authRedirectPath: '/',
 };
 

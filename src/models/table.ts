@@ -8,8 +8,10 @@ export enum TableStatus {
 
 export default interface Table {
   id: string,
-  players: Array<Player>
-  status: TableStatus,
+  players: Array<Player>,
+  pot: number,
+  bet: number,
+  playerStatus: string,
   playerCards: Array<Card>,
   current: boolean,
 }

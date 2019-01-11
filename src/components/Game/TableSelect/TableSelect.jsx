@@ -2,11 +2,8 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import { joinCss } from '~/utils';
-
 import TwoCardsFront from '../PlayerCard/TwoCards/TwoFronts';
-// import TwoCardsBack from '../PlayerCard/TwoCards/TwoBacks';
-
-import { TableStatus } from '~/models/table';
+import { PlayerStatus } from '~/models/player';
 import * as css from './TableSelect.scss';
 
 const frontStyle = {
@@ -30,15 +27,16 @@ const backCards = [
 
 export default class TableSelect extends Component {
   renderSelect() {
-    const { table } = this.props;
+    const { table, currentTableId } = this.props;
     if (table) {
-      const { status, playerCards, current } = table;
+      const { playerCards, playerStatus, id } = table;
+      const current = currentTableId === id;
       const classNames = joinCss(css.TableSelect, current ? css.TableSelect_Current : '');
       return (
         <div className={classNames}>
-          {status === TableStatus.AWAY 
+          {playerStatus === PlayerStatus.AWAY 
             ? (<div className={css.TableSelect_Away}>
-                <div className={css.TableSelect_Away_Label}>{table.status}</div>
+                <div className={css.TableSelect_Away_Label}>{playerStatus}</div>
                 <TwoCardsFront cards={backCards} style={backStyle} />
               </div>)
             : <TwoCardsFront cards={playerCards} style={frontStyle} />
@@ -47,7 +45,6 @@ export default class TableSelect extends Component {
     }
 
     return (<button className={joinCss(css.TableSelect, css.TableSelect_New)} />)
-    
   }
 
   render() {

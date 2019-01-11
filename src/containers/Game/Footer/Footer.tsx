@@ -10,16 +10,17 @@ const Footer = (props) => (
     <div className={css.Footer}>
       <BackButton  to={props.backPath || '/auth'} />
       <div className={css.TableSelect__Item}>
-        {props.tables.map(table => <TableSelect key={table.id} table={table} />)}
+        {props.tables.map(table => <TableSelect key={table.id} table={table} currentTableId={props.currentTableId}/>)}
         <TableSelect />
       </div>
       <ChatButton />
     </div>
   )
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({player, table}) => {
   return {
-    tables: state.game.tables,
+    currentTableId: table.id,
+    tables: player.tables,
   };
 };
 

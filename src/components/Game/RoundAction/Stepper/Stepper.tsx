@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { Component }from 'react';
+import { Component } from 'react';
 import styled from 'styled-components';
 
 import { joinCss } from '~/utils';
 
 import * as css from './Stepper.scss';
 import * as commonCss from './../Common.scss';
+
+interface StepperProps {
+  value: number,
+  min: number,
+  max: number,
+  onChangeRaise: Function,
+}
 
 const BackgroundSlider = styled.div`
   position: absolute;
@@ -36,39 +43,36 @@ const Circle = styled.div`
   left: ${(props: {left: string}) => `calc(${props.left} - 2vh);`}
 `;
 
-class Stepper extends Component {
-  state = {
-    value: 50,
-  }
-
+class Stepper extends Component <StepperProps>{
   constructor(props) { 
     super(props);
   }
 
   add() {
-    return this.amend(10);
+    return this.amend(1);
   }
   substract() {
-    return this.amend(-10);
+    return this.amend(-1);
   }
 
   amend(change) {
-    const { value } = this.state;
+    const { value, min, max, onChangeRaise} = this.props;
     let validate;
 
-    if(value < 10 ) {
-      validate  = (v) => Math.max(v, 0);
+    if(value <= min ) {
+      validate  = (v) => Math.max(v, min);
     } else {
-      validate  = (v) => Math.min(v, 100);
+      validate  = (v) => Math.min(v, max);
     }
-    this.setState({value: validate(this.state.value + change)})
+
+    onChangeRaise(validate(value + change));
   }
 
 
   render() {
-    const { value } = this.state;
-    const sliderPercent =  `${value}%`;
-    const sliderWidth = `${value}%`;
+    const { value, max } = this.props;
+    const sliderPercent =  `${value / max * 100}%`;
+    const sliderWidth = sliderPercent;
     return (
       <div className={css.Stepper}>
         <button className={joinCss(commonCss.Button, css.Button_Stepper, css.Button_Stepper_Minus)}
@@ -84,8 +88,5 @@ class Stepper extends Component {
     )
   }
 }
-
-
-
 
 export default Stepper;

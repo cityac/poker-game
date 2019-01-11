@@ -1,25 +1,20 @@
-import * as actionTypes from './actionTypes';
+export {
+  login,
+  logout,
+} from './auth';
 
-export const logout = () => {
-  return {
-    type: actionTypes.LOGOUT,
-  };
-};
+export {
+  initGame,
+  switchGameMode,
+  setGameBackPath,
+} from './game';
 
-export const login = (path: string) => {
-  return {
-    type: actionTypes.LOGIN,
-    path,
-  };
-};
+export {
+  preselectRaise,
+  initTables,
+} from './player';
 
-export const switchGameMode = (on: boolean) => {
-  return {
-    type: on ? actionTypes.GAME_MODE_ON : actionTypes.GAME_MODE_OFF
-  }
-}
-
-export const setGameBackPath = path => ({
-  type: actionTypes.SET_GAME_BACK_PATH,
-  payload: path
-})
+export {
+  fetchPlayersByTable,
+  setCurrentTable,
+} from './table'

@@ -1,4 +1,5 @@
 import Card from './card';
+import User from './user';
 
 export enum PlayerStatus {
   ACTIVE = 'ACTIVE',
@@ -7,14 +8,14 @@ export enum PlayerStatus {
   DEALER = 'DEALER',
 }
 export default interface Player {
+  user: User,
   place: number,
-  name: string,
-  avatar?: string,
+  status: PlayerStatus,
   balance: number,
   progress?: number;
   currentUser?: boolean,
   bet?: string,
-  status: PlayerStatus,
   dealer?: boolean,
-  cards?: Array<Card> 
+  cards?: Array<Card>,
+  preselectRaise?: number,
 }
