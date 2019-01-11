@@ -292,7 +292,7 @@ module.exports = {
                 importLoaders: 1,
                 modules: true,
                 namedExport: true,
-                localIdentName: '[name]__[local]__[hash:base64:5]'
+                getLocalIdent: getCSSModuleLocalIdent,
             }),
           },
 
@@ -319,7 +319,7 @@ module.exports = {
               importLoaders: 2,
               modules: true,
               namedExport: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
+              getLocalIdent: getCSSModuleLocalIdent,
             }, 'sass-loader'),
           },
           // Adds support for CSS Modules, but using SASS

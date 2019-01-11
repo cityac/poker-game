@@ -350,8 +350,10 @@ module.exports = {
             exclude: cssModuleRegex,
             loader: getStyleLoaders({
               importLoaders: 1,
-              sourceMap: shouldUseSourceMap,
-              localIdentName: '[local]__[hash:base64:5]',
+              modules: true,
+              namedExport: true,
+              //localIdentName: '[name]__[local]__[hash:base64:5]',
+              getLocalIdent: getCSSModuleLocalIdent,
             }),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
@@ -378,14 +380,12 @@ module.exports = {
           {
             test: sassRegex,
             exclude: sassModuleRegex,
-            loader: getStyleLoaders(
-              {
-                importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
-                localIdentName: '[local]__[hash:base64:5]',
-              },
-              'sass-loader'
-            ),
+            use: getStyleLoaders({ 
+              importLoaders: 2,
+              modules: true,
+              namedExport: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            }, 'sass-loader'),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
