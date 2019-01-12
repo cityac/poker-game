@@ -15,4 +15,5 @@
 
   declare interface Window {
     previousLocation: any;
+    visualViewport: any;
   }

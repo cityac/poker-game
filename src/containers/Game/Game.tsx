@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { isMobile } from 'react-device-detect'
+import { isMobile, isIOS } from 'react-device-detect'
 
 import { switchGameMode, initGame } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
@@ -23,6 +23,30 @@ export interface GameProps {
   switchGameModeDispatch?(on: boolean): void,
   onInitGame?(): void,
 }
+
+function getViewportWidth() {
+  if (window.innerWidth) {
+      return window.innerWidth;
+  }
+  else if (document.body && document.body.offsetWidth) {
+      return document.body.offsetWidth;
+  }
+  else {
+      return 0;
+  }
+}
+
+function getViewportHeight() {
+  if (window.innerHeight) {
+      return window.innerHeight;
+  }
+  else if (document.body && document.body.offsetHeight) {
+      return document.body.offsetHeight;
+  }
+  else {
+      return 0;
+  }
+}     
 
 class Game extends Component<GameProps> {
 
@@ -50,7 +74,7 @@ class Game extends Component<GameProps> {
     const { playerByPlace } = this;
     return (
       <div className={css.Game}>
-        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser)} >
+        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser, isIOS ? css.IPhoneBoard : '')} >
           <div className={joinCss(css.Item, css.Item__Player10)}>
             <PlayerCard 
               userX='left' 

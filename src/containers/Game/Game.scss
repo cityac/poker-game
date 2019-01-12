@@ -1,6 +1,15 @@
 @import '../../sass/main';
 
 .Game {
+
+  .IPhoneBoard {
+    grid-template-rows:
+    [table-start] repeat(4,[row-start]  14vh [row-end]) 
+    [table-end round-actions-start] 24vh
+    [round-actions-end footer-start] 8vh
+    [footer-end]  !important;
+  }
+
   .Board {
     box-sizing: border-box;
     background-color: $main-background;
@@ -8,7 +17,7 @@
     padding: 1vh 2vw 2vh;
     
     &_Mobile {
-      min-width: 360px;
+      min-width: 320px;
     }
 
     &_Browser {

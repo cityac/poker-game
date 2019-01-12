@@ -38,6 +38,13 @@ const app = (
 
 ReactDOM.render(app, document.getElementById('root'));
 
+document.addEventListener('touchmove', function (event) {
+  if(event.touches && event.touches.length > 1) {
+    event.preventDefault();
+  }
+},  { passive: false });
+
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
