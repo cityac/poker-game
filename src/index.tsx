@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
+import '~/utils/touchHandler';
+
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import thunk from 'redux-thunk';
@@ -17,6 +19,8 @@ import tableReducer from './store/reducers/table';
 import welcomeReducer from './store/reducers/welcome';
 import authReducer from './store/reducers/auth';
 import playerReducer from './store/reducers/player';
+
+import * as TouchHandler from '~/utils/touchHandler';
 
 const rootReducer = combineReducers({
   game: gameReducer,
@@ -37,13 +41,7 @@ const app = (
 );
 
 ReactDOM.render(app, document.getElementById('root'));
-
-document.addEventListener('touchmove', function (event) {
-  if(event.touches && event.touches.length > 1) {
-    event.preventDefault();
-  }
-},  { passive: false });
-
+TouchHandler.run();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -22,7 +22,9 @@
     ],
     "rules": {
         "react/prop-types": "off",
-        "no-debugger": 1
+        "no-debugger": 1,
+        "no-undef": 0,
+        "no-console": 0
     },
     "overrides": [
         {
