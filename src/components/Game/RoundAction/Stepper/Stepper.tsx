@@ -16,7 +16,7 @@ interface StepperProps {
 
 const BackgroundSlider = styled.div`
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px;
   border-radius: 5%;
   width: 100%;
@@ -26,7 +26,7 @@ const BackgroundSlider = styled.div`
 
 const TopSlider = styled.div`
   position: absolute;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), white);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), white);
   border: 1px;
   border-radius: 5%;
   width: ${(props: {width: string}) => props.width};
@@ -36,10 +36,10 @@ const TopSlider = styled.div`
 const Circle = styled.div`
   position: absolute;
   border-radius: 50%;
-  width: 4vh;
-  height: 4vh;
+  width: 3vh;
+  height: 3vh;
   background-color: white;
-  top: -2vh;
+  top: -1.5vh;
   left: ${(props: {left: string}) => `calc(${props.left} - 2vh);`}
 `;
 

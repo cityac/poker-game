@@ -1,11 +1,7 @@
 .Button {
-  border-radius: 2vmin;
   flex-grow: 1;
   width: 10%;
-
-  &:not(:last-child) {
-    margin-right: 2vmin;
-  }
+  margin: 1px;
   
   &_LabelWrap {
     display: inline;

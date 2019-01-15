@@ -5,17 +5,17 @@
   text-align: center;
   
   &_Browser {
-    max-width: 120px;
-    min-width: 120px;
+    max-width: 60px;
+    min-width: 60px;
     min-height: 90px;
     max-height: 90px;
   }
 
   &_Mobile {
-    max-width: 40vmin;
-    min-width: 40vmin;
-    max-height: 12vmin;
-    min-height: 12vminh;
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 60px;
+    min-height: 60px;
   }
  
 }

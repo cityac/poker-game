@@ -14,13 +14,14 @@
   color: white;
   background-color: transparent;
   &_Away {
-    padding-top: 0.3vh;
+    padding-top: 0.4vh;
     &_Label {
       text-align: center;
-      font-size: 1.2vh;
+      font-size: 1.4vh;
     }
   }
   &_Current {
+    margin-top: 2vh;
     border-color: white;
   }
   &_New{

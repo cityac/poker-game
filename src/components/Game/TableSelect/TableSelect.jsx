@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import { joinCss } from '~/utils';
 import TwoCardsFront from '../PlayerCard/TwoCards/TwoFronts';
+import TableAway from './TableAway';
 import { PlayerStatus } from '~/models/player';
 import * as css from './TableSelect.scss';
 
@@ -14,16 +15,17 @@ const frontStyle = {
 
 const backStyle = {
   height: '3vh',
+  width: '7vh',
   fill: 'red',
   hGap: -100,
   vGap: 10,
 
 }
 
-const backCards = [
-  {name: "back", index: "1"},
-  {name: "back", index: "2"},
-];
+// const backCards = [
+//   {name: "back", index: "1"},
+//   {name: "back", index: "2"},
+// ];
 
 export default class TableSelect extends Component {
   renderSelect() {
@@ -36,8 +38,8 @@ export default class TableSelect extends Component {
         <div className={classNames}>
           {playerStatus === PlayerStatus.AWAY 
             ? (<div className={css.TableSelect_Away}>
-                <div className={css.TableSelect_Away_Label}>{playerStatus}</div>
-                <TwoCardsFront cards={backCards} style={backStyle} />
+                <div className={css.TableSelect_Away_Label}>Away</div>
+                <TableAway style={backStyle}/>
               </div>)
             : <TwoCardsFront cards={playerCards} style={frontStyle} />
           }

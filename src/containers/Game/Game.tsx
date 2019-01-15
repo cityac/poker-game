@@ -74,10 +74,13 @@ class Game extends Component<GameProps> {
     const { playerByPlace } = this;
     return (
       <div className={css.Game}>
-        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser, isIOS ? css.IPhoneBoard : '')} >
+        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser)} >
+          <div className={joinCss(css.Item, css.Item__Footer)}>
+              <Footer backPath={this.props.backPath} />
+          </div>
           <div className={joinCss(css.Item, css.Item__Player10)}>
             <PlayerCard 
-              userX='left' 
+              userX='left'
               betY='bottom' 
               player={playerByPlace(10)}/>
           </div>
@@ -97,7 +100,7 @@ class Game extends Component<GameProps> {
             <PlayerCard 
               userX='left' 
               betY='center' 
-              player={players[8]}/>
+              player={playerByPlace(9)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Flop)}>
             <Flop label={`Pot: ${pot}`}/>
@@ -131,7 +134,7 @@ class Game extends Component<GameProps> {
             <PlayerCard 
                 userX='center' 
                 betY='top' 
-                player={players[5]}/>
+                player={playerByPlace(6)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player5)}>
             <PlayerCard 
@@ -143,9 +146,7 @@ class Game extends Component<GameProps> {
           <div className={joinCss(css.Item, css.Item__RoundActions)}>
             <RoundActions />
           </div>
-          <div className={joinCss(css.Item, css.Item__Footer)}>
-              <Footer backPath={this.props.backPath} />
-          </div>
+          
         </div>
       </div>
     );

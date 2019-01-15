@@ -1,5 +1,4 @@
 export const Game: string;
-export const IPhoneBoard: string;
 export const Board: string;
 export const Board_Mobile: string;
 export const Board_Browser: string;

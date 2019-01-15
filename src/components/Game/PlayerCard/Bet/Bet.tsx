@@ -46,7 +46,7 @@ const Bet = (props: BetProps) => {
   let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
 
   if (props.position.x === 'center') {
-    top = props.position.y === 'top' ? '-2vh' : '12vh';
+    top = props.position.y === 'top' ? '-3vh' : '12vh';
   }
 
   return (

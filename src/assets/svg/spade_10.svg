@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="106px" viewBox="0 0 80 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 29</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,10.2954682 C0,4.60943811 4.61345208,0 10.2775857,0 L61.7224143,0 C67.3985682,0 72,4.61451283 72,10.2954682 L72,87.4188175 C72,93.1048476 67.3865479,97.7142857 61.7224143,97.7142857 L10.2775857,97.7142857 C4.60143183,97.7142857 0,93.0997729 0,87.4188175 L0,10.2954682 Z" id="path-1"></path>
+        <filter x="-10.4%" y="-4.6%" width="120.8%" height="115.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="spade_10" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-25" transform="translate(-377.000000, -784.000000)">
+            <g id="Group-4" transform="translate(297.000000, 785.000000)">
+                <g id="Group-29" transform="translate(84.000000, 0.000000)">
+                    <g id="Rectangle-12-Copy-32">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <text id="♠︎" font-family="HiraginoSans-W3, Hiragino Sans" font-size="41.1428571" font-weight="300" letter-spacing="0.642857143" fill="#000000">
+                        <tspan x="15.1071429" y="72">♠︎</tspan>
+                    </text>
+                    <text id="10" font-family=".SFNSDisplay, .SF NS Display" font-size="24.4285714" font-weight="normal" fill="#000000">
+                        <tspan x="9" y="30.1428571">10</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

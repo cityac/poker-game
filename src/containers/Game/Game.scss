@@ -2,17 +2,20 @@
 
 .Game {
 
+  background: url(../../assets/images/table.png) no-repeat center;
+  background-size:     cover;                      /* <------ */
+
   .IPhoneBoard {
-    grid-template-rows:
-    [table-start] repeat(4,[row-start]  14vh [row-end]) 
-    [table-end round-actions-start] 24vh
-    [round-actions-end footer-start] 8vh
-    [footer-end]  !important;
+    // grid-template-rows:
+    // [footer-start] 8vh  
+    // [footer-end table-start] repeat(4,[row-start]  14vh [row-end]) 
+    // [table-end round-actions-start] 24vh
+    // [round-actions-end ]  !important;
   }
 
   .Board {
     box-sizing: border-box;
-    background-color: $main-background;
+    // background-color: $main-background;
     height: 100vh;
     padding: 1vh 2vw 2vh;
     
@@ -28,10 +31,15 @@
     justify-content: center;
     
     grid-template-rows: 
-      [table-start] repeat(4,[row-start]  15.5vh [row-end]) 
+      [footer-start] 8vh  
+      [footer-end table-start] repeat(4,[row-start]  15.5vh [row-end]) 
       [table-end round-actions-start] 27vh
-      [round-actions-end footer-start] 8vh
-      [footer-end];
+      [round-actions-end ];
+
+      // [table-start] repeat(4,[row-start]  15.5vh [row-end]) 
+      // [table-end round-actions-start] 27vh
+      // [round-actions-end footer-start] 8vh
+      // [footer-end];
     
     grid-template-columns: 
       [col-start]1fr

@@ -15,13 +15,14 @@ const RoundActions = (props) => {
   
   return (
     <div className={css.RoundActions}>
-      <Stepper value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
+      
       <div className={css.Actions}>
-        <ActionButton labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
-        <ActionButton labels={['3/4']} onClick={ () => preselectRaise(Math.floor(balance * 3 / 4) )} />
-        <ActionButton labels={['pot']} onClick={ () => preselectRaise(Math.floor(pot)) } />
-        <ActionButton labels={['max']} onClick={ () => preselectRaise(Math.floor(balance)) }/>
+        <ActionButton className={css.Button_Stepper_Level} labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
+        <ActionButton className={css.Button_Stepper_Level} labels={['3/4']} onClick={ () => preselectRaise(Math.floor(balance * 3 / 4) )} />
+        <ActionButton className={css.Button_Stepper_Level} labels={['pot']} onClick={ () => preselectRaise(Math.floor(pot)) } />
+        <ActionButton className={css.Button_Stepper_Level} labels={['max']} onClick={ () => preselectRaise(Math.floor(balance)) }/>
       </div>
+      <Stepper value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
       <div className={css.Actions}>
         <ActionButton labels={['fold']} 
           className={css.Button_Fold} 

@@ -8,7 +8,7 @@
     &:last-child {
       height: 9vh;
     }
-    padding: 1vmin 15vw;
+    padding: 3vmin 2vw 0;
     display: flex;
   }
 
@@ -17,16 +17,29 @@
       background-color: white;
       color: black;
       font-size: 3.8vmin;
+      border-radius: 10px;
     }
 
     &_Call{
       background-color: #33adff;
       font-size: 3.8vmin;
+      border-radius: 10px;
+      margin: 0 2vw;
     }
 
     &_Raise {
       background-color: #ff5c33;
       font-size: 3.8vmin;
+      border-radius: 10px;
+    }
+
+    &_Stepper_Level{
+      &:last-child {
+        border-top-right-radius: 10px;
+      }
+      &:first-child {
+        border-top-left-radius: 10px;
+      }
     }
   }
 }

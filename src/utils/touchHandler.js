@@ -6,12 +6,13 @@ export function run() {
 }
 
 function vGestureHandler(event) {
-  console.log(event);
+  // prevent horizontal gestures
   event.preventDefault();
 }
 
 function touchMoveHandler(event) {
   if(event.touches && event.touches.length > 1) {
+    // prevent scroll
     event.preventDefault();
   }
 }
@@ -85,5 +86,3 @@ const observe = function(d) {
       d.addEventListener(a, touch[a], false);
   }
 }
-
-

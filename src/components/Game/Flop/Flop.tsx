@@ -10,9 +10,9 @@ import SvgFlop from '../SvgFlop/SvgFlop';
 import Card from '~/models/card';
 
 const flopCards: Array<Card> = [
-  {name: "diamond_jack", coord: {x: 0, y: 0}, status: 'Flop_1'},
-  {name: "club_jack", coord: {x: 0, y: 0}, status: 'Flop_2'},
-  {name: "spade_jack", coord: {x: 0, y: 0}, status: 'Flop_3'},
+  {name: "diamond_6", coord: {x: 0, y: 0}, status: 'Flop_1'},
+  {name: "club_king", coord: {x: 0, y: 0}, status: 'Flop_2'},
+  {name: "spade_queen", coord: {x: 0, y: 0}, status: 'Flop_3'},
 ]
 const turnCard = {name: "diamond_10", coord: {x: 0, y: 0}, status: 'Turn'};
 
