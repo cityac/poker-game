@@ -3,4 +3,11 @@ body {
   padding: 0;
 }
 
+/* remove focus border from all components */
 *:focus {outline:none !important}
+
+/* @media all and (display-mode: standalone) {
+  body {
+    background-color: yellow;
+  }
+} */

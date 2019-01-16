@@ -42,7 +42,7 @@ class Layout extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
-    showToolbar: !state.welcome.game
+    showToolbar: !state.app.game,
   };
 };
 

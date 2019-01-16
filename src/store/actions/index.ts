@@ -5,8 +5,6 @@ export {
 
 export {
   initGame,
-  switchGameMode,
-  setGameBackPath,
 } from './game';
 
 export {
@@ -17,4 +15,10 @@ export {
 export {
   fetchPlayersByTable,
   setCurrentTable,
-} from './table'
+} from './table';
+
+export {
+  switchGameMode,
+  setGameBackPath,
+  setStandalone,
+} from './app';

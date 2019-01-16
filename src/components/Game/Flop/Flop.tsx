@@ -11,12 +11,12 @@ import Card from '~/models/card';
 
 const flopCards: Array<Card> = [
   {name: "diamond_6", coord: {x: 0, y: 0}, status: 'Flop_1'},
-  {name: "club_king", coord: {x: 0, y: 0}, status: 'Flop_2'},
-  {name: "spade_queen", coord: {x: 0, y: 0}, status: 'Flop_3'},
+  {name: "club_k", coord: {x: 0, y: 0}, status: 'Flop_2'},
+  {name: "spade_q", coord: {x: 0, y: 0}, status: 'Flop_3'},
 ]
-const turnCard = {name: "diamond_6", coord: {x: 0, y: 0}, status: 'Turn'};
+const turnCard = {name: "spade_10", coord: {x: 0, y: 0}, status: 'Turn'};
 
-const riverCard = {name: "club_king", coord: {x: 0, y: 0}, status: 'River'};
+const riverCard = {name: "club_j", coord: {x: 0, y: 0}, status: 'River'};
 
 class Flop extends Component<any, any> {
   constructor(props) {

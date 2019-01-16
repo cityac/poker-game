@@ -8,7 +8,6 @@ import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
-import Table from '~/models/table';
 
 import RoundActions from './RoundActions/RoundActions';
 import Footer from './Footer/Footer';
@@ -19,34 +18,35 @@ export interface GameProps {
   backPath: string,
   players: Array<Player>,
   pot: number,
+  standalone: boolean,
   history?: any;
-  switchGameModeDispatch?(on: boolean): void,
+  onSwitchGameMode?(on: boolean): void,
   onInitGame?(): void,
 }
 
-function getViewportWidth() {
-  if (window.innerWidth) {
-      return window.innerWidth;
-  }
-  else if (document.body && document.body.offsetWidth) {
-      return document.body.offsetWidth;
-  }
-  else {
-      return 0;
-  }
-}
+// function getViewportWidth() {
+//   if (window.innerWidth) {
+//       return window.innerWidth;
+//   }
+//   else if (document.body && document.body.offsetWidth) {
+//       return document.body.offsetWidth;
+//   }
+//   else {
+//       return 0;
+//   }
+// }
 
-function getViewportHeight() {
-  if (window.innerHeight) {
-      return window.innerHeight;
-  }
-  else if (document.body && document.body.offsetHeight) {
-      return document.body.offsetHeight;
-  }
-  else {
-      return 0;
-  }
-}     
+// function getViewportHeight() {
+//   if (window.innerHeight) {
+//       return window.innerHeight;
+//   }
+//   else if (document.body && document.body.offsetHeight) {
+//       return document.body.offsetHeight;
+//   }
+//   else {
+//       return 0;
+//   }
+// }     
 
 class Game extends Component<GameProps> {
 
@@ -58,7 +58,7 @@ class Game extends Component<GameProps> {
       fullScreen(true);
     }
 
-    this.props.switchGameModeDispatch(true);
+    this.props.onSwitchGameMode(true);
   }
 
   componentDidMount() {
@@ -70,11 +70,13 @@ class Game extends Component<GameProps> {
   }
 
   render() {
-    const { players, pot } = this.props;
+    const { pot, standalone } = this.props;
     const { playerByPlace } = this;
+
+    const isIPoneWeb = isIOS && !standalone;
     return (
       <div className={css.Game}>
-        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser)} >
+        <div className={joinCss(css.Board, isMobile ? css.Board_Mobile : css.Board_Browser, isIPoneWeb ? css.Board_IPhoneWeb : '')} >
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />
           </div>
@@ -154,21 +156,22 @@ class Game extends Component<GameProps> {
 
   componentWillUnmount() {
     fullScreen(false);
-    this.props.switchGameModeDispatch(false);
+    this.props.onSwitchGameMode(false);
   }
 }
 
-const mapStateToProps = ({ game, table }) : GameProps => {
+const mapStateToProps = ({ app, game, table }) : GameProps => {
   const players = table.players || [];
   return {
     backPath: game.backPath,
     pot: table.pot,
     players,
+    standalone: app.standalone,
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  switchGameModeDispatch: (on: boolean): void => dispatch(switchGameMode(on)),
+  onSwitchGameMode: (on: boolean): void => dispatch(switchGameMode(on)),
   onInitGame: () => dispatch(initGame()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Game)

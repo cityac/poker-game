@@ -13,7 +13,7 @@ class Welcome extends Component {
   }
 }
 
-const mapStateToProps = ({ welcome }) => ({
-  message: welcome.message,
+const mapStateToProps = ({ app }) => ({
+  message: app.message,
 })
 export default connect(mapStateToProps)(Welcome);
