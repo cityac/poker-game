@@ -11,6 +11,7 @@ const frontStyle = {
   height: '3.8vh',
   marginTop: '1vh',
   hGap: 10,
+  
 }
 
 const backStyle = {
@@ -41,7 +42,7 @@ export default class TableSelect extends Component {
                 <div className={css.TableSelect_Away_Label}>Away</div>
                 <TableAway style={backStyle}/>
               </div>)
-            : <TwoCardsFront cards={playerCards} style={frontStyle} />
+            : <TwoCardsFront cards={playerCards} style={frontStyle} type={'small'} />
           }
         </div>)
     }

@@ -1,6 +1,6 @@
 import * as React  from 'react';
 import { Component, RefObject } from 'react';
-import SvgCard from '../SvgCard/SvgCard';
+import SvgCardNew from '../SvgCard/SvgCardNew';
 
 import { isMobile } from 'react-device-detect';
 import { joinCss } from '~/utils';
@@ -23,8 +23,8 @@ const setCoords = (cards, width, height, scale) => {
   const svgWidht = width / scale;
   const svgHeight = height / scale;
 
-  const cardWidth = 169.075;
-  const cardHeight = 244.64;
+  const cardWidth = 72;
+  const cardHeight = 100;
   // const gap = (svgHeight / 2 - cardHeight) / 2;
   const gap = 20;
 
@@ -78,15 +78,28 @@ class SvgFlop extends Component<SvgFlopProps> {
     this.root = React.createRef<SVGSVGElement>();
   }
 
+  // getSVGScale() {
+  //   const mw = window.matchMedia( "(max-width: 600px)" );
+  //   const mh = window.matchMedia( "(max-height: 600px)" );
+  
+  //   if (mw.matches || mh.matches) {
+  //     return 0.2;
+  //   }
+  //   return 0.3;
+  // }
+
   getSVGScale() {
     const mw = window.matchMedia( "(max-width: 600px)" );
     const mh = window.matchMedia( "(max-height: 600px)" );
   
-    if (mw.matches || mh.matches) {
-      return 0.2;
+    if (isMobile) {
+      return  0.5;
     }
-    return 0.3;
+    
+    return 0.8;
   }
+
+  
 
   componentDidMount() {
     this.setState({cards: [...this.state.cards]});
@@ -110,7 +123,7 @@ class SvgFlop extends Component<SvgFlopProps> {
       <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile: css.SvgFlop_Browser)}>
         <svg ref={this.root}>
           {cards.map(card => 
-            (card ? <SvgCard name={card.name} key={card.name} coord={card.coord} scale={cardScale}  status={card.status}/> : null))}
+            (card ? <SvgCardNew name={card.name} key={card.name} coord={card.coord} scale={cardScale}  status={card.status}/> : null))}
         </svg> 
       </div>
     )

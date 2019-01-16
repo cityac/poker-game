@@ -14,9 +14,9 @@ const flopCards: Array<Card> = [
   {name: "club_king", coord: {x: 0, y: 0}, status: 'Flop_2'},
   {name: "spade_queen", coord: {x: 0, y: 0}, status: 'Flop_3'},
 ]
-const turnCard = {name: "diamond_10", coord: {x: 0, y: 0}, status: 'Turn'};
+const turnCard = {name: "diamond_6", coord: {x: 0, y: 0}, status: 'Turn'};
 
-const riverCard = {name: "club_9", coord: {x: 0, y: 0}, status: 'River'};
+const riverCard = {name: "club_king", coord: {x: 0, y: 0}, status: 'River'};
 
 class Flop extends Component<any, any> {
   constructor(props) {

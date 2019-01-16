@@ -39,11 +39,10 @@ export default class PlayerCard extends Component<PlayerCardProps> {
 
   renderTwoCards() {
     const { userX , player: { currentUser, cards }} = this.props;
-
     return (
       // TODO: add condition here. More requirements needed
       currentUser 
-      ? <TwoCardsFront cards={cards} />
+      ? <TwoCardsFront cards={cards} type={'large'} />
       : <TwoCardsBack position={{x: userX}} />
     );
     

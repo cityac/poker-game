@@ -11,6 +11,7 @@ import Card from '~/models/card';
 interface TwoFrontsProps {
   cards: Array<Card>,
   style?: TwoFrontsStyle,
+  type: string, // small | large
 }
 
 interface TwoFrontsStyle {
@@ -46,10 +47,26 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
     const mw = window.matchMedia( "(max-width: 600px)" );
     const mh = window.matchMedia( "(max-height: 600px)" );
   
-    if (mw.matches || mh.matches) {
-      return 0.3;
+    if (isMobile) {
+      return this.props.type === 'small' ? 0.25 : 0.5;
     }
-    return 0.4;
+    
+    return this.props.type === 'small' ? 0.4 : 0.8;
+  }
+
+  setCoords = (cards) => {
+    cards.forEach((card, index) => {
+      let xOffset;
+      switch(index) {
+        case 0:
+          xOffset = 10;
+        break;
+      }
+  
+      if (card) {
+        card.coord.x = xOffset;
+      }
+    });
   }
 
   componentDidMount() {
@@ -58,9 +75,19 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
 
   render() {
     const { cards, cardScale, style} = this.state;
+    const { type } = this.props;
+
+    this.setCoords(cards);
+
+    let className;
+    if (type === 'small') {
+      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Small_Mobile: css.TwoFronts_Small_Browser);
+    } else {
+      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Large_Mobile: css.TwoFronts_Large_Browser)
+    }
     return (
       <div ref={this.root} 
-      className={joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Mobile: css.TwoFronts_Browser)}>
+      className={className}>
         {cards.map(card => (
           <SvgCardNew style={style} 
             key={`${card.name}_${card.index}`} 
