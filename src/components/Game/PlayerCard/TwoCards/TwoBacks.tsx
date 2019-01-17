@@ -1,23 +1,25 @@
 import * as React from 'react';
 
-// import  icons from "~/assets/images/svg-cards.svg";
-
 import cards from '~/utils/cards';
 
 import styled from 'styled-components';
 
+interface DivProps {
+  top: string,
+  position:string,
+}
 const Div = styled.div`
   position: absolute;
 
-  top: ${(props) => {
+  top: ${(props:DivProps) => {
     return props.top;
   }}
 
-  left: ${(props) => {
+  left: ${(props:DivProps) => {
     return props.position === 'left' ? '8vmin' : 'unset'
   }}
 
-  right: ${(props) => {
+  right: ${(props:DivProps) => {
     return props.position === 'right' ? '8vmin' : 'unset'
   }}
 `;

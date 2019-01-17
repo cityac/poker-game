@@ -1,6 +1,6 @@
 import * as React  from 'react';
 import { Component } from 'react';
-import SvgCardNew from '../../SvgCard/SvgCardNew';
+import SvgCard from '../../SvgCard/SvgCard';
 
 import { isMobile } from 'react-device-detect';
 import { joinCss } from '~/utils';
@@ -89,7 +89,7 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
       <div ref={this.root}
       className={className}>
         {cards.map(card => (
-          <SvgCardNew style={style}
+          <SvgCard style={style}
             key={`${card.name}_${card.index}`}
             name={card.name}
             coord={card.coord}

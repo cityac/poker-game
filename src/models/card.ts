@@ -5,8 +5,14 @@ export enum PlayerStatus {
   DEALER = 'DEALER',
 }
 
+export interface Coord {
+  x: number;
+  y: number;
+}
+
 export default interface Card {
   name: string;
-  coord?: {x: number, y: number};
+  coord?: Coord;
   status?: string;
 }
+  

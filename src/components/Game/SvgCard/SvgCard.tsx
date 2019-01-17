@@ -5,9 +5,18 @@ import * as css from './SvgCard.scss';
 import cards from '~/utils/cards';
 
 import { joinCss } from '~/utils'
+import { Coord } from '../../../models/card';
 
+interface SvgCardProps extends React.Attributes {
+  coord: Coord,
+  scale: number, 
+  name: string,
+  fill?: string, 
+  style?: any, 
+  status?: string, 
+}
 
-class SvgCardNew extends Component {
+class SvgCard extends Component<SvgCardProps> {
   svg = undefined;
 
   constructor(props) {
@@ -25,7 +34,7 @@ class SvgCardNew extends Component {
       name 
     } = this.props;
     
-    let classNames = [ css.SvgCard ];
+    let classNames = [];
 
     const flopReg = /[Flop_.|Turn|River]/;
     if(status && status.match(flopReg)) {
@@ -45,4 +54,4 @@ class SvgCardNew extends Component {
   }
 }
 
-export default SvgCardNew;
+export default SvgCard;

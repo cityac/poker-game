@@ -1,6 +1,6 @@
 import * as React  from 'react';
 import { Component, RefObject } from 'react';
-import SvgCardNew from '../SvgCard/SvgCardNew';
+import SvgCard from '../SvgCard/SvgCard';
 
 import { isMobile } from 'react-device-detect';
 import { joinCss } from '~/utils';
@@ -120,7 +120,7 @@ class SvgFlop extends Component<SvgFlopProps> {
       <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile : css.SvgFlop_Browser)}>
         <svg ref={this.root}>
           {cards.map(card =>
-            (card ? <SvgCardNew name={card.name} key={card.name} coord={card.coord} scale={cardScale}  status={card.status}/> : null))}
+            (card ? <SvgCard name={card.name} key={card.name} coord={card.coord} scale={cardScale} status={card.status}/> : null))}
         </svg> 
       </div>
     );

@@ -5,6 +5,7 @@ import { joinCss } from '~/utils';
 import TwoCardsFront from '../PlayerCard/TwoCards/TwoFronts';
 import TableAway from './TableAway';
 import { PlayerStatus } from '~/models/player';
+import Table from '~/models/table';
 import * as css from './TableSelect.scss';
 
 const frontStyle = {
@@ -20,15 +21,15 @@ const backStyle = {
   fill: 'red',
   hGap: -100,
   vGap: 10,
-
 }
 
-// const backCards = [
-//   {name: "back", index: "1"},
-//   {name: "back", index: "2"},
-// ];
+interface TableSelectProps {
+  // TODO change
+  table?: Table, // not required for add new Table button 
+  currentTableId?: string, // not required for add new Table button
+}
 
-export default class TableSelect extends Component {
+export default class TableSelect extends Component<TableSelectProps> {
   renderSelect() {
     const { table, currentTableId } = this.props;
     if (table) {
