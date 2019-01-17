@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import classes from './Layout.css';
+import * as classes from './Layout.scss';
 import Toolbar from '~/components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '~/components/Navigation/SideDrawer/SideDrawer';
 
-class Layout extends Component {
+interface LayoutProps {
+  isAuthenticated: boolean,
+  showToolbar: boolean,
+}
+
+interface LayoutState {
+  showSideDrawer: boolean,
+}
+
+class Layout extends Component<LayoutProps, LayoutState> {
   state = {
     showSideDrawer: false,
   };
@@ -42,7 +52,7 @@ class Layout extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
-    showToolbar: !state.welcome.game
+    showToolbar: !state.app.game,
   };
 };
 

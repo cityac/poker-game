@@ -1,12 +1,18 @@
 export enum PlayerStatus {
   ACTIVE = 'ACTIVE',
   AWAY = 'AWAY',
-  FOLD = 'FOLD',  
+  FOLD = 'FOLD',
   DEALER = 'DEALER',
+}
+
+export interface Coord {
+  x: number;
+  y: number;
 }
 
 export default interface Card {
   name: string;
-  coord?: {x: number, y: number},
-  status?: string,
+  coord?: Coord;
+  status?: string;
 }
+  

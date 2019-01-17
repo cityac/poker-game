@@ -4,6 +4,8 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import './App.scss';
 
+import * as TouchHandler from '~/utils/touchHandler';
+
 import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
@@ -25,9 +27,20 @@ class App extends Component {
 
     return null;
   }
-  
-  componentDidUpdate() {
 
+  componentDidMount() {
+    TouchHandler.run();
+    this.checkStandalone();
+  }
+
+  checkStandalone() {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.props.onSetStandalone();
+    }
+  }
+  
+  // required for getSnapshotBeforeUpdate() method
+  componentDidUpdate() {
   }
   
   render() {
@@ -74,6 +87,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
+    onSetStandalone: () => dispatch(actions.setStandalone()),
+
   };
 };
 

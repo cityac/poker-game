@@ -15,7 +15,7 @@ const Footer = (props) => (
       </div>
       <ChatButton />
     </div>
-  )
+  );
 
 const mapStateToProps = ({player, table}) => {
   return {

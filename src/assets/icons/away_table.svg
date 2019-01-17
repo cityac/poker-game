@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="117px" height="64px" viewBox="0 0 117 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="113" height="60" rx="12"></rect>
+        <linearGradient x1="50%" y1="1.36831647%" x2="50%" y2="96.8614523%" id="linearGradient-3">
+            <stop stop-color="#FC6C02" offset="0%"></stop>
+            <stop stop-color="#FC4C02" offset="100%"></stop>
+        </linearGradient>
+        <path d="M0,7.99431262 C0,3.57917567 3.58204887,0 7.99357759,0 L36.0064224,0 C40.4211534,0 44,3.57868996 44,7.99431262 L44,54.0056874 C44,58.4208243 40.4179511,62 36.0064224,62 L7.99357759,62 C3.57884659,62 0,58.42131 0,54.0056874 L0,7.99431262 Z" id="path-4"></path>
+        <filter x="-9.1%" y="-3.2%" width="118.2%" height="112.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M0,7.99431262 C0,3.57917567 3.58204887,0 7.99357759,0 L36.0064224,0 C40.4211534,0 44,3.57868996 44,7.99431262 L44,54.0056874 C44,58.4208243 40.4179511,62 36.0064224,62 L7.99357759,62 C3.57884659,62 0,58.42131 0,54.0056874 L0,7.99431262 Z" id="path-7"></path>
+        <filter x="-9.1%" y="-3.2%" width="118.2%" height="112.9%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="away_table" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-24" transform="translate(-116.000000, -158.000000)">
+            <g id="Group-18" transform="translate(30.000000, 160.000000)">
+                <g id="Group-13" transform="translate(88.000000, 0.000000)">
+                    <g id="Group-6">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <!-- <rect stroke="#FFFFFF" stroke-width="2" x="-1" y="-1" width="115" height="62" rx="12"></rect> -->
+                        <g id="Group-24" mask="url(#mask-2)">
+                            <g transform="translate(20.000000, 40.000000)" id="Group-16">
+                                <g>
+                                    <mask id="mask-5" fill="white">
+                                        <use xlink:href="#path-4"></use>
+                                    </mask>
+                                    <g id="Mask" transform="translate(22.000000, 31.000000) scale(-1, 1) translate(-22.000000, -31.000000) ">
+                                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-4"></use>
+                                        <path stroke="#FFFFFF" stroke-width="4" d="M2,7.99431262 L2,54.0056874 C2,57.3165952 4.68327072,60 7.99357759,60 L36.0064224,60 C39.3145703,60 42,57.3150663 42,54.0056874 L42,7.99431262 C42,4.68340483 39.3167293,2 36.0064224,2 L7.99357759,2 C4.68542969,2 2,4.68493366 2,7.99431262 Z" stroke-linejoin="square" fill="#FC6C02" fill-rule="evenodd"></path>
+                                    </g>
+                                    <g id="Group-4" opacity="0.300000012" mask="url(#mask-5)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="2">
+                                        <g transform="translate(-4.000000, -24.000000)">
+                                            <path d="M-4.22772928e-13,47.6315789 L47.4418605,0.977443609" id="Path-4-Copy"></path>
+                                            <path d="M4.86721774e-13,58.6090226 L47.4418605,11.9548872" id="Path-4-Copy-2"></path>
+                                            <path d="M-4.22772928e-13,69.5864662 L47.4418605,22.9323308" id="Path-4-Copy-3"></path>
+                                            <path d="M-4.22772928e-13,80.5639098 L47.4418605,33.9097744" id="Path-4-Copy-4"></path>
+                                            <path d="M-4.22772928e-13,91.5413534 L47.4418605,44.887218" id="Path-4-Copy-5"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                                <g transform="translate(28.000000, 0.000000)">
+                                    <mask id="mask-8" fill="white">
+                                        <use xlink:href="#path-7"></use>
+                                    </mask>
+                                    <g id="Mask" transform="translate(22.000000, 31.000000) scale(-1, 1) translate(-22.000000, -31.000000) ">
+                                        <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-7"></use>
+                                        <path stroke="#FFFFFF" stroke-width="4" d="M2,7.99431262 L2,54.0056874 C2,57.3165952 4.68327072,60 7.99357759,60 L36.0064224,60 C39.3145703,60 42,57.3150663 42,54.0056874 L42,7.99431262 C42,4.68340483 39.3167293,2 36.0064224,2 L7.99357759,2 C4.68542969,2 2,4.68493366 2,7.99431262 Z" stroke-linejoin="square" fill="#FC6C02" fill-rule="evenodd"></path>
+                                    </g>
+                                    <g id="Group-4" opacity="0.300000012" mask="url(#mask-8)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="2">
+                                        <g transform="translate(-4.000000, -24.000000)">
+                                            <path d="M-4.22772928e-13,47.6315789 L47.4418605,0.977443609" id="Path-4-Copy"></path>
+                                            <path d="M4.86721774e-13,58.6090226 L47.4418605,11.9548872" id="Path-4-Copy-2"></path>
+                                            <path d="M-4.22772928e-13,69.5864662 L47.4418605,22.9323308" id="Path-4-Copy-3"></path>
+                                            <path d="M-4.22772928e-13,80.5639098 L47.4418605,33.9097744" id="Path-4-Copy-4"></path>
+                                            <path d="M-4.22772928e-13,91.5413534 L47.4418605,44.887218" id="Path-4-Copy-5"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

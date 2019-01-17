@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78" height="106" viewBox="0 0 78 106">
+  <defs>
+    <path id="11-b" d="M0,9.00325975 C0,4.03089669 4.0253119,-7.10542736e-15 9.00957983,-7.10542736e-15 L62.9904202,-7.10542736e-15 C67.9662737,-7.10542736e-15 72,4.026957 72,9.00325975 L72,90.9610261 C72,95.9333892 67.9746881,99.9642859 62.9904202,99.9642859 L9.00957983,99.9642859 C4.03372629,99.9642859 0,95.9373289 0,90.9610261 L0,9.00325975 Z"/>
+    <filter id="11-a" width="115.3%" height="111%" x="-7.6%" y="-3.5%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0"/>
+    </filter>
+  </defs>
+  <g id="card" fill="none" fill-rule="evenodd" transform="translate(3 1)">
+    <use fill="#000" filter="url(#11-a)" xlink:href="#11-b"/>
+    <use fill="#FFF" xlink:href="#11-b"/>
+    <polygon fill="#FC4C02" points="35.688 37.8 50.087 56.52 35.688 75.76 21.288 56.52"/>
+    <text fill="#000" font-family="SFUIDisplay-Bold, SF UI Display" font-size="24" font-weight="bold">
+      <tspan x="8" y="27">7</tspan>
+    </text>
+  </g>
+</svg>

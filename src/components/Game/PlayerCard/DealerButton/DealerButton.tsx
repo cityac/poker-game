@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Position from '../position';
 
 interface DealerButtonProps {
-  position: Position
+  position: Position;
 }
 
 const Circle = styled.div`
@@ -19,11 +19,11 @@ const Circle = styled.div`
   top: -1vh;
 
   left: ${(props: {position: string}) => {
-    return props.position === 'left' ? '7vmin' : 'unset'
+    return props.position === 'left' ? '7vmin' : 'unset';
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '7vmin' : 'unset'
+    return props.position === 'right' ? '7vmin' : 'unset';
   }}
 `;
 
@@ -38,12 +38,12 @@ const Letter = styled.div`
 
 const DealerButton = (props: DealerButtonProps) => {
   return (
-  <span style={{position:'relative'}}>
+  <span style={{position: 'relative'}}>
       <Circle position={props.position.x}>
         <Letter>D</Letter>
       </Circle>
     </span>
-  )
+  );
 };
 
 export default DealerButton;

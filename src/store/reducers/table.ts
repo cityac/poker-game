@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes'
+import * as actionTypes from '../actions/actionTypes';
 
 import Table from '~/models/table';
 
@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export default (state = initialState, {type, payload}) => {
-  switch(type) {
+  switch (type) {
     case actionTypes.FETCH_PLAYERS_START:
       return { ...state, loading: true };
     case actionTypes.FETCH_PLAYERS_FAIL:
@@ -19,7 +19,7 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_PLAYERS_SUCCESS:
       return { ...state, players: payload, loading: false };
     case actionTypes.SET_CURRENT_TABLE:
-      return { ...state, id: payload.id,  bet: payload.bet, pot: payload.pot}
+      return { ...state, id: payload.id,  bet: payload.bet, pot: payload.pot};
   }
   return state;
 };

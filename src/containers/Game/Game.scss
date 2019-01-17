@@ -1,14 +1,18 @@
 @import '../../sass/main';
 
 .Game {
+  background-color: $main-background;
+
   .Board {
     box-sizing: border-box;
-    background-color: $main-background;
     height: 100vh;
     padding: 1vh 2vw 2vh;
+
+    background: url(../../assets/images/table.png) no-repeat center;
+    background-size: cover;
     
     &_Mobile {
-      min-width: 360px;
+      min-width: 320px;
     }
 
     &_Browser {
@@ -18,11 +22,20 @@
     display: grid;
     justify-content: center;
     
+    &_IPhoneWeb{
+      background-position-y: -60px;
+      grid-template-rows:
+        [footer-start] 8vh  
+        [footer-end table-start] repeat(4,[row-start]  13vh [row-end]) 
+        [table-end round-actions-start] 26vh
+        [round-actions-end ] !important;
+    }
+
     grid-template-rows: 
-      [table-start] repeat(4,[row-start]  15.5vh [row-end]) 
-      [table-end round-actions-start] 27vh
-      [round-actions-end footer-start] 8vh
-      [footer-end];
+      [footer-start] 8vh  
+      [footer-end table-start] repeat(4,[row-start]  15.5vh [row-end]) 
+      [table-end round-actions-start] 26vh
+      [round-actions-end ];
     
     grid-template-columns: 
       [col-start]1fr
@@ -68,7 +81,7 @@
     
     &__Player6 {
       // background-color: goldenrod;
-      @include bottom-center;
+      @include center-center;
     }
     
     &__Player7{

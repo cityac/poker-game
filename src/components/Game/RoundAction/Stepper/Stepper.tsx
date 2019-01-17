@@ -8,15 +8,15 @@ import * as css from './Stepper.scss';
 import * as commonCss from './../Common.scss';
 
 interface StepperProps {
-  value: number,
-  min: number,
-  max: number,
-  onChangeRaise: Function,
+  value: number;
+  min: number;
+  max: number;
+  onChangeRaise: Function;
 }
 
 const BackgroundSlider = styled.div`
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px;
   border-radius: 5%;
   width: 100%;
@@ -26,7 +26,7 @@ const BackgroundSlider = styled.div`
 
 const TopSlider = styled.div`
   position: absolute;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), white);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), white);
   border: 1px;
   border-radius: 5%;
   width: ${(props: {width: string}) => props.width};
@@ -36,15 +36,15 @@ const TopSlider = styled.div`
 const Circle = styled.div`
   position: absolute;
   border-radius: 50%;
-  width: 4vh;
-  height: 4vh;
+  width: 3vh;
+  height: 3vh;
   background-color: white;
-  top: -2vh;
+  top: -1.5vh;
   left: ${(props: {left: string}) => `calc(${props.left} - 2vh);`}
 `;
 
 class Stepper extends Component <StepperProps>{
-  constructor(props) { 
+  constructor(props) {
     super(props);
   }
 
@@ -59,7 +59,7 @@ class Stepper extends Component <StepperProps>{
     const { value, min, max, onChangeRaise} = this.props;
     let validate;
 
-    if(value <= min ) {
+    if (value <= min ) {
       validate  = (v) => Math.max(v, min);
     } else {
       validate  = (v) => Math.min(v, max);
@@ -67,7 +67,6 @@ class Stepper extends Component <StepperProps>{
 
     onChangeRaise(validate(value + change));
   }
-
 
   render() {
     const { value, max } = this.props;
@@ -85,7 +84,7 @@ class Stepper extends Component <StepperProps>{
         <button className={joinCss( commonCss.Button, css.Button_Stepper, css.Button_Stepper_Plus)}
           onClick={() => this.add()}></button>
       </div>
-    )
+    );
   }
 }
 

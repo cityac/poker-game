@@ -7,11 +7,11 @@ import * as img from '~/assets/images/chip.png';
 import Position from '../position';
 
 interface BetProps {
-  position: Position
-  amount: string,
+  position: Position;
+  amount: string;
 }
 
-const StyledBet= styled.div`
+const StyledBet = styled.div`
   &::before {
     content: "";
     display: inline-block;
@@ -25,15 +25,15 @@ const StyledBet= styled.div`
   top: ${(props: {top: string}) => props.top}
 
   left: ${(props: any) => {
-    return props.position === 'left' ? '14vmin' : props.position === 'center' ? '50%' : 'unset'
+    return props.position === 'left' ? '14vmin' : props.position === 'center' ? '50%' : 'unset';
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '14vmin' : 'unset'
+    return props.position === 'right' ? '14vmin' : 'unset';
   }}
 
   transform: ${(props: any) => {
-    return props.position === 'center' ? 'translate(-50%);' : 'unset'
+    return props.position === 'center' ? 'translate(-50%);' : 'unset';
   }}
 
   display: flex;
@@ -46,12 +46,12 @@ const Bet = (props: BetProps) => {
   let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
 
   if (props.position.x === 'center') {
-    top = props.position.y === 'top' ? '-2vh' : '12vh';
+    top = props.position.y === 'top' ? '-3vh' : '12vh';
   }
 
   return (
     <StyledBet position={props.position.x} top={top}>{props.amount}</StyledBet>
-  )
+  );
 };
 
 export default Bet;

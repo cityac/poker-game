@@ -1,24 +1,23 @@
 import axios from '~/http/axios';
 
-import { 
+import {
   PRESELECT_RAISE,
   FETCH_TABLES_START,
   FETCH_TABLES_SUCCESS,
-  FETCH_TABLES_FAIL, 
+  FETCH_TABLES_FAIL,
 } from './actionTypes';
 
 export const preselectRaise = (value: number) => ({
   type: PRESELECT_RAISE,
   payload: value,
-  })
-
+  });
 
 const initTablesStart = () => ({
   type: FETCH_TABLES_START,
 });
 
 const initTablesSuccess = tables => ({
-  type:FETCH_TABLES_SUCCESS,
+  type: FETCH_TABLES_SUCCESS,
   payload: tables,
 });
 
@@ -36,6 +35,6 @@ export const initTables = (playerId) => {
     } )
     .catch(error => {
       return dispatch(initTablesFail(error));
-    })
-  }
-}
+    });
+  };
+};

@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
-import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
@@ -14,7 +13,7 @@ import App from './App';
 
 import gameReducer from './store/reducers/game';
 import tableReducer from './store/reducers/table';
-import welcomeReducer from './store/reducers/welcome';
+import appReducer from './store/reducers/app';
 import authReducer from './store/reducers/auth';
 import playerReducer from './store/reducers/player';
 
@@ -22,7 +21,7 @@ const rootReducer = combineReducers({
   game: gameReducer,
   table: tableReducer,
   player: playerReducer,
-  welcome: welcomeReducer,
+  app: appReducer,
   auth: authReducer,
 });
 

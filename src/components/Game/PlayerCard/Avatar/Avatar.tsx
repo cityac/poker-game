@@ -29,6 +29,6 @@ const Avatar = (props) => (
         <Img src={props.url}/>
       </div>
     </Div>
-)
+);
 
 export default Avatar;

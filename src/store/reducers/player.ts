@@ -1,14 +1,14 @@
-import * as actionTypes from '../actions/actionTypes'
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   error: undefined,
   loading: false,
-  tables: [], 
+  tables: [],
   preselectRaise: undefined,
 };
 
 export default (state = initialState, {type, payload}) => {
-  switch(type) {
+  switch (type) {
     case actionTypes.FETCH_TABLES_START:
       return { ...state, loading: false };
     case actionTypes.FETCH_TABLES_SUCCESS:
@@ -16,7 +16,7 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_TABLES_FAIL:
       return { ...state, error: payload, loading: false };
     case actionTypes.PRESELECT_RAISE:
-      return {...state, preselectRaise: payload}
+      return {...state, preselectRaise: payload};
   }
   return state;
 };

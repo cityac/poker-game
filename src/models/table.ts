@@ -1,4 +1,4 @@
-import Player from "./player";
+import Player from './player';
 import Card from './card';
 
 export enum TableStatus {
@@ -7,11 +7,11 @@ export enum TableStatus {
 }
 
 export default interface Table {
-  id: string,
-  players: Array<Player>,
-  pot: number,
-  bet: number,
-  playerStatus: string,
-  playerCards: Array<Card>,
-  current: boolean,
+  id: string;
+  players: Player[];
+  pot: number;
+  bet: number;
+  playerStatus: string;
+  playerCards: Card[];
+  current: boolean;
 }
