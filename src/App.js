@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   checkStandalone() {
-    /* eslint-disable */
     if (window.matchMedia('(display-mode: standalone)').matches) {
       this.props.onSetStandalone();
     }

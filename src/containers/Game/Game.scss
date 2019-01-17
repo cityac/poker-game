@@ -2,13 +2,14 @@
 
 .Game {
   background-color: $main-background;
-  background: url(../../assets/images/table.png) no-repeat center;
-  background-size: cover;
 
   .Board {
     box-sizing: border-box;
     height: 100vh;
     padding: 1vh 2vw 2vh;
+
+    background: url(../../assets/images/table.png) no-repeat center;
+    background-size: cover;
     
     &_Mobile {
       min-width: 320px;
@@ -22,17 +23,18 @@
     justify-content: center;
     
     &_IPhoneWeb{
+      background-position-y: -60px;
       grid-template-rows:
-        [footer-start] 6vh  
-        [footer-end table-start] repeat(4,[row-start]  15vh [row-end]) 
-        [table-end round-actions-start] 24vh
+        [footer-start] 8vh  
+        [footer-end table-start] repeat(4,[row-start]  13vh [row-end]) 
+        [table-end round-actions-start] 26vh
         [round-actions-end ] !important;
     }
 
     grid-template-rows: 
       [footer-start] 8vh  
       [footer-end table-start] repeat(4,[row-start]  15.5vh [row-end]) 
-      [table-end round-actions-start] 27vh
+      [table-end round-actions-start] 26vh
       [round-actions-end ];
     
     grid-template-columns: 
@@ -79,7 +81,7 @@
     
     &__Player6 {
       // background-color: goldenrod;
-      @include bottom-center;
+      @include center-center;
     }
     
     &__Player7{
