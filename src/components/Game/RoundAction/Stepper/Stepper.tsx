@@ -8,10 +8,10 @@ import * as css from './Stepper.scss';
 import * as commonCss from './../Common.scss';
 
 interface StepperProps {
-  value: number,
-  min: number,
-  max: number,
-  onChangeRaise: Function,
+  value: number;
+  min: number;
+  max: number;
+  onChangeRaise: Function;
 }
 
 const BackgroundSlider = styled.div`
@@ -44,7 +44,7 @@ const Circle = styled.div`
 `;
 
 class Stepper extends Component <StepperProps>{
-  constructor(props) { 
+  constructor(props) {
     super(props);
   }
 
@@ -59,7 +59,7 @@ class Stepper extends Component <StepperProps>{
     const { value, min, max, onChangeRaise} = this.props;
     let validate;
 
-    if(value <= min ) {
+    if (value <= min ) {
       validate  = (v) => Math.max(v, min);
     } else {
       validate  = (v) => Math.min(v, max);
@@ -67,7 +67,6 @@ class Stepper extends Component <StepperProps>{
 
     onChangeRaise(validate(value + change));
   }
-
 
   render() {
     const { value, max } = this.props;
@@ -85,7 +84,7 @@ class Stepper extends Component <StepperProps>{
         <button className={joinCss( commonCss.Button, css.Button_Stepper, css.Button_Stepper_Plus)}
           onClick={() => this.add()}></button>
       </div>
-    )
+    );
   }
 }
 

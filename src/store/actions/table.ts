@@ -1,5 +1,5 @@
 import axios from '~/http/axios';
-import { 
+import {
   FETCH_PLAYERS_START,
   FETCH_PLAYERS_SUCCESS,
   FETCH_PLAYERS_FAIL,
@@ -7,38 +7,33 @@ import {
   SET_CURRENT_TABLE,
 } from './actionTypes';
 
-
 export const  selectTable = tableId => {
   const id = tableId;
 
   // TODO
   // Step 1 fetch users for table
   // Step 2 set current table
-  
-}
+
+};
 
 export const setCurrentTable = table => ({
   type: SET_CURRENT_TABLE,
   payload: table,
 });
 
-
 const fetchPlayersStart = () => ({
   type: FETCH_PLAYERS_START,
 });
 
 const fetchPlayersSuccess = players => ({
-  type:FETCH_PLAYERS_SUCCESS,
+  type: FETCH_PLAYERS_SUCCESS,
   payload: players,
 });
 
 const fetchPlayersFail = error => ({
-  type:FETCH_PLAYERS_FAIL,
+  type: FETCH_PLAYERS_FAIL,
   payload: error,
 });
-
-
-
 
 export const fetchPlayersByTable = tableId => {
   return dispatch => {
@@ -51,5 +46,5 @@ export const fetchPlayersByTable = tableId => {
       .catch(error => {
         return dispatch(fetchPlayersFail(error));
       });
-  }
-}
+  };
+};

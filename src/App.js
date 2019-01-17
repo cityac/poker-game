@@ -34,6 +34,7 @@ class App extends Component {
   }
 
   checkStandalone() {
+    /* eslint-disable */
     if (window.matchMedia('(display-mode: standalone)').matches) {
       this.props.onSetStandalone();
     }
@@ -87,7 +88,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
-    onSetStandalone: () => actions.setStandalone(),
+    onSetStandalone: () => dispatch(actions.setStandalone()),
 
   };
 };

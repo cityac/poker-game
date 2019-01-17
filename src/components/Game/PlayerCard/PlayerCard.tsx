@@ -12,11 +12,10 @@ import TwoCardsBack from './TwoCards/TwoBacks';
 import TwoCardsFront from './TwoCards/TwoFronts';
 
 export interface PlayerCardProps {
-  player: Player,
-  betY: string,
-  userX: string,
+  player: Player;
+  betY: string;
+  userX: string;
 }
-
 
 export default class PlayerCard extends Component<PlayerCardProps> {
   renderBet() {
@@ -41,11 +40,11 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     const { userX , player: { currentUser, cards }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
-      currentUser 
+      currentUser
       ? <TwoCardsFront cards={cards} type={'large'} />
       : <TwoCardsBack position={{x: userX}} />
     );
-    
+
   }
 
   renderName() {
@@ -59,19 +58,19 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   renderAvatar() {
     const {player: { user: { avatar } , currentUser, progress }} = this.props;
     return (
-      !currentUser 
+      !currentUser
       ? <Avatar url={avatar} percentage={progress}/>
       : null
-    )
+    );
   }
 
   renderUserInfo() {
     const { userX, player: { balance, status} } = this.props;
     const classesUser = joinCss(
-      css.User, 
+      css.User,
       userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,
       status !== PlayerStatus.ACTIVE ? css.UserInactive : '');
-    
+
     let info;
     if (status === PlayerStatus.ACTIVE) {
       info = (
@@ -81,11 +80,11 @@ export default class PlayerCard extends Component<PlayerCardProps> {
           {this.renderDealerButton()}
           {this.renderTwoCards()}
         </React.Fragment>
-      )
+      );
     } else {
       info = (
         <div>{status}</div>
-      )
+      );
     }
     return (
       <div className={classesUser}>
@@ -94,18 +93,18 @@ export default class PlayerCard extends Component<PlayerCardProps> {
           {info}
         </div>
       </div>
-    )
+    );
   }
 
   render() {
-    
+
     return (
-      this.props.player 
+      this.props.player
       ? <div className={css.PlayerCard}>
         {this.renderUserInfo()}
         {this.renderBet()}
       </div>
       : null
-    )
+    );
   }
 }

@@ -9,22 +9,22 @@ import * as css from './TwoFronts.scss';
 import Card from '~/models/card';
 
 interface TwoFrontsProps {
-  cards: Array<Card>,
-  style?: TwoFrontsStyle,
-  type: string, // small | large
+  cards: Card[];
+  style?: TwoFrontsStyle;
+  type: string; // small | large
 }
 
 interface TwoFrontsStyle {
-  height?: string, 
-  fill?: string, 
-  hGap?: number,
-  vGap?: number,
+  height?: string;
+  fill?: string;
+  hGap?: number;
+  vGap?: number;
 }
 
 interface TwoFrontsState {
-  cards: Array<any>,
-  cardScale: number,
-  style: TwoFrontsStyle,
+  cards: any[];
+  cardScale: number;
+  style: TwoFrontsStyle;
 }
 
 class TwoCardsFront extends Component<TwoFrontsProps> {
@@ -34,35 +34,35 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
     super(props);
     this.state = {
       cards: props.cards.map(card => {
-        card.coord = card.coord || {}
+        card.coord = card.coord || {};
         return card;
       }),
       style: props.style || {vGap: 20, hGap: 20},
       cardScale: this.getSVGScale(),
-    }
+    };
     this.root = React.createRef<HTMLDivElement>();
   }
 
   getSVGScale() {
-    const mw = window.matchMedia( "(max-width: 600px)" );
-    const mh = window.matchMedia( "(max-height: 600px)" );
-  
+    const mw = window.matchMedia( '(max-width: 600px)' );
+    const mh = window.matchMedia( '(max-height: 600px)' );
+
     if (isMobile) {
       return this.props.type === 'small' ? 0.25 : 0.5;
     }
-    
+
     return this.props.type === 'small' ? 0.4 : 0.8;
   }
 
   setCoords = (cards) => {
     cards.forEach((card, index) => {
       let xOffset;
-      switch(index) {
+      switch (index) {
         case 0:
           xOffset = 10;
         break;
       }
-  
+
       if (card) {
         card.coord.x = xOffset;
       }
@@ -81,22 +81,22 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
 
     let className;
     if (type === 'small') {
-      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Small_Mobile: css.TwoFronts_Small_Browser);
+      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Small_Mobile : css.TwoFronts_Small_Browser);
     } else {
-      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Large_Mobile: css.TwoFronts_Large_Browser)
+      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Large_Mobile : css.TwoFronts_Large_Browser);
     }
     return (
-      <div ref={this.root} 
+      <div ref={this.root}
       className={className}>
         {cards.map(card => (
-          <SvgCardNew style={style} 
-            key={`${card.name}_${card.index}`} 
-            name={card.name} 
-            coord={card.coord} 
-            scale={cardScale} 
+          <SvgCardNew style={style}
+            key={`${card.name}_${card.index}`}
+            name={card.name}
+            coord={card.coord}
+            scale={cardScale}
             fill={style.fill}/>))}
       </div>
-    )
+    );
   }
 }
 export default TwoCardsFront;

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as css from './BackButton.scss';
 
 interface BackButtonProps {
-  to: string,
+  to: string;
 }
 
 const BackButton = (props: BackButtonProps) => (

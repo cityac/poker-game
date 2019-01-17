@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { isMobile, isIOS } from 'react-device-detect'
+import { isMobile, isIOS } from 'react-device-detect';
 
 import { switchGameMode, initGame } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
@@ -15,13 +15,13 @@ import Footer from './Footer/Footer';
 import * as css from './Game.scss';
 
 export interface GameProps {
-  backPath: string,
-  players: Array<Player>,
-  pot: number,
-  standalone: boolean,
+  backPath: string;
+  players: Player[];
+  pot: number;
+  standalone: boolean;
   history?: any;
-  onSwitchGameMode?(on: boolean): void,
-  onInitGame?(): void,
+  onSwitchGameMode?(on: boolean): void;
+  onInitGame?(): void;
 }
 
 // function getViewportWidth() {
@@ -46,15 +46,15 @@ export interface GameProps {
 //   else {
 //       return 0;
 //   }
-// }     
+// }
 
 class Game extends Component<GameProps> {
 
   componentWillMount() {
     // avoid call fullscreen api with no user iteraction
-    // dirty hack 
+    // dirty hack
     // need to find better solution
-    if(this.props.backPath && this.props.history.action !== 'POP') {
+    if (this.props.backPath && this.props.history.action !== 'POP') {
       fullScreen(true);
     }
 
@@ -81,27 +81,27 @@ class Game extends Component<GameProps> {
               <Footer backPath={this.props.backPath} />
           </div>
           <div className={joinCss(css.Item, css.Item__Player10)}>
-            <PlayerCard 
-              userX='left'
-              betY='bottom' 
+            <PlayerCard
+              userX="left"
+              betY="bottom"
               player={playerByPlace(10)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player1)}>
-            <PlayerCard 
-              userX='center'
-              betY='bottom' 
+            <PlayerCard
+              userX="center"
+              betY="bottom"
               player={playerByPlace(1)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player2)}>
-            <PlayerCard 
-              userX='right'
-              betY='bottom' 
+            <PlayerCard
+              userX="right"
+              betY="bottom"
               player={playerByPlace(2)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player9)}>
-            <PlayerCard 
-              userX='left' 
-              betY='center' 
+            <PlayerCard
+              userX="left"
+              betY="center"
               player={playerByPlace(9)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Flop)}>
@@ -109,39 +109,39 @@ class Game extends Component<GameProps> {
             {/* <SvgFlop /> */}
           </div>
           <div className={joinCss(css.Item, css.Item__Player3)}>
-            <PlayerCard 
-              userX='right' 
-              betY='center' 
+            <PlayerCard
+              userX="right"
+              betY="center"
               player={playerByPlace(3)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player8)}>
-            <PlayerCard 
-              userX='left'  
-              betY='center' 
+            <PlayerCard
+              userX="left"
+              betY="center"
               player={playerByPlace(8)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player4)}>
-            <PlayerCard 
-              userX='right'  
-              betY='center' 
+            <PlayerCard
+              userX="right"
+              betY="center"
               player={playerByPlace(4)}/>
             </div>
           <div className={joinCss(css.Item, css.Item__Player7)}>
-            <PlayerCard 
-              userX='left' 
-              betY='top' 
+            <PlayerCard
+              userX="left"
+              betY="top"
               player={playerByPlace(7)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player6)}>
-            <PlayerCard 
-                userX='center' 
-                betY='top' 
+            <PlayerCard
+                userX="center"
+                betY="top"
                 player={playerByPlace(6)}/>
           </div>
           <div className={joinCss(css.Item, css.Item__Player5)}>
-            <PlayerCard 
-              userX='right' 
-              betY='top' 
+            <PlayerCard
+              userX="right"
+              betY="top"
               player={playerByPlace(5)}/>
           </div>
           {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
@@ -167,11 +167,11 @@ const mapStateToProps = ({ app, game, table }) : GameProps => {
     pot: table.pot,
     players,
     standalone: app.standalone,
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
   onSwitchGameMode: (on: boolean): void => dispatch(switchGameMode(on)),
   onInitGame: () => dispatch(initGame()),
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

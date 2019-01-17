@@ -9,14 +9,14 @@ import * as css from './SvgFlop.scss';
 import Card from '../../../models/card';
 
 interface SvgFlopProps {
-  flop: Array<Card>,
-  turn: Card,
-  river: Card,
+  flop: Card[];
+  turn: Card;
+  river: Card;
 }
 
 interface SvgFlopState {
-  cards: Array<any>,
-  cardScale: number,
+  cards: any[];
+  cardScale: number;
 }
 
 const setCoords = (cards, width, height, scale) => {
@@ -28,13 +28,12 @@ const setCoords = (cards, width, height, scale) => {
   // const gap = (svgHeight / 2 - cardHeight) / 2;
   const gap = 20;
 
-  
   const hCenter = svgWidht / 2;
   const vCenter = svgHeight / 2;
 
   cards.forEach((card, index) => {
     let xOffset;
-    switch(index) {
+    switch (index) {
       case 0:
         xOffset = (-1.5 * cardWidth - gap);
       break;
@@ -42,13 +41,13 @@ const setCoords = (cards, width, height, scale) => {
         xOffset = cardWidth / -2;
       break;
       case 2:
-        xOffset = (0.5 * cardWidth + gap) 
+        xOffset = (0.5 * cardWidth + gap);
       break;
       case 3:
-        xOffset = (-1 * cardWidth - 0.5 * gap)
+        xOffset = (-1 * cardWidth - 0.5 * gap);
       break;
       case 4:
-        xOffset = (0.5 * gap) 
+        xOffset = (0.5 * gap);
       break;
       default:
       xOffset = 0;
@@ -64,7 +63,7 @@ const setCoords = (cards, width, height, scale) => {
       }
     }
   });
-}
+};
 
 class SvgFlop extends Component<SvgFlopProps> {
   root: React.RefObject<SVGSVGElement>;
@@ -74,14 +73,14 @@ class SvgFlop extends Component<SvgFlopProps> {
     this.state = {
       cards: [],
       cardScale: this.getSVGScale(),
-    }
+    };
     this.root = React.createRef<SVGSVGElement>();
   }
 
   // getSVGScale() {
   //   const mw = window.matchMedia( "(max-width: 600px)" );
   //   const mh = window.matchMedia( "(max-height: 600px)" );
-  
+
   //   if (mw.matches || mh.matches) {
   //     return 0.2;
   //   }
@@ -89,24 +88,22 @@ class SvgFlop extends Component<SvgFlopProps> {
   // }
 
   getSVGScale() {
-    const mw = window.matchMedia( "(max-width: 600px)" );
-    const mh = window.matchMedia( "(max-height: 600px)" );
-  
+    const mw = window.matchMedia( '(max-width: 600px)' );
+    const mh = window.matchMedia( '(max-height: 600px)' );
+
     if (isMobile) {
       return  0.5;
     }
-    
+
     return 0.8;
   }
-
-  
 
   componentDidMount() {
     this.setState({cards: [...this.state.cards]});
   }
 
   static getDerivedStateFromProps({flop, turn, river}, state) {
-    let cards = flop ? [...flop] : [];
+    const cards = flop ? [...flop] : [];
     turn && cards.push(turn);
     river && cards.push(river);
 
@@ -115,18 +112,18 @@ class SvgFlop extends Component<SvgFlopProps> {
 
   render() {
     const { cardScale, cards } = this.state;
-    if (this.root.current) { 
+    if (this.root.current) {
       setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight, this.state.cardScale);
     }
 
     return (
-      <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile: css.SvgFlop_Browser)}>
+      <div className={joinCss(css.SvgFlop, isMobile ? css.SvgFlop_Mobile : css.SvgFlop_Browser)}>
         <svg ref={this.root}>
-          {cards.map(card => 
+          {cards.map(card =>
             (card ? <SvgCardNew name={card.name} key={card.name} coord={card.coord} scale={cardScale}  status={card.status}/> : null))}
         </svg> 
       </div>
-    )
+    );
   }
 }
 export default SvgFlop;

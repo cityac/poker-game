@@ -7,8 +7,7 @@ export const initGame = () => {
         const table = getState().player.tables[0];
         table.current = true;
         return dispatch(setCurrentTable(table));
-      })
-    })
-  }
-}
-
+      });
+    });
+  };
+};
