@@ -7,7 +7,6 @@ import TableAway from './TableAway';
 import { PlayerStatus } from '~/models/player';
 import Table from '~/models/table';
 import * as css from './TableSelect.scss';
-import { selectTable } from '../../../store/actions';
 
 const frontStyle = {
   height: '3.8vh',

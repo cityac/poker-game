@@ -1,3 +1,6 @@
+@import '../../sass/main.scss';
+
+$border: 5px white solid;
 .Chat {
 
   width: 100%;
@@ -5,18 +8,21 @@
   display: grid;
   grid-template-rows: repeat(2, 50vh);
   grid-template-columns: repeat(2, 50vw);
+  box-sizing: border-box;
   
   &_TableItem {
+    border-left: $border;
+    border-right: $border;
     position: relative;
     &_Label {
       position: absolute;
-      top: 10%;
+      top: 15%;
       left: 50%;
       transform: translateX(-50%);
       color: white;
       cursor: pointer;
     }
     background: url(../../assets/images/table_screen.png) no-repeat center;
-    background-size: cover;
+    background-size: contain;
   }
 }

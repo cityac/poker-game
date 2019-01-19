@@ -27,14 +27,14 @@ interface TwoFrontsState {
   style: TwoFrontsStyle;
 }
 
-class TwoCardsFront extends Component<TwoFrontsProps> {
+class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
   root: React.RefObject<HTMLDivElement>;
   state: TwoFrontsState;
   constructor(props) {
     super(props);
     this.state = {
       cards: props.cards.map(card => {
-        card.coord = card.coord || {};
+        card.coord = card.coord || {x: 0, y: 0};
         return card;
       }),
       style: props.style || {vGap: 20, hGap: 20},
@@ -69,6 +69,15 @@ class TwoCardsFront extends Component<TwoFrontsProps> {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      ...this.state,
+      cards: nextProps.cards.map(card => {
+        card.coord = card.coord || {x: 0, y: 0};
+        return card;
+      }),
+    });
+  }
   componentDidMount() {
     this.setState({cards: [...this.state.cards]});
   }

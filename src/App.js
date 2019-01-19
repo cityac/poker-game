@@ -63,7 +63,7 @@ class App extends Component {
           <Route path="/tournaments" component={Welcome} />
           <Route path="/my-tournaments" component={Welcome} />
           <Route path="/casino" component={Welcome} />
-          <Route path="/game" exact component={Game} />
+          <Route path="/game/:tableId?" component={Game} />
           <Route path="/chat" exact component={Chat} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={Welcome} />

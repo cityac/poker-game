@@ -8,18 +8,20 @@ import {
 } from './actionTypes';
 
 export const  selectTable = tableId => {
-  const id = tableId;
+  return (dispatch, getState) => {
+    return dispatch(fetchPlayersByTable(tableId)).then(() => {
+      const table = getState().player.tables.find(table => table.id === tableId);
+      table.current = true;
 
-  // TODO
-  // Step 1 fetch users for table
-  // Step 2 set current table
-return (dispatch, getState) => {
-  return dispatch(fetchPlayersByTable(tableId)).then(() => {
-    const table = getState().player.tables.find(table => table.id === tableId);
-    table.current = true;
-    return dispatch(setCurrentTable(table));
-  });
-}
+      (getState().table.players || []).forEach(player => {
+        if (player.userId === getState().auth.userId) {
+          player.currentUser = true;
+        }
+      });
+
+      return dispatch(setCurrentTable(table));
+    });
+  }
 
 };
 
