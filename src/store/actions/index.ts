@@ -15,6 +15,7 @@ export {
 export {
   fetchPlayersByTable,
   setCurrentTable,
+  selectTable,
 } from './table';
 
 export {

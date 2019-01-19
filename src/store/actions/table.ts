@@ -13,6 +13,13 @@ export const  selectTable = tableId => {
   // TODO
   // Step 1 fetch users for table
   // Step 2 set current table
+return (dispatch, getState) => {
+  return dispatch(fetchPlayersByTable(tableId)).then(() => {
+    const table = getState().player.tables.find(table => table.id === tableId);
+    table.current = true;
+    return dispatch(setCurrentTable(table));
+  });
+}
 
 };
 
