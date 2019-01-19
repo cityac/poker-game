@@ -13,5 +13,12 @@ app.get('/ping', function (req, res) {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+app.get('/game', function (req, res) {
+  res.redirect('/')
+});
+
+app.get('/auth', function (req, res) {
+  res.redirect('/')
+});
 
 app.listen(port);
