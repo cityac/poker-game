@@ -80,14 +80,9 @@ class Game extends Component<GameProps> {
       isMobile ? css.Board_Mobile : css.Board_Browser, 
       isIPoneWeb ? css.Board_IPhoneWeb  : ''
     );
-    const gameClasses = joinCss(
-      css.Game,
-      // isIPoneWeb ? css.Game_IPhoneWeb : ''
-    );
-
     
     return (
-      <div className={gameClasses}>
+      <div className={css.Game}>
         <div className={boardClasses} >
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />

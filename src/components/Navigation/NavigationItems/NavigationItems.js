@@ -12,7 +12,7 @@ const renderAuthenticated = () => (
     <NavigationItem link="/my-tournaments" exact>My Tournaments</NavigationItem>
     <NavigationItem link="/casino" exact>Casino</NavigationItem>
     <NavigationItem link="/chat" exact>Chat</NavigationItem>
-    <NavigationItem link="/game">Game</NavigationItem>
+    <NavigationItem link="/game" exact>Game</NavigationItem>
     <NavigationItem link="/logout">Logout</NavigationItem>
   </React.Fragment>
   );
