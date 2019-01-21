@@ -1,8 +1,6 @@
+@import '../../../sass/mixins';
+
 .ChatButton {
-  display: inline-block;
-  box-sizing: border-box;
-  width: 6vh;
-  height: 6vh;
   background: url(../../../assets/icons/chat_button.svg) no-repeat center;
-  background-size: 90%;
+  @include footer-button;
 }

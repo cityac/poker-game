@@ -7,9 +7,9 @@ import {
   FETCH_TABLES_FAIL,
 } from './actionTypes';
 
-export const preselectRaise = (value: number) => ({
+export const preselectRaise = (value: number, tableId: string ) => ({
   type: PRESELECT_RAISE,
-  payload: value,
+  payload: {value, tableId}
   });
 
 const initTablesStart = () => ({

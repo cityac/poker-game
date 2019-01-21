@@ -1,52 +1,67 @@
+@import '../../../sass/variables';
+
 .Container {
   display: flex;
   width: 100%;
   height: 100%;
+  padding: 0 3vw;
+  box-sizing: border-box;
   .RoundActions {
     width: 100%;
     display: inline-block;
     align-self: flex-end;
     font-size: 2vh;
 
-    .Actions {
-      height: 6vh;
-
-      &:last-child {
-        height: 9vh;
-      }
-      padding: 3vmin 2vw 0;
+    .RaiseActions {
       display: flex;
+      height: 6vh;
+      border: $border;
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+      
+      :not(:last-child) {
+        border-right: $border;
+      }
     }
 
+    .Stepper {
+      display: flex;
+      height: 6vh;
+      padding: 0 2vw;
+      border: $border;
+      border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+      border-bottom: none;
+    }
+ 
+    .FoldActions {
+      height: 9vh;
+      padding: 3vmin 0 0;
+      display: flex;
+    }
     .Button {
       &_Fold {
-        background-color: white;
+        border-radius: 16px;
+        background-color: #ffffff;
         color: black;
         font-size: 3.8vmin;
-        border-radius: 10px;
       }
 
       &_Call{
-        background-color: #33adff;
+        border-radius: 16px;
+      
+        background-color:#2657ff;
         font-size: 3.8vmin;
-        border-radius: 10px;
         margin: 0 2vw;
       }
 
       &_Raise {
-        background-color: #ff5c33;
+        border-radius: 16px;
+        background-color: #fc4c02;
         font-size: 3.8vmin;
-        border-radius: 10px;
       }
 
-      &_Stepper_Level{
-        &:last-child {
-          border-top-right-radius: 10px;
-        }
-        &:first-child {
-          border-top-left-radius: 10px;
-        }
-      }
+      
     }
   }
 }

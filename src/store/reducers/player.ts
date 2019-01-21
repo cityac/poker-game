@@ -4,8 +4,12 @@ const initialState = {
   error: undefined,
   loading: false,
   tables: [],
-  preselectRaise: undefined,
 };
+
+const preselectRaise = (state, raise, tableId) => {
+console.log('works', raise, tableId);
+  return {...state, preselectRaise: raise};
+}
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
@@ -16,7 +20,8 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_TABLES_FAIL:
       return { ...state, error: payload, loading: false };
     case actionTypes.PRESELECT_RAISE:
-      return {...state, preselectRaise: payload};
+      preselectRaise(state, payload.value, payload.tableId);
+      
   }
   return state;
 };

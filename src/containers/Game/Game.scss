@@ -6,7 +6,6 @@
   .Board {
     box-sizing: border-box;
     height: 100vh;
-    padding: 1vh 2vw 2vh;
 
     background: url(../../assets/images/table.png) no-repeat center;
     background-size: cover;
@@ -78,7 +77,7 @@
     
     &__Player3 {
       // background-color: goldenrod;
-      @include center-right;
+      @include center-left;
     }
     
     &__Player4 {
@@ -108,7 +107,7 @@
 
     &__Player9 {
       // background-color: palevioletred;
-      @include center-left
+      @include center-right
     }
 
     &__Player10 {

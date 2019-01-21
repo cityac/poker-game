@@ -15,14 +15,17 @@ const RoundActions = (props) => {
   return (
   <div className={css.Container}>
     <div className={css.RoundActions}>
-      <div className={css.Actions}>
-        <ActionButton className={css.Button_Stepper_Level} labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
-        <ActionButton className={css.Button_Stepper_Level} labels={['3/4']} onClick={ () => preselectRaise(Math.floor(balance * 3 / 4) )} />
-        <ActionButton className={css.Button_Stepper_Level} labels={['pot']} onClick={ () => preselectRaise(Math.floor(pot)) } />
-        <ActionButton className={css.Button_Stepper_Level} labels={['max']} onClick={ () => preselectRaise(Math.floor(balance)) }/>
+      <div className={css.Stepper}>
+        <Stepper  value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
       </div>
-      <Stepper value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
-      <div className={css.Actions}>
+      <div className={css.RaiseActions}>
+        <ActionButton labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
+        <ActionButton labels={['3/4']} onClick={ () => preselectRaise(Math.floor(balance * 3 / 4) )} />
+        <ActionButton labels={['pot']} onClick={ () => preselectRaise(Math.floor(pot)) } />
+        <ActionButton labels={['max']} onClick={ () => preselectRaise(Math.floor(balance)) }/>
+      </div>
+      
+      <div className={css.FoldActions}>
         <ActionButton labels={['fold']}
           className={css.Button_Fold}
           onClick={ () => {} } />
@@ -49,7 +52,8 @@ const mapPlayerBalance = (players, userId) => {
 };
 
 const mapStateToProps = ({player, table, auth}) => ({
-  raise: player.preselectRaise || table.bet,
+  raise: table.preselectRaise || player.preselectRaise || table.bet,
+  tableId: table.id,
   bet: table.bet,
   pot: table.pot,
   balance: mapPlayerBalance(table.players, auth.userId),
@@ -57,7 +61,13 @@ const mapStateToProps = ({player, table, auth}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  preselectRaise: value => dispatch(actions.preselectRaise(value)),
+  dispatchRaise: (raise, tableId) => dispatch(actions.preselectRaise(raise, tableId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RoundActions);
+const mergeProps = (propsFromState, propsFromDispatch) => {
+  return {
+      preselectRaise: (raise) => propsFromDispatch.dispatchRaise(raise, propsFromState.tableId)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(RoundActions);

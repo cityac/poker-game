@@ -19,7 +19,7 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_PLAYERS_SUCCESS:
       return { ...state, players: payload, loading: false };
     case actionTypes.SET_CURRENT_TABLE:
-      return { ...state, id: payload.id,  bet: payload.bet, pot: payload.pot};
+      return { ...state, id: payload.id,  bet: payload.bet, pot: payload.pot, preselectRaise: payload.preselectRaise};
   }
   return state;
 };

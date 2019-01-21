@@ -1,4 +1,4 @@
-import { initTables, fetchPlayersByTable, setCurrentTable, selectTable} from './';
+import { initTables, selectTable} from './';
 
 export const initGame = () => {
   return (dispatch, getState)  => {

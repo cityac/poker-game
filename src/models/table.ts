@@ -13,5 +13,6 @@ export default interface Table {
   bet: number;
   playerStatus: string;
   playerCards: Card[];
+  playerPreselectRaise: number,
   current: boolean;
 }

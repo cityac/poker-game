@@ -7,7 +7,7 @@ import { joinCss } from '~/utils';
 import * as css from './Stepper.scss';
 import * as commonCss from './../Common.scss';
 
-interface StepperProps {
+interface StepperProps extends React.HTMLAttributes<any> {
   value: number;
   min: number;
   max: number;
