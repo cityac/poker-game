@@ -52,7 +52,7 @@ const mapPlayerBalance = (players, userId) => {
 };
 
 const mapStateToProps = ({player, table, auth}) => ({
-  raise: table.preselectRaise || player.preselectRaise || table.bet,
+  raise: table.preselectRaise || table.bet,
   tableId: table.id,
   bet: table.bet,
   pot: table.pot,
@@ -64,9 +64,11 @@ const mapDispatchToProps = (dispatch) => ({
   dispatchRaise: (raise, tableId) => dispatch(actions.preselectRaise(raise, tableId)),
 });
 
-const mergeProps = (propsFromState, propsFromDispatch) => {
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
   return {
-      preselectRaise: (raise) => propsFromDispatch.dispatchRaise(raise, propsFromState.tableId)
+      ...propsFromState,
+      ...ownProps,
+      preselectRaise: (raise) => { console.log(raise); propsFromDispatch.dispatchRaise(raise, propsFromState.tableId); }
   };
 };
 

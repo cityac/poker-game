@@ -9,7 +9,7 @@ import * as TouchHandler from '~/utils/touchHandler';
 import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
-import Game from './containers/Game/Game';
+import Game from './containers/Game/Game3';
 import Welcome from './containers/Welcome/Welcome';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';

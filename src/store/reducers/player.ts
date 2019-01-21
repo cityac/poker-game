@@ -8,7 +8,14 @@ const initialState = {
 
 const preselectRaise = (state, raise, tableId) => {
 console.log('works', raise, tableId);
-  return {...state, preselectRaise: raise};
+const tables = state.tables.map(table => {
+  if(table.id === tableId) {
+    return { ...table, playerPreselectRaise: raise}
+  }
+  return table;
+});
+
+  return {...state, tables};
 }
 
 export default (state = initialState, {type, payload}) => {
@@ -20,7 +27,7 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_TABLES_FAIL:
       return { ...state, error: payload, loading: false };
     case actionTypes.PRESELECT_RAISE:
-      preselectRaise(state, payload.value, payload.tableId);
+      return preselectRaise(state, payload.value, payload.tableId);
       
   }
   return state;
