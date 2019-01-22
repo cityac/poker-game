@@ -15,7 +15,7 @@ import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
 
 import './utils/avatar';
-import Chat from './containers/Chat/Chat';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 class App extends Component {
   getSnapshotBeforeUpdate() {
@@ -64,7 +64,7 @@ class App extends Component {
           <Route path="/my-tournaments" component={Welcome} />
           <Route path="/casino" component={Welcome} />
           <Route path="/game/:tableId?" component={Game} />
-          <Route path="/chat" exact component={Chat} />
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={Welcome} />
           <Redirect to="/" />

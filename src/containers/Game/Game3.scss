@@ -75,7 +75,7 @@
     
     &__Player3 {
       grid-area: row-start 3 / col-start 1 / row-end 3 / grid-end;
-      @include center-center;
+      @include bottom-center;
     }
     
     &__Rate {

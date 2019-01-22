@@ -7,7 +7,7 @@ import {
   SET_CURRENT_TABLE,
 } from './actionTypes';
 
-export const  selectTable = tableId => {
+export const selectTable = tableId => {
   return (dispatch, getState) => {
     return dispatch(fetchPlayersByTable(tableId)).then(() => {
       const table = getState().player.tables.find(table => table.id === tableId);

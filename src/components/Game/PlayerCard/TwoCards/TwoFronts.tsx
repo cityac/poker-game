@@ -7,9 +7,11 @@ import { joinCss } from '~/utils';
 
 import * as css from './TwoFronts.scss';
 import Card from '~/models/card';
+import { join } from 'path';
 
 interface TwoFrontsProps {
   cards: Card[];
+  dashboard?: boolean,
   style?: TwoFrontsStyle;
   type: string; // small | large
 }
@@ -23,6 +25,7 @@ interface TwoFrontsStyle {
 
 interface TwoFrontsState {
   cards: any[];
+  dashboard: boolean,
   cardScale: number;
   style: TwoFrontsStyle;
 }
@@ -33,6 +36,7 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
   constructor(props) {
     super(props);
     this.state = {
+      dashboard: props.dashboard,
       cards: props.cards.map(card => {
         card.coord = card.coord || {x: 0, y: 0};
         return card;
@@ -64,6 +68,7 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
       }
 
       if (card) {
+        card.coord = card.coord || {};
         card.coord.x = xOffset;
       }
     });
@@ -78,19 +83,33 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
       }),
     });
   }
+  
   componentDidMount() {
     this.setState({cards: [...this.state.cards]});
   }
 
+  getSmallClasses() {
+    const { dashboard} = this.state;
+
+    const classes = [css.TwoFronts];
+
+    if (isMobile) {
+      classes.push(dashboard ? css.TwoFronts_Small_Mobile_Dashboard : css.TwoFronts_Small_Mobile);
+    } else {
+      classes.push(dashboard ? css.TwoFronts_Small_Browser_Dashboard : css.TwoFronts_Small_Browser);
+    }
+   return joinCss(classes);
+  }
+
   render() {
-    const { cards, cardScale, style} = this.state;
+    const { cards, cardScale, style, dashboard} = this.state;
     const { type } = this.props;
 
     this.setCoords(cards);
 
     let className;
     if (type === 'small') {
-      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Small_Mobile : css.TwoFronts_Small_Browser);
+      className = this.getSmallClasses();
     } else {
       className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Large_Mobile : css.TwoFronts_Large_Browser);
     }
@@ -103,7 +122,8 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
             name={card.name}
             coord={card.coord}
             scale={cardScale}
-            fill={style.fill}/>))}
+            fill={style.fill}
+            dashboard={dashboard}/>))}
       </div>
     );
   }

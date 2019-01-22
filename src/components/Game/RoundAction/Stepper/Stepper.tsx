@@ -40,7 +40,7 @@ const Circle = styled.div`
   height: 3vh;
   background-color: white;
   top: -1.5vh;
-  left: ${(props: {left: string}) => `calc(${props.left} - 2vh);`}
+  left: ${(props: {left: string}) => `calc(${props.left} - 1.5vh);`}
 `;
 
 class Stepper extends Component <StepperProps>{

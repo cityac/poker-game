@@ -1,0 +1,13 @@
+@import '../../sass/main.scss';
+
+$border-thickness: 2;
+$border: #{$border-thickness}px white solid;
+
+.Dashboard {
+  display: grid;
+  grid-template-rows: repeat(2, calc(50vh - #{$border-thickness / 2}px) );
+  grid-template-columns: repeat(2, calc(50vw - #{$border-thickness / 2}px));
+  box-sizing: border-box;
+  // border: $border;
+  grid-gap: #{$border-thickness}px;
+}

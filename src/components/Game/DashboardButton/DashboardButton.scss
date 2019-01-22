@@ -1,6 +1,6 @@
 @import '../../../sass/mixins';
 
-.ChatButton {
+.DashboardButton {
   background: url(../../../assets/icons/chat_button.svg) no-repeat center;
   @include footer-button;
 }

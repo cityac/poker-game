@@ -8,6 +8,7 @@ import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
+import Card from '~/models/card';
 
 import RoundActions from './RoundActions/RoundActions';
 import Footer from './Footer/Footer';
@@ -20,6 +21,7 @@ export interface GameProps {
   pot: number;
   initialized: boolean;
   standalone: boolean;
+  flopCards: Card[],
   history?: any;
   match?: any,
   onSwitchGameMode?(on: boolean): void;
@@ -61,7 +63,7 @@ class Game extends Component<GameProps> {
   }
 
   render() {
-    const { pot, standalone } = this.props;
+    const { pot, standalone, flopCards } = this.props;
     const { playerByPlace } = this;
 
     const isIPoneWeb = isIOS && !standalone;
@@ -93,7 +95,7 @@ class Game extends Component<GameProps> {
           </div>
 
           <div className={joinCss(css.Item, css.Item__Flop)}>
-            <Flop label={`Pot: ${pot}`}/>
+            <Flop label={`Pot: ${pot}`} flopCards={flopCards}/>
             {/* <SvgFlop /> */}
           </div>
          
@@ -125,6 +127,7 @@ const mapStateToProps = ({ app, game, table, player }) : GameProps => {
     backPath: game.backPath,
     pot: table.pot,
     players: table.players || [],
+    flopCards: table.flopCards,
     initialized: player.tables && player.tables.length,
     standalone: app.standalone,
   };

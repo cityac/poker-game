@@ -8,15 +8,22 @@
     text-align: center;
   }
   &_Browser {
-    max-width: 480px;
-    min-width: 480;
+    max-width: 370px;
+    min-width: 370px;
     min-height: 180px;
     max-height: 180px;
   }
 
   &_Mobile {
-    max-width: 70vmin;
-    min-width: 70vmin;
+    max-width: 60vmin;
+    min-width: 60vmin;
+    max-height: 30vmin;
+    min-height: 30vmin;
+  }
+  
+  &_Dashboard {
+    max-width: 50vmin;
+    min-width: 50vmin;
     max-height: 30vmin;
     min-height: 30vmin;
   }

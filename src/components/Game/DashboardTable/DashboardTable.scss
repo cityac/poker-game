@@ -1,0 +1,26 @@
+.DashboardTable {
+  position: relative;
+  cursor: pointer;
+  // &_Label {
+  //   position: absolute;
+  //   top: 15%;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   color: white;
+  //   cursor: pointer;
+  // }
+  background: url(../../../assets/images/dashboard_item.png) no-repeat center;
+  background-size: cover;
+}
+
+.FlopWrapper {
+  position: absolute;
+  top: 40%;
+}
+
+.PlayerCardsWrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

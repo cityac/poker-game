@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import BackButton from '~/components/Game/BackButton/BackButton';
-import ChatButton from '~/components/Game/ChatButton/ChatButton';
+import DashboardButton from '~/components/Game/DashboardButton/DashboardButton';
 import  TableSelect from '~/components/Game/TableSelect/TableSelect';
 
 import { selectTable } from '~/store/actions';
@@ -21,7 +21,7 @@ const Footer = (props) => (
         )}
         <TableSelect onSelect={() => alert('Implementation pending')}/>
       </div>
-      <ChatButton />
+      <DashboardButton />
     </div>
   );
 

@@ -13,6 +13,7 @@ export default interface Table {
   bet: number;
   playerStatus: string;
   playerCards: Card[];
+  flopCards: Card[];
   playerPreselectRaise: number,
   current: boolean;
 }

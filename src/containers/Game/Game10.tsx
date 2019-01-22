@@ -8,6 +8,7 @@ import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
+import Card from '~/models/card';
 
 import RoundActions from './RoundActions/RoundActions';
 import Footer from './Footer/Footer';
@@ -20,6 +21,7 @@ export interface GameProps {
   pot: number;
   initialized: boolean;
   standalone: boolean;
+  flopCards: Card[],
   history?: any;
   match?: any,
   onSwitchGameMode?(on: boolean): void;
@@ -187,6 +189,7 @@ const mapStateToProps = ({ app, game, table, player }) : GameProps => {
     backPath: game.backPath,
     pot: table.pot,
     players: table.players || [],
+    flopCards: table.flopCards,
     initialized: player.tables && player.tables.length,
     standalone: app.standalone,
   };

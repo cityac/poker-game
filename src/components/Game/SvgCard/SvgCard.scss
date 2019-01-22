@@ -33,14 +33,24 @@
     transition-timing-function: ease-in;
     animation-fill-mode: both;
     transform: translateY(0px) scale(0.8); 
+    &_Dashboard {
+      animation-name: unset;
+      transform: translateY(0px) scale(0.5); 
+    }
     &_1 {
-      animation-delay: 0;
+      animation-delay: .1;
     }
     &_2 {
       animation-delay: .2s;
     }
     &_3 {
+      animation-delay: .3s;
+    }
+    &_4 {
       animation-delay: .4s;
+    }
+    &_5 {
+      animation-delay: .5s;
     }
   }
 
@@ -49,6 +59,11 @@
     &_Flop {
       animation-name: deal02;
       transform: translateY(0px) scale(0.5); 
+
+      &_Dashboard {
+        animation-name: unset;
+        transform: translateY(0px) scale(0.3); 
+      }
     }
   }
 }
