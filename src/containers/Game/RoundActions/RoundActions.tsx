@@ -10,10 +10,11 @@ import * as css from './RoundActions.scss';
 import { Tapable } from 'tapable';
 
 const RoundActions = (props) => {
-  const { balance, bet = 0, raise = 0, pot, preselectRaise } = props;
+  const { balance, bet = 0, raise = 0, pot, preselectRaise, onShowChat } = props;
 
   return (
   <div className={css.Container}>
+    <button className={css.ChatButton} onClick={() => onShowChat()}></button>
     <div className={css.RoundActions}>
       <div className={css.Stepper}>
         <Stepper  value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
@@ -62,13 +63,15 @@ const mapStateToProps = ({player, table, auth}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchRaise: (raise, tableId) => dispatch(actions.preselectRaise(raise, tableId)),
+  onShowChat: () => dispatch(actions.switchChatMode(true)),
 });
 
 const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
   return {
       ...propsFromState,
       ...ownProps,
-      preselectRaise: (raise) => { console.log(raise); propsFromDispatch.dispatchRaise(raise, propsFromState.tableId); }
+      onShowChat: propsFromDispatch.onShowChat,
+      preselectRaise: (raise) => { propsFromDispatch.dispatchRaise(raise, propsFromState.tableId); }
   };
 };
 

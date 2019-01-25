@@ -1,4 +1,6 @@
 export const Game: string;
+export const Chat: string;
+export const Chat_IPhoneWeb: string;
 export const Board: string;
 export const Board_Mobile: string;
 export const Board_Browser: string;

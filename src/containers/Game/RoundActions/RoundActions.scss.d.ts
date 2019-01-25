@@ -1,4 +1,5 @@
 export const Container: string;
+export const ChatButton: string;
 export const RoundActions: string;
 export const RaiseActions: string;
 export const Stepper: string;

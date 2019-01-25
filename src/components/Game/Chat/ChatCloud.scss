@@ -1,0 +1,22 @@
+.Cloud {
+  background-image: 
+    -webkit-image-set(
+      url(../../../assets/images/chat-cloud.png) 1x,
+      url(../../../assets/images/chat-cloud@2x.png) 2x,
+      url(../../../assets/images/chat-cloud@3x.png) 3x);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 21vh;
+  height: 11vh;
+  box-sizing: border-box;
+  object-fit: contain;
+  opacity: 0.7;
+  padding: 4vh 1vw;
+  font-family: SFUIDisplay;
+  font-size: 1.8vh;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  color: black;
+  text-align: center;
+}

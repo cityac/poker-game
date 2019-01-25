@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { isMobile, isIOS } from 'react-device-detect';
 
-import { switchGameMode, initGame, selectTable } from '~/store/actions';
+import { switchGameMode, initGame, selectTable, switchChatMode } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
@@ -14,6 +14,7 @@ import RoundActions from './RoundActions/RoundActions';
 import Footer from './Footer/Footer';
 
 import * as css from './Game3.scss';
+import Chat from '../../components/Game/Chat/Chat';
 
 export interface GameProps {
   backPath: string;
@@ -22,11 +23,13 @@ export interface GameProps {
   initialized: boolean;
   standalone: boolean;
   flopCards: Card[],
+  showChat: boolean,
   history?: any;
   match?: any,
   onSwitchGameMode?(on: boolean): void;
   onInitGame?(): void;
   onSelectTable?(tableId: number): void;
+  onCloseChat?():void;
 }
 
 class Game extends Component<GameProps> {
@@ -63,7 +66,7 @@ class Game extends Component<GameProps> {
   }
 
   render() {
-    const { pot, standalone, flopCards } = this.props;
+    const { pot, standalone, flopCards, showChat, onCloseChat } = this.props;
     const { playerByPlace } = this;
 
     const isIPoneWeb = isIOS && !standalone;
@@ -108,10 +111,10 @@ class Game extends Component<GameProps> {
           
           {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
           <div className={joinCss(css.Item, css.Item__RoundActions)}>
-            <RoundActions />
+            { !showChat ? <RoundActions /> : null }
           </div>
-          
         </div>
+        { showChat ? <Chat hide={onCloseChat} className={joinCss(css.Chat, isIPoneWeb ? css.Chat_IPhoneWeb : '')}/> : null }
       </div>
     );
   }
@@ -130,6 +133,7 @@ const mapStateToProps = ({ app, game, table, player }) : GameProps => {
     flopCards: table.flopCards,
     initialized: player.tables && player.tables.length,
     standalone: app.standalone,
+    showChat: game.chat,
   };
 };
 
@@ -137,5 +141,6 @@ const mapDispatchToProps = dispatch => ({
   onSwitchGameMode: (on: boolean): void => dispatch(switchGameMode(on)),
   onInitGame: () => dispatch(initGame()),
   onSelectTable: (tableId) => dispatch(selectTable(tableId)),
+  onCloseChat: () => dispatch(switchChatMode(false)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

@@ -1,4 +1,5 @@
 import { initTables, selectTable} from './';
+import { CHAT_MODE_ON, CHAT_MODE_OFF } from '../actions/actionTypes' 
 
 export const initGame = () => {
   return (dispatch, getState)  => {
@@ -7,3 +8,7 @@ export const initGame = () => {
     });
   };
 };
+
+export const switchChatMode = (on: boolean) => ({
+  type: on ? CHAT_MODE_ON : CHAT_MODE_OFF,
+});

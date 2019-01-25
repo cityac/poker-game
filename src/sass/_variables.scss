@@ -1,3 +1,5 @@
 $main-background:  rgb(20, 146, 20);
 $fold-action-button-bck-color: rgba(white, 0.1);
-$border: 1px rgba(255, 255, 255, 0.5) solid;
+
+$action-buttons-border-color:rgba(255, 255, 255, 0.5);
+$border: 1px #{$action-buttons-border-color} solid;

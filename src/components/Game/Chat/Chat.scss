@@ -1,0 +1,110 @@
+.Container {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  padding: 0 3vw;
+  box-sizing: border-box;
+
+  .CloseButton {
+    position:absolute;
+    right: 2vw;
+    top: -6vh;
+    width: 5vh;
+    height: 5vh;
+    border: unset;
+    background: url(../../../assets/icons/close_button.svg) no-repeat center;
+    background-size: 90%;
+  }
+
+  .Chat {
+    width: 100%;
+
+    .Button {
+      flex-grow: 1;
+      width: 10%;
+      border-radius: 12px;
+      border: 1px #fff solid;
+      background-color: #ffffff;
+      
+      &.Text {
+        font-family: SFUIDisplay;
+        font-size: 3.8vmin;
+        font-weight: bold;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: #000000;
+      }
+
+      &.Emoji {
+        background-size: 70%;
+
+        &.Emoji_1 {
+          background-image: 
+            -webkit-image-set(
+              url(../../../assets/images/flamenco-waiting.png) 1x,
+              url(../../../assets/images/flamenco-waiting@2x.png) 2x,
+              url(../../../assets/images/flamenco-waiting@3x.png) 3x);
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        &.Emoji_2 {
+          background-image: 
+            -webkit-image-set(
+              url(../../../assets/images/flamenco-success.png) 1x,
+              url(../../../assets/images/flamenco-success@2x.png) 2x,
+              url(../../../assets/images/flamenco-success@3x.png) 3x);
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        &.Emoji_3 {
+          background-image: 
+            -webkit-image-set(
+              url(../../../assets/images/flamenco.png) 1x,
+              url(../../../assets/images/flamenco@2x.png) 2x,
+              url(../../../assets/images/flamenco@3x.png) 3x);
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        &.Emoji_4 {
+          background-image: 
+            -webkit-image-set(
+              url(../../../assets/images/flamenco-uploading.png) 1x,
+              url(../../../assets/images/flamenco-uploading@2x.png) 2x,
+              url(../../../assets/images/flamenco-uploading@3x.png) 3x);
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+      
+      @media (min-height: 640px) {
+        &_LabelWrap {
+          display: block ;
+          
+        }
+      }
+    }
+
+    .EmogiButton_Container{
+      display: flex;
+      width: 100%;
+      height: 22vw;
+
+      :not(:last-child) {
+        margin-right:2vw;
+      }
+    }
+    .TextButton_Container{
+      display: flex;
+      width: 100%;
+      height: 11vw;
+      margin-top: 2vw;
+
+      :not(:last-child) {
+        margin-right:2vw;
+      }
+    }
+  }
+}

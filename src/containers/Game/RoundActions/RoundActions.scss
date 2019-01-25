@@ -1,11 +1,24 @@
 @import '../../../sass/variables';
 
 .Container {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100%;
   padding: 0 3vw;
   box-sizing: border-box;
+
+  .ChatButton {
+    position:absolute;
+    right: 2vw;
+    top: -7vh;
+    width: 5vh;
+    height: 5vh;
+    border: unset;
+    background: url(../../../assets/icons/chat_button.svg) no-repeat center;
+    background-size: 90%;
+  }
+
   .RoundActions {
     width: 100%;
     display: inline-block;
@@ -49,7 +62,6 @@
 
       &_Call{
         border-radius: 16px;
-      
         background-color:#2657ff;
         font-size: 3.8vmin;
         margin: 0 2vw;
@@ -60,8 +72,6 @@
         background-color: #fc4c02;
         font-size: 3.8vmin;
       }
-
-      
     }
   }
 }

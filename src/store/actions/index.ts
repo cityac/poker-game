@@ -5,6 +5,7 @@ export {
 
 export {
   initGame,
+  switchChatMode,
 } from './game';
 
 export {
