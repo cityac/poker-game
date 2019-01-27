@@ -7,7 +7,8 @@ import Stepper from '~/components/Game/RoundAction/Stepper/Stepper';
 import ActionButton from '~/components/Game/RoundAction/ActionButton/ActionButton';
 
 import * as css from './RoundActions.scss';
-import { Tapable } from 'tapable';
+
+import { joinCss } from '~/utils';
 
 const RoundActions = (props) => {
   const { balance, bet = 0, raise = 0, pot, preselectRaise, onShowChat } = props;
@@ -28,14 +29,14 @@ const RoundActions = (props) => {
       
       <div className={css.FoldActions}>
         <ActionButton labels={['fold']}
-          className={css.Button_Fold}
+          className={joinCss(css.Button, css.Button_Fold)}
           onClick={ () => {} } />
           
         <ActionButton labels={[bet.toString(), 'call']}
-          className={css.Button_Call} onClick={ () => {} } />
+          className={joinCss(css.Button, css.Button_Call)} onClick={ () => {} } />
 
         <ActionButton labels={[raise.toString(), 'raise to']}
-        className={css.Button_Raise}
+        className={joinCss(css.Button, css.Button_Raise)}
           onClick={ () => {} } />
       </div>
     </div>

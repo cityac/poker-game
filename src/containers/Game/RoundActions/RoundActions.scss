@@ -25,10 +25,13 @@
     align-self: flex-end;
     font-size: 2vh;
 
+    
+
     .RaiseActions {
       display: flex;
       height: 6vh;
       border: $border;
+      background-color: #FFF;
       border-bottom-right-radius: 12px;
       border-bottom-left-radius: 12px;
       
@@ -45,6 +48,7 @@
       border-top-right-radius: 12px;
       border-top-left-radius: 12px;
       border-bottom: none;
+      background-color: #FFF;
     }
  
     .FoldActions {
@@ -53,24 +57,32 @@
       display: flex;
     }
     .Button {
-      &_Fold {
-        border-radius: 16px;
-        background-color: #ffffff;
-        color: black;
-        font-size: 3.8vmin;
+      font-family: SFUIDisplay;
+      font-size: 3.8vmin;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      text-align: center;
+      color: #FFF;
+      &_Fold{
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #fc4c02, #fc4c02);
       }
 
       &_Call{
-        border-radius: 16px;
-        background-color:#2657ff;
-        font-size: 3.8vmin;
         margin: 0 2vw;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay, ;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #2d73ff, #2d73ff);
       }
 
       &_Raise {
-        border-radius: 16px;
-        background-color: #fc4c02;
-        font-size: 3.8vmin;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay, ;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #ffb600, #ffb600);
       }
     }
   }
