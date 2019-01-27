@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const preselectRaise = (state, raise, tableId) => {
-console.log('works', raise, tableId);
 const tables = state.tables.map(table => {
   if(table.id === tableId) {
     return { ...table, playerPreselectRaise: raise}
