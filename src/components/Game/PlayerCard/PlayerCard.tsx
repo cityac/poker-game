@@ -99,8 +99,9 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderChatCloud() {
+    const { player } =  this.props;
     return (
-      <ChatCloud message="Well Played!" className={css.ChatCloud}/>
+      player.currentUser ? <ChatCloud message="Well Played!" className={css.ChatCloud}/> : null 
     )
   }
 

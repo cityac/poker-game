@@ -6,6 +6,11 @@
   src: local('SFUIDisplay'),
        url('./assets/fonts/SF-UI-Display-Bold.otf');
 }
+@font-face {
+  font-family: "SFUIDisplay";
+  font-weight: 500;
+  src: url('./assets/fonts/SF-UI-Display-Medium.otf');
+}
 
 body {
   margin: 0;

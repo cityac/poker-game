@@ -11,7 +11,8 @@ function vGestureHandler(event) {
 }
 
 function touchMoveHandler(event) {
-  if(event.touches && event.touches.length >= 1) {
+  //alert("move");
+  if(event.touches && event.touches.length > 1) {
     // prevent scroll
     event.preventDefault();
   }

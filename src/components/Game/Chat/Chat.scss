@@ -100,8 +100,12 @@
       background-color: transparent;
 
       &_Scroll {
+        z-index: 0;
         display: flex;
-        overflow: auto;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        // -webkit-transform: translateZ(0);
+        // transform: translateZ(0);
         max-height: 22vw;
       }
     }

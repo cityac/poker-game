@@ -34,6 +34,7 @@ const TopSlider = styled.div`
   height: 0.3vh;
   top: -0.1vh;
 `;
+
 const Circle = styled.div`
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
   background-blend-mode: overlay;
@@ -68,22 +69,15 @@ class Stepper extends Component <StepperProps, any>{
       maxX: this.slider.current.parentElement.offsetLeft + this.slider.current.clientWidth,
       touchPrevX: e.touches[0].clientX,
       touchX: e.touches[0].clientX}, () => {
-        //alert('Touch started at ' + this.state.touchPrevX);
     
     });
     
   }
   touchEnd = (e) => {
-    this.setState({inTouch: false, touchPrevX: 0, touchX: 0,});
-    
-    console.log('Touch ended at');
+    this.setState({inTouch: false, touchPrevX: 0, touchX: 0});
   }
 
   touchHandler = (e) =>  {
-    // if(!this.state.inTouch) {
-    //   return;
-    // }
-
     if (e.touches[0].clientX < this.state.minX ) {
       this.setState(this.initialState);
       this.props.onChangeRaise(this.props.min);
@@ -97,17 +91,12 @@ class Stepper extends Component <StepperProps, any>{
     this.setState({inTouch: true, touchX: e.touches[0].clientX, touchPrevX: this.state.touchX}, () => {
       const {touchX} = this.state;
       const {touchPrevX = touchX}  = this.state;
-      console.log(touchX, touchPrevX) ;
 
       const diff = touchX - touchPrevX;
       const pixelValue = this.props.max / this.slider.current.clientWidth;
-      console.log('slider x', this.slider.current );
-      // console.log('diff', diff);
-      // console.log(this.props.value);
       this.amend (Math.floor(diff * pixelValue));
 
     });
-    // console.log('touch in progress', e.touches[0].clientX);
   }
 
   add() {
