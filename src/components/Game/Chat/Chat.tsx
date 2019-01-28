@@ -1,20 +1,32 @@
 import * as React from 'react';
+import styled from 'styled-components';
+
 import * as css from './Chat.scss';
 import {joinCss} from '~/utils';
 
-const onClick = (value?) => {
-
+const onClick = (value?) => { 
 }
+
 const Chat = (props) => {
   return (
     <div className={joinCss(props.className, css.Container)}>
     <button className={css.CloseButton} onClick={() => props.hide()}></button>
       <div className={css.Chat}>
-        <div className={css.EmogiButton_Container}>
-          <button className={joinCss(css.Button, css.Emoji, css.Emoji_1)} onClick={() => onClick()}></button>
-          <button className={joinCss(css.Button, css.Emoji, css.Emoji_2)} onClick={() => onClick()}></button>
-          <button className={joinCss(css.Button, css.Emoji, css.Emoji_3)} onClick={() => onClick()}></button>
-          <button className={joinCss(css.Button, css.Emoji, css.Emoji_4)} onClick={() => onClick()}></button>
+        <div className={css.Emoji_Container}>
+          <div className={css.Emoji_Container_Scroll}>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_1)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_2)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_3)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_4)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_1)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_2)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_3)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_4)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_1)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_2)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_3)} onClick={() => onClick()}></button>
+            <button className={joinCss(css.Button, css.Emoji, css.Emoji_4)} onClick={() => onClick()}></button>
+          </div>
         </div>
         
         <div className={css.TextButton_Container}>

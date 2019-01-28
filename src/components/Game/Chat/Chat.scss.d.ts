@@ -9,5 +9,6 @@ export const Emoji_2: string;
 export const Emoji_3: string;
 export const Emoji_4: string;
 export const Button_LabelWrap: string;
-export const EmogiButton_Container: string;
+export const Emoji_Container: string;
+export const Emoji_Container_Scroll: string;
 export const TextButton_Container: string;
