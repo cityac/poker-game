@@ -6,6 +6,8 @@ import './App.scss';
 
 import * as TouchHandler from '~/utils/touchHandler';
 
+import '~/utils/object.js';
+
 import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 

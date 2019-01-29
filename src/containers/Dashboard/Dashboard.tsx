@@ -33,7 +33,7 @@ class Dashboard extends Component<DashboardProps> {
           pot={table.pot} 
           playerCards={table.playerCards}
           flopCards={table.flopCards} />)}
-        <DashboardTable tableId='' />
+        <DashboardTable tableId={undefined} />
        
       </div>
     )

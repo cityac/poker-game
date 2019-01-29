@@ -19,16 +19,20 @@ interface DashboardTableProps {
 export default class DashboardTable extends Component<DashboardTableProps> {
   render() {
     const {tableId, pot, flopCards, playerCards} =  this.props;
-    return (
-        <NavLink className={css.DashboardTable} to={`/game/${tableId}`}>
+    return tableId
+      ? (<NavLink className={css.DashboardTable} to={`/game/${tableId}`}>
           <div className={css.FlopWrapper}>
             <Flop label={`Pot: ${pot}`} flopCards={flopCards} dashboard/>
           </div>
-          
           <div className={css.PlayerCardsWrapper}>
             {playerCards? <TwoCardsFront dashboard cards={playerCards} type="small"/> : null}
           </div>
-        </NavLink>
-    );
+        </NavLink>)
+        : (<NavLink className={css.DashboardTable} to={`/game`}>
+            <div className={css.NewWrapper} >
+              <div className={css.Button}></div>
+              <div className={css.Label}>Join new game</div>
+            </div>
+          </NavLink>)
   }
 }
