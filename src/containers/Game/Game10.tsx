@@ -3,11 +3,12 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { isMobile, isIOS } from 'react-device-detect';
 
-import { switchGameMode, initGame } from '~/store/actions';
+import { switchGameMode, initGame, selectTable } from '~/store/actions';
 import { fullScreen, joinCss } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
+import Card from '~/models/card';
 
 import RoundActions from './RoundActions/RoundActions';
 import Footer from './Footer/Footer';
@@ -18,10 +19,14 @@ export interface GameProps {
   backPath: string;
   players: Player[];
   pot: number;
+  initialized: boolean;
   standalone: boolean;
+  flopCards: Card[],
   history?: any;
+  match?: any,
   onSwitchGameMode?(on: boolean): void;
   onInitGame?(): void;
+  onSelectTable?(tableId: number): void;
 }
 
 // function getViewportWidth() {
@@ -62,7 +67,19 @@ class Game extends Component<GameProps> {
   }
 
   componentDidMount() {
-    this.props.onInitGame();
+    const { 
+      initialized, 
+      match: {params: {tableId}}, 
+      onInitGame,
+      onSelectTable,
+    } = this.props;
+    if (!initialized) {
+      onInitGame();
+    } else {
+      if (tableId) {
+        onSelectTable(Number(tableId));
+      }
+    }
   }
 
   playerByPlace = place => {
@@ -80,14 +97,9 @@ class Game extends Component<GameProps> {
       isMobile ? css.Board_Mobile : css.Board_Browser, 
       isIPoneWeb ? css.Board_IPhoneWeb  : ''
     );
-    const gameClasses = joinCss(
-      css.Game,
-      // isIPoneWeb ? css.Game_IPhoneWeb : ''
-    );
-
     
     return (
-      <div className={gameClasses}>
+      <div className={css.Game}>
         <div className={boardClasses} >
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />
@@ -172,12 +184,13 @@ class Game extends Component<GameProps> {
   }
 }
 
-const mapStateToProps = ({ app, game, table }) : GameProps => {
-  const players = table.players || [];
+const mapStateToProps = ({ app, game, table, player }) : GameProps => {
   return {
     backPath: game.backPath,
     pot: table.pot,
-    players,
+    players: table.players || [],
+    flopCards: table.flopCards,
+    initialized: player.tables && player.tables.length,
     standalone: app.standalone,
   };
 };
@@ -185,5 +198,6 @@ const mapStateToProps = ({ app, game, table }) : GameProps => {
 const mapDispatchToProps = dispatch => ({
   onSwitchGameMode: (on: boolean): void => dispatch(switchGameMode(on)),
   onInitGame: () => dispatch(initGame()),
+  onSelectTable: (tableId) => dispatch(selectTable(tableId)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

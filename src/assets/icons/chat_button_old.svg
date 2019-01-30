@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 23</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Table" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-25" transform="translate(-663.000000, -161.000000)">
+            <g id="Group-18" transform="translate(30.000000, 160.000000)">
+                <g id="Group-23" transform="translate(634.000000, 2.000000)">
+                    <path d="M54.5263243,19.0122025 C55.481863,21.8332941 56,24.8561384 56,28 C56,43.0760897 44.0849689,55.3692748 29.1579718,55.9764902 L29.1666667,56 L7.66858123,56 C7.33943774,56 7.02432027,55.8667235 6.79506355,55.6305524 C6.3267572,55.1481219 6.33820708,54.3773974 6.82063757,53.909091 L10.7716077,50.0737937 C4.2149342,44.9491097 1.09811386e-15,36.9667802 0,28 C-1.8937905e-15,12.536027 12.536027,2.84068575e-15 28,0 C31.0913534,-5.67872408e-16 34.0656981,0.500973862 36.8462768,1.42616434" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M40,31 C38.3457303,31 37,29.6541299 37,27.9996883 C37,26.3458701 38.3457303,25 40,25 C41.6542697,25 43,26.3458701 43,27.9996883 C43,29.6541299 41.6542697,31 40,31 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <path d="M16,31 C14.3457303,31 13,29.6541299 13,27.9996883 C13,26.3458701 14.3457303,25 16,25 C17.6542697,25 19,26.3458701 19,27.9996883 C19,29.6541299 17.6542697,31 16,31 Z" id="Shape-Copy" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <path d="M28,31 C26.3457303,31 25,29.6541299 25,27.9996883 C25,26.3458701 26.3457303,25 28,25 C29.6542697,25 31,26.3458701 31,27.9996883 C31,29.6541299 29.6542697,31 28,31 Z" id="Shape-Copy-2" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <rect id="Rectangle-3" fill="#E42F2E" x="40" y="0" width="16" height="16" rx="8"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

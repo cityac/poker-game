@@ -6,7 +6,6 @@
   .Board {
     box-sizing: border-box;
     height: 100vh;
-    padding: 1vh 2vw 2vh;
 
     background: url(../../assets/images/table.png) no-repeat center;
     background-size: cover;
@@ -24,6 +23,18 @@
     
     &_IPhoneWeb{
       background-position-y: -60px;
+
+      /* Phone X  */
+
+      @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) { 
+        background-position-y: -100px;
+        grid-template-rows:
+        [footer-start] 8vh  
+        [footer-end table-start] repeat(4,[row-start]  12vh [row-end]) 
+        [table-end round-actions-start] 26vh
+        [round-actions-end ] !important;
+      }
+
       grid-template-rows:
         [footer-start] 8vh  
         [footer-end table-start] repeat(4,[row-start]  13vh [row-end]) 
@@ -66,7 +77,7 @@
     
     &__Player3 {
       // background-color: goldenrod;
-      @include center-right;
+      @include center-left;
     }
     
     &__Player4 {
@@ -96,7 +107,7 @@
 
     &__Player9 {
       // background-color: palevioletred;
-      @include center-left
+      @include center-right
     }
 
     &__Player10 {

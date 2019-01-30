@@ -24,12 +24,17 @@ const backStyle = {
 }
 
 interface TableSelectProps {
+  onSelect: Function,
   // TODO change
   table?: Table, // not required for add new Table button 
   currentTableId?: string, // not required for add new Table button
 }
 
 export default class TableSelect extends Component<TableSelectProps> {
+  selectTable = () => {
+    const { onSelect, table: {id}} = this.props;
+    onSelect(id)
+  }
   renderSelect() {
     const { table, currentTableId } = this.props;
     if (table) {
@@ -37,7 +42,7 @@ export default class TableSelect extends Component<TableSelectProps> {
       const current = currentTableId === id;
       const classNames = joinCss(css.TableSelect, current ? css.TableSelect_Current : '');
       return (
-        <div className={classNames}>
+        <div className={classNames} onClick={() => this.selectTable()}>
           {playerStatus === PlayerStatus.AWAY 
             ? (<div className={css.TableSelect_Away}>
                 <div className={css.TableSelect_Away_Label}>Away</div>

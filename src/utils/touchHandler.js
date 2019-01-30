@@ -1,3 +1,5 @@
+import { isString } from '~/utils';
+
 export function run() {
   observe(window.document);
   document.body.addEventListener('gesture-up', vGestureHandler, false); // 0-50ms vs 500ms with normal click
@@ -10,7 +12,13 @@ function vGestureHandler(event) {
   event.preventDefault();
 }
 
+const touchMoveEnabledClasses = /Chat_Emoji/;
 function touchMoveHandler(event) {
+  
+  if (isString(event.target.className) && event.target.className.match(touchMoveEnabledClasses)) {
+    return;
+  }
+
   if(event.touches && event.touches.length >= 1) {
     // prevent scroll
     event.preventDefault();

@@ -7,12 +7,21 @@ import {
   SET_CURRENT_TABLE,
 } from './actionTypes';
 
-export const  selectTable = tableId => {
-  const id = tableId;
+export const selectTable = tableId => {
+  return (dispatch, getState) => {
+    return dispatch(fetchPlayersByTable(tableId)).then(() => {
+      const table = getState().player.tables.find(table => table.id === tableId);
+      table.current = true;
 
-  // TODO
-  // Step 1 fetch users for table
-  // Step 2 set current table
+      (getState().table.players || []).forEach(player => {
+        if (player.userId === getState().auth.userId) {
+          player.currentUser = true;
+        }
+      });
+
+      return dispatch(setCurrentTable(table));
+    });
+  }
 
 };
 
@@ -25,9 +34,9 @@ const fetchPlayersStart = () => ({
   type: FETCH_PLAYERS_START,
 });
 
-const fetchPlayersSuccess = players => ({
+const fetchPlayersSuccess = (players, tableId) => ({
   type: FETCH_PLAYERS_SUCCESS,
-  payload: players,
+  payload: {players, tableId},
 });
 
 const fetchPlayersFail = error => ({
@@ -40,7 +49,7 @@ export const fetchPlayersByTable = tableId => {
     dispatch(fetchPlayersStart());
     return axios.get(`players?tableId=${tableId}&_expand=user`)
       .then(res => {
-        return dispatch(fetchPlayersSuccess(res.data));
+        return dispatch(fetchPlayersSuccess(res.data, tableId));
 
       })
       .catch(error => {

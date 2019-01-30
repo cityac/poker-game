@@ -6,15 +6,18 @@ import './App.scss';
 
 import * as TouchHandler from '~/utils/touchHandler';
 
+import '~/utils/object.js';
+
 import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
-import Game from './containers/Game/Game';
+import Game from './containers/Game/Game3';
 import Welcome from './containers/Welcome/Welcome';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
 
 import './utils/avatar';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 class App extends Component {
   getSnapshotBeforeUpdate() {
@@ -62,7 +65,8 @@ class App extends Component {
           <Route path="/tournaments" component={Welcome} />
           <Route path="/my-tournaments" component={Welcome} />
           <Route path="/casino" component={Welcome} />
-          <Route path="/game" exact component={Game} />
+          <Route path="/game/:tableId?" component={Game} />
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={Welcome} />
           <Redirect to="/" />

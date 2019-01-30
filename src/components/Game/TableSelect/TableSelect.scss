@@ -13,6 +13,7 @@
   margin: 0 2vw;
   color: white;
   background-color: transparent;
+  cursor: pointer;
   &_Away {
     padding-top: 0.4vh;
     &_Label {
@@ -21,7 +22,7 @@
     }
   }
   &_Current {
-    margin-top: 2vh;
+    margin-top: 1vh;
     border-color: white;
   }
   &_New{

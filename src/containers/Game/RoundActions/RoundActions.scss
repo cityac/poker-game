@@ -1,51 +1,88 @@
+@import '../../../sass/variables';
+
 .Container {
+  position: relative;
   display: flex;
   width: 100%;
   height: 100%;
+  padding: 0 3vw;
+  box-sizing: border-box;
+
+  .ChatButton {
+    position:absolute;
+    right: 2vw;
+    top: -7vh;
+    width: 5vh;
+    height: 5vh;
+    border: unset;
+    background: url(../../../assets/icons/chat_button.svg) no-repeat center;
+    background-size: 90%;
+  }
+
   .RoundActions {
     width: 100%;
     display: inline-block;
     align-self: flex-end;
     font-size: 2vh;
 
-    .Actions {
-      height: 6vh;
+    
 
-      &:last-child {
-        height: 9vh;
-      }
-      padding: 3vmin 2vw 0;
+    .RaiseActions {
       display: flex;
+      height: 6vh;
+      border: $border;
+      background-color: #FFF;
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+      
+      :not(:last-child) {
+        border-right: $border;
+      }
     }
 
+    .Stepper {
+      display: flex;
+      height: 6vh;
+      padding: 0 2vw;
+      border: $border;
+      border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+      border-bottom: none;
+      background-color: #FFF;
+    }
+ 
+    .FoldActions {
+      height: 9vh;
+      padding: 3vmin 0 0;
+      display: flex;
+    }
     .Button {
-      &_Fold {
-        background-color: white;
-        color: black;
-        font-size: 3.8vmin;
-        border-radius: 10px;
+      font-family: SFUIDisplay;
+      font-size: 3.8vmin;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      text-align: center;
+      color: #FFF;
+      &_Fold{
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #fc4c02, #fc4c02);
       }
 
       &_Call{
-        background-color: #33adff;
-        font-size: 3.8vmin;
-        border-radius: 10px;
         margin: 0 2vw;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay, ;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #2d73ff, #2d73ff);
       }
 
       &_Raise {
-        background-color: #ff5c33;
-        font-size: 3.8vmin;
-        border-radius: 10px;
-      }
-
-      &_Stepper_Level{
-        &:last-child {
-          border-top-right-radius: 10px;
-        }
-        &:first-child {
-          border-top-left-radius: 10px;
-        }
+        border-radius: 12px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+        background-blend-mode: overlay, ;
+        background-image: linear-gradient(337deg, rgba(255, 255, 255, 0), #FFF), linear-gradient(to bottom, #ffb600, #ffb600);
       }
     }
   }

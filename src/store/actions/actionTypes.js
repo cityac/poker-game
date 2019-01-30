@@ -3,6 +3,8 @@ export const LOGIN = 'LOGIN';
 
 export const GAME_MODE_ON = 'GAME MODE ON';
 export const GAME_MODE_OFF = 'GAME MODE OFF';
+export const CHAT_MODE_ON = 'CHAT MODE ON';
+export const CHAT_MODE_OFF = 'CHAT MODE OFF';
 export const SET_STANDALONE = 'SET_STANDALONE';
 export const SET_GAME_BACK_PATH = 'SET_GAME_BACK_PATH';
 
@@ -22,5 +24,9 @@ export const FETCH_PLAYERS_FAIL = 'FETCH_PLAYERS_FAIL';
 
 
 export const SET_CURRENT_TABLE = 'SET_CURRENT_TABLE';
+
+export const INIT_DASHBOARD_START = 'INIT_DASHBOARD_START';
+export const INIT_DASHBOARD_FAIL = 'INIT_DASHBOARD_FAIL';
+export const INIT_DASHBOARD_SUCCESS = 'INIT_DASHBOARD_SUCCESS';
 
 

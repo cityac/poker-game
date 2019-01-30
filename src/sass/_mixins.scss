@@ -42,3 +42,12 @@
   align-self: flex-end;
   justify-self: center;
 }
+
+/* Footer */ 
+@mixin footer-button {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 5vh;
+  height: 5vh;
+  background-size: 90%;
+}

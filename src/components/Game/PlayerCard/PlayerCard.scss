@@ -4,6 +4,11 @@
   width: 24vmin;
   position: relative;
   
+  .ChatCloud {
+    position: absolute;
+    top: -6vh;
+    right: -17vh;
+  }
   .User {
     width: 14vmin;
 
@@ -12,6 +17,7 @@
       align-self: stretch;
       flex-direction: column;
       align-items: center;
+      min-height: 3.5vh;
 
       .Balance {
         order: 1;

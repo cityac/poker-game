@@ -10,6 +10,7 @@ import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
 import TwoCardsBack from './TwoCards/TwoBacks';
 import TwoCardsFront from './TwoCards/TwoFronts';
+import ChatCloud from '../Chat/ChatCloud';
 
 export interface PlayerCardProps {
   player: Player;
@@ -55,6 +56,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
       : null
     );
   }
+
   renderAvatar() {
     const {player: { user: { avatar } , currentUser, progress }} = this.props;
     return (
@@ -96,11 +98,19 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     );
   }
 
+  renderChatCloud() {
+    const { player } =  this.props;
+    return (
+      player.currentUser ? <ChatCloud message="Well Played!" className={css.ChatCloud}/> : null 
+    )
+  }
+
   render() {
 
     return (
       this.props.player
       ? <div className={css.PlayerCard}>
+        {this.renderChatCloud()}
         {this.renderUserInfo()}
         {this.renderBet()}
       </div>

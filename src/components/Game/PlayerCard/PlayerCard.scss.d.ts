@@ -1,4 +1,5 @@
 export const PlayerCard: string;
+export const ChatCloud: string;
 export const User: string;
 export const UserInfo: string;
 export const Balance: string;
