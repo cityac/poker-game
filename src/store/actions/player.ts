@@ -58,10 +58,12 @@ const initDashboardSuccess = (payload) => ({
 export const initDashboard = (tablesIds) => {
   return dispatch => {
     dispatch(initDashboardStart());
-    let promises = [tablesIds];
-    tablesIds.forEach(id => {
-      promises.push(axios.get(`players?tableId=${id}&_expand=user`))
+
+    let promises = tablesIds.map(id => {
+      return axios.get(`players?tableId=${id}&_expand=user`);
     });
+    promises.unshift(tablesIds); // we need this to map results with tables
+    
     return Promise.all(promises).then(payload => {
       dispatch(initDashboardSuccess(payload));
     })
