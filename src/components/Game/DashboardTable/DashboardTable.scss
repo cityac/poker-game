@@ -1,10 +1,39 @@
 .DashboardTable {
   position: relative;
   cursor: pointer;
- 
   background: url(../../../assets/images/dashboard_item.png) no-repeat center;
   background-size: cover;
+
+  text-decoration: none;
 }
+
+.Players {
+  padding: 2vh 0;
+  display: flex;
+  justify-content: space-between;
+  & > * {
+    transform: scale(0.7);
+  }
+}
+
+.Labels {
+  margin-top: 1vh;
+  width: 100%;
+  text-align: center;
+
+  font-size: 3.4vmin;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+
+  &_Prize {
+    color: #FFF;
+  }
+  &_Rate {
+    color: #FFF;
+    opacity: 0.7;
+  }
+}
+
 
 .FlopWrapper {
   position: absolute;
@@ -44,7 +73,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    font-family: SFUIDisplay;
     font-size: 3.8vmin;
     font-weight: 500;
     letter-spacing: 0.3px;

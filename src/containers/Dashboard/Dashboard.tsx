@@ -7,12 +7,16 @@ import { switchGameMode } from '~/store/actions';
 
 import DashboardTable from '~/components/Game/DashboardTable/DashboardTable';
 import Table from '~/models/table';
+import Player from '~/models/player';
 
 import * as css from './Dashboard.scss';
+import { initDashboard } from '../../store/actions';
 
 interface DashboardProps {
   tables: Table[],
+  players: Player[],
   onSwitchGameMode(on: boolean): void;
+  onInitDashboard():void;
 }
 
 class Dashboard extends Component<DashboardProps> {
@@ -23,7 +27,9 @@ class Dashboard extends Component<DashboardProps> {
     fullScreen(true);
 
     this.props.onSwitchGameMode(true);
+    this.props.onInitDashboard();
   }   
+
   render() {
     return (
       <div className={css.Dashboard}>
@@ -31,8 +37,10 @@ class Dashboard extends Component<DashboardProps> {
         <DashboardTable key={table.id} 
           tableId={table.id} 
           pot={table.pot} 
+          players={table.players}
           playerCards={table.playerCards}
-          flopCards={table.flopCards} />)}
+          flopCards={table.flopCards} />)
+      }
         <DashboardTable tableId={undefined} />
        
       </div>
@@ -42,12 +50,22 @@ class Dashboard extends Component<DashboardProps> {
 
 const mapStateToProps = ({ player }) => {
   return {
-    tables: player.tables,
+    tables: player.tables || [],
     initialized: player.tables && player.tables.length,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   onSwitchGameMode: (on: boolean): void => dispatch(switchGameMode(on)),
+  dispatchInitDashboard: (tablesIds): void => dispatch(initDashboard(tablesIds)),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
+const mergeProps = (propsFromState, propsFromDispatch, ownProps) => {
+  return {
+      ...propsFromState,
+      ...propsFromDispatch,
+      ...ownProps,
+      onInitDashboard: () => { propsFromDispatch.dispatchInitDashboard(propsFromState.tables.map(el => el.id)); }
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Dashboard);

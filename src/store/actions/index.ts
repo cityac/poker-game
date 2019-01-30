@@ -11,6 +11,7 @@ export {
 export {
   preselectRaise,
   initTables,
+  initDashboard,
 } from './player';
 
 export {

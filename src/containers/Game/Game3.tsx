@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { isMobile, isIOS } from 'react-device-detect';
 
 import { switchGameMode, initGame, selectTable, switchChatMode } from '~/store/actions';
-import { fullScreen, joinCss } from '~/utils';
+import { fullScreen, joinCss, playerByPlace as getPlayer } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
@@ -62,7 +62,7 @@ class Game extends Component<GameProps> {
   }
 
   playerByPlace = place => {
-    return this.props.players.find(player => player.place === place);
+    return getPlayer(this.props.players, place);
   }
 
   render() {
@@ -120,7 +120,7 @@ class Game extends Component<GameProps> {
   }
 
   componentWillUnmount() {
-    fullScreen(false);
+    // fullScreen(false);
     this.props.onSwitchGameMode(false);
   }
 }

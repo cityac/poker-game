@@ -30,7 +30,7 @@ export default (state = initialState, {type, payload}) => {
     case actionTypes.FETCH_PLAYERS_FAIL:
       return { ...state, loading: false };
     case actionTypes.FETCH_PLAYERS_SUCCESS:
-      return { ...state, players: payload, loading: false };
+      return { ...state, players: payload.players, loading: false };
     case actionTypes.SET_CURRENT_TABLE:
       return setCurrentTable(state, payload);
     case actionTypes.PRESELECT_RAISE:

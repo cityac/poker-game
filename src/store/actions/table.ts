@@ -34,9 +34,9 @@ const fetchPlayersStart = () => ({
   type: FETCH_PLAYERS_START,
 });
 
-const fetchPlayersSuccess = players => ({
+const fetchPlayersSuccess = (players, tableId) => ({
   type: FETCH_PLAYERS_SUCCESS,
-  payload: players,
+  payload: {players, tableId},
 });
 
 const fetchPlayersFail = error => ({
@@ -49,7 +49,7 @@ export const fetchPlayersByTable = tableId => {
     dispatch(fetchPlayersStart());
     return axios.get(`players?tableId=${tableId}&_expand=user`)
       .then(res => {
-        return dispatch(fetchPlayersSuccess(res.data));
+        return dispatch(fetchPlayersSuccess(res.data, tableId));
 
       })
       .catch(error => {
