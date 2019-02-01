@@ -8,10 +8,12 @@ import { joinCss } from '~/utils';
 import * as css from './TwoFronts.scss';
 import Card from '~/models/card';
 import { join } from 'path';
+import TurnProgress from '../../TurnProgress/TurnProgress';
 
 interface TwoFrontsProps {
   cards: Card[];
   dashboard?: boolean,
+  progress?: boolean,
   style?: TwoFrontsStyle;
   type: string; // small | large
 }
@@ -30,9 +32,19 @@ interface TwoFrontsState {
   style: TwoFrontsStyle;
 }
 
+
+
 class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
-  root: React.RefObject<HTMLDivElement>;
+  svgContainer: React.RefObject<HTMLDivElement>;
   state: TwoFrontsState;
+
+
+  frontStyle = {
+    height: '3.8vh',
+    marginTop: '1.7vh',
+    hGap: 10,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,10 +53,14 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
         card.coord = card.coord || {x: 0, y: 0};
         return card;
       }),
-      style: props.style || {vGap: 20, hGap: 20},
+      style: this.getSVGStyle(props),
       cardScale: this.getSVGScale(),
     };
-    this.root = React.createRef<HTMLDivElement>();
+    this.svgContainer = React.createRef<HTMLDivElement>();
+  }
+
+  getSVGStyle(props) {
+    return props.type === 'small' ? this.frontStyle : {vGap: 20, hGap: 20};
   }
 
   getSVGScale() {
@@ -63,7 +79,7 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
       let xOffset;
       switch (index) {
         case 0:
-          xOffset = 10;
+          xOffset = 15;
         break;
       }
 
@@ -91,17 +107,17 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
   getSmallClasses() {
     const { dashboard} = this.state;
 
-    const classes = [css.TwoFronts];
+    const classes = [css.SVGContainer];
 
     if (isMobile) {
-      classes.push(dashboard ? css.TwoFronts_Small_Mobile_Dashboard : css.TwoFronts_Small_Mobile);
+      classes.push(dashboard ? css.SVGContainer_Small_Mobile_Dashboard : css.SVGContainer_Small_Mobile);
     } else {
-      classes.push(dashboard ? css.TwoFronts_Small_Browser_Dashboard : css.TwoFronts_Small_Browser);
+      classes.push(dashboard ? css.SVGContainer_Small_Browser_Dashboard : css.SVGContainer_Small_Browser);
     }
    return joinCss(classes);
   }
 
-  render() {
+  renderCards = () => {
     const { cards, cardScale, style, dashboard} = this.state;
     const { type } = this.props;
 
@@ -111,11 +127,11 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
     if (type === 'small') {
       className = this.getSmallClasses();
     } else {
-      className = joinCss(css.TwoFronts, isMobile ? css.TwoFronts_Large_Mobile : css.TwoFronts_Large_Browser);
+      className = joinCss(css.SVGContainer, isMobile ? css.SVGContainer_Large_Mobile : css.SVGContainer_Large_Browser);
     }
+
     return (
-      <div ref={this.root}
-      className={className}>
+      <div ref={this.svgContainer} className={className}>
         {cards.map(card => (
           <SvgCard style={style}
             key={`${card.name}_${card.index}`}
@@ -125,6 +141,18 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
             fill={style.fill}
             dashboard={dashboard}/>))}
       </div>
+    )
+  }
+
+  render() {
+    const { progress } = this.props;
+    return (
+      progress ? 
+      <div className={css.TwoFronts}>
+        <TurnProgress progress={progress}/>
+        <div className={css.Absolute}>{this.renderCards()}</div>
+      </div>
+      : this.renderCards()
     );
   }
 }

@@ -40,8 +40,17 @@
   top: 40%;
 }
 
+.PlayerTurnLabel {
+  position: absolute;
+  color: #FFF;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .PlayerCardsWrapper {
   position: absolute;
+  height: 5.5vh;
+  width: 17vw;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
