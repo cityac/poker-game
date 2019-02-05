@@ -7,3 +7,7 @@ export const UserInactive: string;
 export const FloatLeft: string;
 export const FloatRight: string;
 export const FloatCenter: string;
+export const TwoBacksLeft: string;
+export const backsToLeft: string;
+export const TwoBacksRight: string;
+export const backsToRight: string;

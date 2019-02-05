@@ -39,14 +39,21 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderTwoCards() {
-    const { userX , player: { currentUser, currentTurnProgress, cards }} = this.props;
+    const { dashboard, userX , player: { currentUser, currentTurnProgress, cards }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
       currentUser
       ? <TwoCardsFront cards={cards} type={'large'} />
-      : <TwoCardsBack position={{x: userX}} />
+      : <TwoCardsBack position={{x: userX}}  className={this.getAnimationClassName()}/>
     );
+  }
 
+  getAnimationClassName() {
+    const { dashboard, userX} = this.props;
+    if(dashboard) {
+      return;
+    }
+    return userX === 'left' ? css.TwoBacksLeft : css.TwoBacksRight;
   }
 
   renderName() {
