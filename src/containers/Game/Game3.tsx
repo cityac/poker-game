@@ -28,6 +28,7 @@ export interface GameProps {
   flopCards: Card[],
   showChat: boolean,
   loading: boolean,
+  tableId: number,
   history?: any;
   match?: any,
   onSwitchGameMode?(on: boolean): void;
@@ -70,7 +71,7 @@ class Game extends Component<GameProps> {
   }
 
   render() {
-    const { pot, standalone, flopCards, showChat, onCloseChat, loading } = this.props;
+    const { pot, standalone, flopCards, showChat, onCloseChat, loading, tableId } = this.props;
     const { playerByPlace } = this;
 
     const isIPoneWeb = isIOS && !standalone;
@@ -103,8 +104,10 @@ class Game extends Component<GameProps> {
             </div>
 
             <div className={joinCss(css.Item, css.Item__Flop)}>
-              <Prizepool />
-              {/* <Flop label={`Pot: ${pot}`} flopCards={flopCards}/> */}
+              { tableId === 1
+                ? <Prizepool />
+                : <Flop label={`Pot: ${pot}`} flopCards={flopCards}/>
+              }
               {/* <SvgFlop /> */}
             </div>
           
@@ -139,6 +142,7 @@ class Game extends Component<GameProps> {
 
 const mapStateToProps = ({ app, game, table, player }) : GameProps => {
   return {
+    tableId: table.id,
     loading: table.loading,
     backPath: game.backPath,
     pot: table.pot,
