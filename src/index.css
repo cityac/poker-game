@@ -12,6 +12,12 @@
   src: url('./assets/fonts/SF-UI-Display-Medium.otf');
 }
 
+@font-face {
+  font-family: "Rockwell";
+  font-weight: bold;
+  src: url('./assets/fonts/Rockwell-Bold.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;

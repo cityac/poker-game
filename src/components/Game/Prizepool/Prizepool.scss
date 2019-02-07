@@ -1,0 +1,42 @@
+.CoinsFall_Container {
+  top: -16vw;
+  position: relative;
+  width: 50vw; 
+  height: 60vw;
+  overflow: hidden;
+}
+
+.PrizePool {
+  width: 50vw;
+  height: 34vw;
+  top: -23vw;
+  position: relative;
+  background-image: -webkit-image-set(
+    url(../../../assets/images/prizepool_rect.png) 1x,
+    url(../../../assets/images/prizepool_rect@2x.png) 2x);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 135%;
+
+  label {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+
+    text-transform: uppercase;
+    font-family: Rockwell;
+    
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    color: #ffc800;
+  }
+
+  &_Prize {
+    top: 6vw;
+    font-size: 5.5vmin;
+  }
+  &_Money {
+    top: 11vw;
+    font-size: 9vmin;
+  }
+}

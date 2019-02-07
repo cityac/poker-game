@@ -43,6 +43,8 @@
 
 .TwoBacksLeft {
   animation: backsToLeft 1s;
+  animation-delay: 2s;
+  animation-fill-mode: backwards;
 }
 
 @keyframes backsToLeft {
@@ -62,6 +64,13 @@
     transform: translate(0px, 0px);
   }
 }
+
+.TwoBacksRight {
+  animation: backsToRight 1s;
+  animation-delay: 2s;
+  animation-fill-mode: backwards;
+}
+
 @keyframes backsToRight {
   0% {
     opacity: 0;
@@ -78,8 +87,4 @@
     opacity: 1;
     transform: translate(0px, 0px);
   }
-}
-
-.TwoBacksRight {
-  animation: backsToRight 1s;
 }

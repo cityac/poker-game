@@ -1,0 +1,17 @@
+.CoinsFall {
+  top: 300px;
+  position: absolute;
+  width: 40vw;
+  height: 2000px;
+  animation: fall 3s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes fall {
+  0% {
+    top: -2000px;
+  }
+  100% {
+    top: 300px;
+  }
+}
