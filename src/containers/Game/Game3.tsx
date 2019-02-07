@@ -114,7 +114,10 @@ class Game extends Component<GameProps> {
             { !showChat ? <RoundActions /> : null }
           </div>
         </div>
-        { showChat ? <Chat hide={onCloseChat} className={joinCss(css.Chat, isIPoneWeb ? css.Chat_IPhoneWeb : '')}/> : null }
+        { showChat 
+          ? <Chat hide={onCloseChat} 
+              className={joinCss(css.Chat, isIOS ? css.Chat_iPhone : '', isIPoneWeb ? css.Chat_iPhone_Web : '')}/> 
+          : null }
       </div>
     );
   }

@@ -4,13 +4,16 @@
   background-color: $main-background;
 
   .Chat {
-    bottom: 2.2vh;
-    &_IPhoneWeb {
-      bottom: 14.2vh;
+    bottom: 2.1vh;
+    &_iPhone {
+      bottom: 3.5vh;
+      &_Web {
+        bottom: 1.3vh;
 
-      /* Phone X  */
-      @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) { 
-        bottom: 22vh;
+        /* Phone X  */
+        @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) { 
+          bottom: 17vh;
+        }
       }
     }
   }
@@ -57,7 +60,7 @@
     grid-template-rows: 
       [footer-start] 9vh  
       [footer-end table-start] repeat(3,[row-start]  21vh [row-end]) 
-      [table-end round-actions-start] 25vh
+      [table-end round-actions-start] 26vh
       [round-actions-end ];
     
     grid-template-columns: 
