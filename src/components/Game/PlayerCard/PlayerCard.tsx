@@ -43,7 +43,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     return (
       // TODO: add condition here. More requirements needed
       currentUser
-      ? <TwoCardsFront cards={cards} type={'large'} />
+      ? <TwoCardsFront cards={cards} type={'large'} className={css.TwoFrontsDown}/>
       : <TwoCardsBack position={{x: userX}}  className={this.getAnimationClassName()}/>
     );
   }

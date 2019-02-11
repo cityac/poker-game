@@ -43,7 +43,7 @@
 
 .TwoBacksLeft {
   animation: backsToLeft 1s;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
   animation-fill-mode: backwards;
 }
 
@@ -67,7 +67,7 @@
 
 .TwoBacksRight {
   animation: backsToRight 1s;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
   animation-fill-mode: backwards;
 }
 
@@ -86,5 +86,29 @@
   100% {
     opacity: 1;
     transform: translate(0px, 0px);
+  }
+}
+
+.TwoFrontsDown {
+  animation: twoFrontsDown 1s;
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes twoFrontsDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

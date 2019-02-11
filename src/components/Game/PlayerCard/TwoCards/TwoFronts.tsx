@@ -12,10 +12,11 @@ import TurnProgress from '../../TurnProgress/TurnProgress';
 
 interface TwoFrontsProps {
   cards: Card[];
+  type: string; // small | large
+  className?: string;
   dashboard?: boolean,
   progress?: boolean,
   style?: TwoFrontsStyle;
-  type: string; // small | large
 }
 
 interface TwoFrontsStyle {
@@ -119,19 +120,19 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
 
   renderCards = () => {
     const { cards, cardScale, style, dashboard} = this.state;
-    const { type } = this.props;
+    const { type, className } = this.props;
 
     this.setCoords(cards);
 
-    let className;
+    let classNames;
     if (type === 'small') {
-      className = this.getSmallClasses();
+      classNames = joinCss(className, this.getSmallClasses());
     } else {
-      className = joinCss(css.SVGContainer, isMobile ? css.SVGContainer_Large_Mobile : css.SVGContainer_Large_Browser);
+      classNames = joinCss(className, css.SVGContainer, isMobile ? css.SVGContainer_Large_Mobile : css.SVGContainer_Large_Browser);
     }
 
     return (
-      <div ref={this.svgContainer} className={className}>
+      <div ref={this.svgContainer} className={classNames}>
         {cards.map(card => (
           <SvgCard style={style}
             key={`${card.name}_${card.index}`}

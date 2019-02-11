@@ -1,5 +1,5 @@
 .CoinsFall_Container {
-  top: -16vw;
+  top: -7vw;
   position: relative;
   width: 50vw; 
   height: 60vw;
@@ -7,9 +7,14 @@
 }
 
 .PrizePool {
-  width: 50vw;
-  height: 34vw;
-  top: -23vw;
+  width: 25vw;
+  height: 17vw;
+  top: -75vw;
+  left: 50%;
+  transform: translateX(-50%);
+  // width: 50vw;
+  // height: 34vw;
+  // top: -23vw;
   position: relative;
   background-image: -webkit-image-set(
     url(../../../assets/images/prizepool_rect.png) 1x,
@@ -17,6 +22,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 135%;
+  animation: moveUp .5s ease-out 2s;
+  animation-fill-mode: backwards;
 
   label {
     position: absolute;
@@ -32,11 +39,28 @@
   }
 
   &_Prize {
-    top: 6vw;
-    font-size: 5.5vmin;
+    top: 3vw;
+    font-size: 2.7vmin;
   }
   &_Money {
-    top: 11vw;
-    font-size: 9vmin;
+    top: 5.5vw;
+    font-size: 4.5vmin;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    top: -23vw;
+    left: 25%;
+    transform: scale(2);
+  }
+  70% {
+    top: -75vw;
+  }
+  80% {
+    top: -77vw;
+  }
+  100% {
+    transform: scale(1) translateX(-50%);
   }
 }

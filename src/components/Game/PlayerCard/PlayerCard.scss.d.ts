@@ -11,3 +11,5 @@ export const TwoBacksLeft: string;
 export const backsToLeft: string;
 export const TwoBacksRight: string;
 export const backsToRight: string;
+export const TwoFrontsDown: string;
+export const twoFrontsDown: string;

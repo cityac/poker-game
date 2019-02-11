@@ -5,7 +5,7 @@ import Coin from './Coin';
 import * as css from './CoinsFall.scss';
 
 const getBottom = () => {
-  return `${getRandom(1900)}px`;
+  return `${getRandom(1100)}px`;
 }
 
 
@@ -13,23 +13,24 @@ const getLeft = (size: string) => {
   let max = 0;
   switch(size) {
     case 'xs':
-      max = 154;
+      max = 144;
       break;
     case 'sm':
-      max = 140;
+      max = 130;
       break;
     case 'md':
-      max = 124;
+      max = 114;
       break;
     case 'lg':
-      max = 110;
+      max = 100;
       break;
   }
-  return `${getRandom(max)}px`;
+  return `${getRandom(max, 10)}px`;
 }
 
-const getRandom = (max) => {
-  return Math.floor(Math.random() * (max + 1));
+const getRandom = (max, min=0) => {
+  var range = Math.abs(max-min)+1;
+  return Math.floor((Math.random() * range) + min);
 }
 
 const getSize = () => {
