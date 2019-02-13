@@ -14,6 +14,7 @@ export default interface Player {
   balance: number;
   progress?: number;
   currentUser?: boolean;
+  currentTurnProgress?: boolean;
   bet?: string;
   dealer?: boolean;
   cards?: Card[];

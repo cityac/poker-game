@@ -59,10 +59,9 @@ const TwoCardsBack = (props) => {
   const backs = <use xlinkHref={source} transform={`scale(${svgStyle.scale})`} key="1" />;
 
   return (
-    <Div position={position} top={props.style && props.style.top || '4vh'}>
+    <Div className={props.className} position={position} top={props.style && props.style.top || '4vh'}>
       <svg 
-        style={svgStyle}
-      >
+        style={svgStyle}>
         {backs}
       </svg>
   </Div>

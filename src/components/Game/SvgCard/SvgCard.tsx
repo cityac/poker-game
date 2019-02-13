@@ -52,7 +52,6 @@ class SvgCard extends Component<SvgCardProps> {
     classNames.push(css['SvgCard_' + status]); 
     return (
       <svg style={style} ref={this.svg}>
-        {/* <use xlinkHref={`${cards[name]}#${name}`} x={x} y={y}  */}
         <use xlinkHref={`${cards[name]}#card`} x={x} y={y} 
         transform={`scale(${scale})`}
         className={joinCss(classNames)} 

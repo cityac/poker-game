@@ -8,13 +8,6 @@ import { PlayerStatus } from '~/models/player';
 import Table from '~/models/table';
 import * as css from './TableSelect.scss';
 
-const frontStyle = {
-  height: '3.8vh',
-  marginTop: '1vh',
-  hGap: 10,
-  
-}
-
 const backStyle = {
   height: '3vh',
   width: '7vh',
@@ -35,8 +28,11 @@ export default class TableSelect extends Component<TableSelectProps> {
     const { onSelect, table: {id}} = this.props;
     onSelect(id)
   }
+
   renderSelect() {
     const { table, currentTableId } = this.props;
+    const players  = table && table.players;
+    const currentTurnProgress = players && players.find(player => player.currentUser).currentTurnProgress;
     if (table) {
       const { playerCards, playerStatus, id } = table;
       const current = currentTableId === id;
@@ -48,7 +44,7 @@ export default class TableSelect extends Component<TableSelectProps> {
                 <div className={css.TableSelect_Away_Label}>Away</div>
                 <TableAway style={backStyle}/>
               </div>)
-            : <TwoCardsFront cards={playerCards} style={frontStyle} type={'small'} />
+            : <TwoCardsFront cards={playerCards} type="small" progress={currentTurnProgress}/>
           }
         </div>)
     }

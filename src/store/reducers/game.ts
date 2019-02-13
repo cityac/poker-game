@@ -6,11 +6,9 @@ interface State {
   chat: boolean;
 }
 
-const findUser = (player: Player): boolean => player.currentUser;
-
 const initialState: State = {
   backPath: null,
-  chat: false,
+  chat: false, 
 };
 
 export default (state = initialState, action): State => {

@@ -15,6 +15,9 @@ import Footer from './Footer/Footer';
 
 import * as css from './Game3.scss';
 import Chat from '../../components/Game/Chat/Chat';
+import Prizepool from '../../components/Game/Prizepool/Prizepool';
+import { loadavg } from 'os';
+import Loader from '../../components/Loader/Loader';
 
 export interface GameProps {
   backPath: string;
@@ -24,6 +27,8 @@ export interface GameProps {
   standalone: boolean;
   flopCards: Card[],
   showChat: boolean,
+  loading: boolean,
+  tableId: number,
   history?: any;
   match?: any,
   onSwitchGameMode?(on: boolean): void;
@@ -66,7 +71,7 @@ class Game extends Component<GameProps> {
   }
 
   render() {
-    const { pot, standalone, flopCards, showChat, onCloseChat } = this.props;
+    const { pot, standalone, flopCards, showChat, onCloseChat, loading, tableId } = this.props;
     const { playerByPlace } = this;
 
     const isIPoneWeb = isIOS && !standalone;
@@ -83,38 +88,48 @@ class Game extends Component<GameProps> {
           <div className={joinCss(css.Item, css.Item__Footer)}>
               <Footer backPath={this.props.backPath} />
           </div>
-          <div className={joinCss(css.Item, css.Item__Player1)}>
-            <PlayerCard
-              userX="left"
-              betY="top"
-              player={playerByPlace(1)}/>
-          </div>
-          <div className={joinCss(css.Item, css.Item__Rate)}>Rate: 100 / 200</div>
-          <div className={joinCss(css.Item, css.Item__Player2)}>
-            <PlayerCard
-              userX="right"
-              betY="top"
-              player={playerByPlace(2)}/>
-          </div>
+          { !loading ? <React.Fragment>
+            <div className={joinCss(css.Item, css.Item__Player1)}>
+              <PlayerCard
+                userX="left"
+                betY="top"
+                player={playerByPlace(1)}/>
+            </div>
+            <div className={joinCss(css.Item, css.Item__Rate)}>Rate: 100 / 200</div>
+            <div className={joinCss(css.Item, css.Item__Player2)}>
+              <PlayerCard
+                userX="right"
+                betY="top"
+                player={playerByPlace(2)}/>
+            </div>
 
-          <div className={joinCss(css.Item, css.Item__Flop)}>
-            <Flop label={`Pot: ${pot}`} flopCards={flopCards}/>
-            {/* <SvgFlop /> */}
-          </div>
-         
-          <div className={joinCss(css.Item, css.Item__Player3)}>
-            <PlayerCard
-              userX="center"
-              betY="top"
-              player={playerByPlace(3)}/>
-          </div>
+            <div className={joinCss(css.Item, css.Item__Flop)}>
+              { tableId === 1
+                ? <Prizepool />
+                : <Flop label={`Pot: ${pot}`} flopCards={flopCards}/>
+              }
+              {/* <SvgFlop /> */}
+            </div>
+          
+            <div className={joinCss(css.Item, css.Item__Player3)}>
+              <PlayerCard
+                userX="center"
+                betY="top"
+                player={playerByPlace(3)}/>
+            </div>
+          </React.Fragment>
+          : <Loader />  }
           
           {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
           <div className={joinCss(css.Item, css.Item__RoundActions)}>
             { !showChat ? <RoundActions /> : null }
           </div>
         </div>
-        { showChat ? <Chat hide={onCloseChat} className={joinCss(css.Chat, isIPoneWeb ? css.Chat_IPhoneWeb : '')}/> : null }
+        
+        { showChat 
+          ? <Chat hide={onCloseChat} 
+              className={joinCss(css.Chat, isIOS ? css.Chat_iPhone : '', isIPoneWeb ? css.Chat_iPhone_Web : '')}/> 
+          : null}
       </div>
     );
   }
@@ -127,6 +142,8 @@ class Game extends Component<GameProps> {
 
 const mapStateToProps = ({ app, game, table, player }) : GameProps => {
   return {
+    tableId: table.id,
+    loading: table.loading,
     backPath: game.backPath,
     pot: table.pot,
     players: table.players || [],

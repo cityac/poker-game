@@ -1,0 +1,19 @@
+.Loader {
+  position: absolute;
+  top: 30%;
+  left: 43%;
+  width: 7vh;
+  height: 7vh;
+  background: url(../../assets/icons/logo.svg) no-repeat center;
+  background-size: 150%;
+  animation: loaderspin infinite 1s linear;
+}
+
+@keyframes loaderspin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
