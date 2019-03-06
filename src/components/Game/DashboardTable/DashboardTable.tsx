@@ -14,6 +14,7 @@ import * as css from './DashboardTable.scss';
 
 interface DashboardTableProps {
   tableId: string,
+  tableType?: number,
   players?: Player[],
   flopCards?: Card[],// not required for 'add new table'
   pot?: number, // not required for 'add new table'
@@ -22,12 +23,12 @@ interface DashboardTableProps {
 
 export default class DashboardTable extends Component<DashboardTableProps> {
   render() {
-    const {tableId, pot, flopCards, playerCards, players} =  this.props;
+    const {tableId, tableType, pot, flopCards, playerCards, players} =  this.props;
     
     const currentTurnProgress = players && players.find(player => player.currentUser).currentTurnProgress;
 
     return tableId && players
-      ? (<NavLink className={css.DashboardTable} to={`/game/${tableId}`}>
+      ? (<NavLink className={css.DashboardTable} to={`/game${tableType}/${tableId}`}>
           <div className={css.Labels}> 
             <div className={css.Labels_Prize} >Prizepool: $598</div>
             <div className={css.Labels_Rate}>Rate<br/>100/200</div>

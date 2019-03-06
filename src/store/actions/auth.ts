@@ -6,9 +6,11 @@ export const logout = () => {
   };
 };
 
-export const login = (path: string) => {
+export const login = (path: string, tableType: number) => {
   return {
     type: actionTypes.LOGIN,
-    path,
+    payload : {
+      path, tableType
+    }
   };
 };

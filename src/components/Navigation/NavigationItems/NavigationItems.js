@@ -11,8 +11,8 @@ const renderAuthenticated = () => (
     <NavigationItem link="/sit-and-go" exact>Sit and Go</NavigationItem>
     <NavigationItem link="/my-tournaments" exact>My Tournaments</NavigationItem>
     <NavigationItem link="/casino" exact>Casino</NavigationItem>
-    <NavigationItem link="/game" exact>Game</NavigationItem>
-    <NavigationItem link="/logout">Logout</NavigationItem>
+    {/* <NavigationItem link="/game" exact>Game</NavigationItem> */}
+    <NavigationItem link="/logout">Select Theme</NavigationItem>
   </React.Fragment>
   );
 

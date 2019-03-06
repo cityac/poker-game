@@ -15,6 +15,7 @@ import { initDashboard } from '../../store/actions';
 interface DashboardProps {
   tables: Table[],
   players: Player[],
+  tableType: number,
   onSwitchGameMode(on: boolean): void;
   onInitDashboard():void;
 }
@@ -31,11 +32,13 @@ class Dashboard extends Component<DashboardProps> {
   }   
 
   render() {
+    const { tableType } = this.props;
     return (
       <div className={css.Dashboard}>
       {this.props.tables.map(table => 
         <DashboardTable key={table.id} 
-          tableId={table.id} 
+          tableId={table.id}
+          tableType={tableType}
           pot={table.pot} 
           players={table.players}
           playerCards={table.playerCards}
@@ -48,10 +51,11 @@ class Dashboard extends Component<DashboardProps> {
   }
 }
 
-const mapStateToProps = ({ player }) => {
+const mapStateToProps = ({ player, auth}) => {
   return {
     tables: player.tables || [],
     initialized: player.tables && player.tables.length,
+    tableType: auth.tableType,
   };
 };
 

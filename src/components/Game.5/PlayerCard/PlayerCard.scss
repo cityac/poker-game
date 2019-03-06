@@ -1,0 +1,114 @@
+.PlayerCard {
+  margin: 0;
+  display: block;
+  width: 24vmin;
+  position: relative;
+  
+  .ChatCloud {
+    position: absolute;
+    top: -6vh;
+    right: -17vh;
+  }
+  .User {
+    width: 14vmin;
+
+    .UserInfo {
+      display: flex;
+      align-self: stretch;
+      flex-direction: column;
+      align-items: center;
+      min-height: 3.5vh;
+
+      .Balance {
+        order: 1;
+      }
+    }
+    &Inactive {
+      opacity: 0.6;
+    }
+  }
+
+  .FloatLeft {
+    float: left;
+  }
+
+  .FloatRight{
+    float: right;
+  }
+
+  .FloatCenter{
+    display: unset;
+  }
+}
+
+.TwoBacksLeft {
+  animation: backsToLeft 1s;
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes backsToLeft {
+  0% {
+    opacity: 0;
+    transform: translate(100px, -80px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+.TwoBacksRight {
+  animation: backsToRight 1s;
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes backsToRight {
+  0% {
+    opacity: 0;
+    transform: translate(-100px, -80px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(10px, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+.TwoFrontsDown {
+  animation: twoFrontsDown 1s;
+  animation-delay: 2.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes twoFrontsDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

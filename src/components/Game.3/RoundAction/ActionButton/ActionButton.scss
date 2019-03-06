@@ -1,0 +1,16 @@
+.Button {
+  flex-grow: 1;
+  width: 10%;
+  
+  &_LabelWrap {
+    display: inline;
+    margin: 0 0.5vw;
+  }
+  
+  @media (min-height: 640px) {
+    &_LabelWrap {
+      display: block ;
+      
+    }
+  }
+}

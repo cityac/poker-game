@@ -1,0 +1,43 @@
+@import '../../../../sass/main.scss';
+
+.Stepper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  .Slider {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.Button {
+  &_Stepper {
+    border-radius: 50%;
+    width: 6.75vh;
+    height: 5vh;
+
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &_Plus {
+      float: right;
+      background-color: rgba(255, 255, 255, .16);
+      background-image:  url(../../../../assets/icons/add.1.svg);
+      margin-left: 5vh;
+      
+    }
+    &_Minus {
+      float: left;
+      background-color: rgba(255, 255, 255, .16);
+      background-image: url(../../../../assets/icons/substract.1.svg);
+      margin-right: 5vh;
+    } 
+  }
+}
+
+.Circle { 
+  background  : url(../../../../assets/images/slider-circle.png) no-repeat center;
+  background-size: cover;
+}

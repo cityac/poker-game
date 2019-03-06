@@ -1,0 +1,27 @@
+.Cloud {
+  background-image: 
+    -webkit-image-set(
+      url(../../../assets/images/chat-bubble.png) 1x,
+      url(../../../assets/images/chat-bubble@2x.png) 2x);
+      // url(../../../assets/images/chat-cloud@3x.png) 3x);
+  background-position: center;
+  background-size: cover;
+  width: 19vh;
+  height: 9vh;
+  box-sizing: border-box;
+  font-family: SFUIDisplay;
+  font-size: 1.5vh;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+  padding-top: 2.3vh;
+}
+
+.Cloud2 {
+  width: 182px;
+  height: 61px;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.08);
+  background-color: #51cf75;
+}
