@@ -12,12 +12,12 @@ interface BetProps {
 }
 
 const StyledBet = styled.div`
-  &::before {
+  &::after {
     content: "";
     display: inline-block;
     height: 1em;
     width: 1em;
-    margin-right: .1rem;
+    margin-left: .1rem;
     background-size: cover;
     background-image: url(${img});
   }

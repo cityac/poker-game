@@ -18,7 +18,7 @@ const RoundActions = (props) => {
     <button className={css.ChatButton} onClick={() => onShowChat()}></button>
     <div className={css.RoundActions}>
       <div className={css.Stepper}>
-        <Stepper  value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
+        <Stepper value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
       </div>
       <div className={css.RaiseActions}>
         <ActionButton labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
@@ -28,16 +28,25 @@ const RoundActions = (props) => {
       </div>
       
       <div className={css.FoldActions}>
-        <ActionButton labels={['fold']}
-          className={joinCss(css.Button, css.Button_Fold)}
-          onClick={ () => {} } />
-          
-        <ActionButton labels={[bet.toString(), 'call']}
-          className={joinCss(css.Button, css.Button_Call)} onClick={ () => {} } />
-
-        <ActionButton labels={[raise.toString(), 'raise to']}
-        className={joinCss(css.Button, css.Button_Raise)}
-          onClick={ () => {} } />
+        <div className={css.Button_Wrapper} >
+          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Fold_Back)} /> */}
+          <ActionButton labels={['fold']}
+            className={joinCss(css.Button, css.Button_Fold)}
+            onClick={ () => {} } />
+        </div>
+        
+        <div className={joinCss(css.Button_Wrapper, css.Button_Wrapper_Middle)} >
+          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Call_Back)} /> */}
+          <ActionButton labels={[bet.toString(), 'call']}
+            className={joinCss(css.Button, css.Button_Call)} onClick={ () => {} } />
+        </div>
+        
+        <div className={css.Button_Wrapper} >
+          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Raise_Back)} /> */}
+          <ActionButton labels={[raise.toString(), 'raise to']}
+            className={joinCss(css.Button, css.Button_Raise)}
+            onClick={ () => {} } />
+        </div>
       </div>
     </div>
   </div>

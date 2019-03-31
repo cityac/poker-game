@@ -11,16 +11,16 @@ import { joinCss } from '~/utils';
 import * as actions from '~/store/actions/index';
 
 export interface AuthProps {
-  onLogin(path: string, tablePath: number): void;
+  onLogin(path: string): void;
   onSetGameBackPath(path: string): void;
   isAuthenticated: boolean;
   authRedirectPath: string;
 }
 
 class Auth extends Component<AuthProps> {
-  login = (path, tableType) => {
+  login = (path) => {
     const { onLogin, onSetGameBackPath } = this.props;
-    onLogin(`${path}${tableType}`, tableType);
+    onLogin('game');
     onSetGameBackPath('/welcome');
   };
 
@@ -35,15 +35,15 @@ class Auth extends Component<AuthProps> {
     return (
       <div>
         {authRedirect}
-        {/* <div className={css.Auth}>
-          <button onClick={() => this.login('/game5')}>Login</button>
-        </div> */}
-        <div className={css.TableTypeWrapper}>
+        <div className={css.Auth}>
+          <button onClick={() => this.login('/game')}>Login</button>
+        </div>
+        {/* <div className={css.TableTypeWrapper}>
         {types.map(type => 
           <button key={type} className={css.TableTypeLink} onClick={() => this.login('game', type)} >
             <div className={joinCss(css.TableType, css[`tableType_${type}`])} />
           </button>)}
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: (path, type) => dispatch(actions.login(path, type)),
+    onLogin: (path) => dispatch(actions.login(path)),
     onSetGameBackPath: path => dispatch(actions.setGameBackPath(path)),
   };
 };

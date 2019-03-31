@@ -12,12 +12,6 @@ import * as actions from './store/actions';
 import Layout from './hoc/Layout/Layout';
 
 import Game from './containers/Game/Game';
-import Game1 from './containers/Game.1/Game';
-import Game2 from './containers/Game.2/Game';
-import Game3 from './containers/Game.3/Game';
-import Game4 from './containers/Game.4/Game';
-import Game5 from './containers/Game.5/Game';
-import Game6 from './containers/Game.6/Game';
 import Welcome from './containers/Welcome/Welcome';
 import Dashboard from './containers/Dashboard/Dashboard';
 
@@ -70,13 +64,7 @@ class App extends Component {
           <Route path="/tournaments" component={Welcome} />
           <Route path="/my-tournaments" component={Welcome} />
           <Route path="/casino" component={Welcome} />
-          <Route path="/game/:tableId?" component={Game} />
-          <Route path="/game1/:tableId?" component={Game1} />
-          <Route path="/game2/:tableId?" component={Game2} />
-          <Route path="/game3/:tableId?" component={Game3} />
-          <Route path="/game4/:tableId?" component={Game4} />
-          <Route path="/game5/:tableId?" component={Game5} />
-          <Route path="/game6/:tableId?" component={Game6} />
+          <Route path="/game" component={Game} />
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={Welcome} />
