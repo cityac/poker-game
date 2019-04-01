@@ -17,7 +17,7 @@ const StyledBet = styled.div`
     display: inline-block;
     height: 1em;
     width: 1em;
-    margin-left: .1rem;
+    margin-left: .2rem;
     background-size: cover;
     background-image: url(${img});
   }

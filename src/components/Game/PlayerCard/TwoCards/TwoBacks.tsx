@@ -31,7 +31,7 @@ const getSVGStyle = () => {
 
   if (mw.matches || mh.matches) {
     style = {
-      width: '30px',
+      width: '32px',
       height: '25px',
       scale: 0.4,
     }
@@ -50,10 +50,10 @@ const TwoCardsBack = (props) => {
   const position = props.position && props.position.x || 'center';
   const svgStyle = getSVGStyle();
   if (position === 'left' || position === 'center') {
-    source = `${cards.back_cards}#back_cards`;
+    source = `${cards.four_back_cards}#back_cards`;
     
   } else {
-    source = `${cards.back_cards_reverse}#back_cards_reverse`;
+    source = `${cards.four_back_cards_reverse}#back_cards_reverse`;
   }
 
   const backs = <use xlinkHref={source} transform={`scale(${svgStyle.scale})`} key="1" />;
