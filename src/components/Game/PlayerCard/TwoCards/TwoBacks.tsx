@@ -16,11 +16,11 @@ const Div = styled.div`
   }}
 
   left: ${(props:DivProps) => {
-    return props.position === 'left' ? '8vmin' : 'unset'
+    return props.position === 'left' ? '9vmin' : 'unset'
   }}
 
   right: ${(props:DivProps) => {
-    return props.position === 'right' ? '8vmin' : 'unset'
+    return props.position === 'right' ? '9vmin' : 'unset'
   }}
 `;
 
@@ -59,7 +59,7 @@ const TwoCardsBack = (props) => {
   const backs = <use xlinkHref={source} transform={`scale(${svgStyle.scale})`} key="1" />;
 
   return (
-    <Div className={props.className} position={position} top={props.style && props.style.top || '4vh'}>
+    <Div className={props.className} position={position} top={props.style && props.style.top || '6vh'}>
       <svg 
         style={svgStyle}>
         {backs}

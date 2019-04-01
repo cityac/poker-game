@@ -11,10 +11,13 @@ const Div = styled.div`
 `;
 const Img = styled.img`
   position: absolute;
-  top: 0.85vh;
-  left: 0.75vh;
-  width: 6vh;
+  box-sizing: border-box;
+  top: 1vh;
+  left: 1.1vh;
+  width: 8vh;
+  border: 2px solid #FFFFFF;
   border-radius: 50%;
+  
 `;
 
 const Avatar = (props) => (

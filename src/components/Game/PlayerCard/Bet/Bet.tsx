@@ -25,11 +25,11 @@ const StyledBet = styled.div`
   top: ${(props: {top: string}) => props.top}
 
   left: ${(props: any) => {
-    return props.position === 'left' ? '14vmin' : props.position === 'center' ? '50%' : 'unset';
+    return props.position === 'left' ? '18vmin' : props.position === 'center' ? '50%' : 'unset';
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '14vmin' : 'unset';
+    return props.position === 'right' ? '18vmin' : 'unset';
   }}
 
   transform: ${(props: any) => {
