@@ -5,6 +5,15 @@
   text-align: center;
 
   &_Label {
+    font-size: 3.5vmin;
+    letter-spacing: 0.3px;
+    color: white;
+    text-align: center;
+  }
+
+  &_Total {
+    font-size: 3vmin;
+    
     text-align: center;
   }
   &_Browser {
@@ -17,8 +26,8 @@
   &_Mobile {
     max-width: 60vmin;
     min-width: 60vmin;
-    max-height: 30vmin;
-    min-height: 30vmin;
+    max-height: 15vmin;
+    min-height: 15vmin;
   }
   
   &_Dashboard {

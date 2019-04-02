@@ -21,6 +21,7 @@
 
       .Balance {
         order: 1;
+        color: white;
       }
     }
     &Inactive {
@@ -43,7 +44,7 @@
 
 .TwoBacksLeft {
   animation: backsToLeft 1s;
-  animation-delay: 2.5s;
+  animation-delay: .5s;
   animation-fill-mode: backwards;
 }
 
@@ -67,7 +68,7 @@
 
 .TwoBacksRight {
   animation: backsToRight 1s;
-  animation-delay: 2.5s;
+  animation-delay: .5s;
   animation-fill-mode: backwards;
 }
 
@@ -91,7 +92,7 @@
 
 .TwoFrontsDown {
   animation: twoFrontsDown 1s;
-  animation-delay: 2.5s;
+  animation-delay: .5s;
   animation-fill-mode: backwards;
 }
 

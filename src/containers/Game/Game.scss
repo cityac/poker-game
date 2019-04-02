@@ -36,28 +36,28 @@
     justify-content: center;
     
     &_IPhoneWeb {
-      background-position-y: -60px;
+      //background-position-y: -60px;
 
       /* Phone X  */
 
       @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) { 
-        background-position-y: -100px;
+        //background-position-y: -100px;
         grid-template-rows:
-        [footer-start] 9vh  
-        [footer-end table-start] repeat(3,[row-start]  16vh [row-end]) 
+        [footer-start] 8vh  
+        [footer-end table-start] repeat(3.3,[row-start]  16vh [row-end]) 
         [table-end round-actions-start] 26vh
         [round-actions-end ] !important;
       }
 
       grid-template-rows:
-        [footer-start] 9vh  
+        [footer-start] 8vh  
         [footer-end table-start] repeat(3,[row-start]  17vh [row-end]) 
         [table-end round-actions-start] 26vh
         [round-actions-end ] !important;
     }
 
     grid-template-rows: 
-      [footer-start] 9vh  
+      [footer-start] 8vh  
       [footer-end table-start] repeat(3,[row-start]  21vh [row-end]) 
       [table-end round-actions-start] 26vh
       [round-actions-end ];
@@ -73,7 +73,6 @@
 
   .Item {
     font-size: 1.5vh;
-    font-family: sans-serif;
     color: #ddd;
     
     
@@ -90,16 +89,43 @@
       grid-area: row-start 3 / col-start 1 / row-end 3 / grid-end;
       @include center-center;
     }
-    
+
     &__Rate {
-      margin-top: 1vh;
-      color: white;
+      font-size: 3.5vmin;
+      display: block;
+      &__Label {
+        color: white;
+      }
+      grid-area: row-start 3 / col-start 1 / row-end 3 / col-start 1 ;
+      @include bottom-right;
+    }
+    
+    &__Spin {
+      label {
+        margin-bottom: 5px;
+      }
+      &__Labels {
+        width: 40vmin;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      height: 30vmin;
+      margin-top: 1px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
       @include top-center;
+
     }
     
     &__Flop {
       grid-area: row-start 2 / col-start 1 / row-end 2 / grid-end;
-      @include center-center;
+      @include top-center;
     }
     
     &__RoundActions {

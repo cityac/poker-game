@@ -43,7 +43,7 @@ const StyledBet = styled.div`
 `;
 
 const Bet = (props: BetProps) => {
-  let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
+  let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '1vh';
 
   if (props.position.x === 'center') {
     top = props.position.y === 'top' ? '-3vh' : '12vh';

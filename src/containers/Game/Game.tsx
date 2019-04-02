@@ -15,7 +15,7 @@ import Footer from './Footer/Footer';
 
 import * as css from './Game.scss';
 import Chat from '../../components/Game/Chat/Chat';
-import Prizepool from '../../components/Game/Prizepool/Prizepool';
+import SimplePrizepool from '../../components/Game/SimplePrizepool/Prizepool';
 import { loadavg } from 'os';
 import Loader from '../../components/Loader/Loader';
 
@@ -95,7 +95,13 @@ class Game extends Component<GameProps> {
                 betY="top"
                 player={playerByPlace(1)}/>
             </div>
-            <div className={joinCss(css.Item, css.Item__Rate)}>Rate: 100 / 200</div>
+            <div className={joinCss(css.Item, css.Item__Spin)}>
+              { tableId === 1 && <SimplePrizepool /> }
+              <div className={css.Item__Spin__Labels}>
+                <label>$5 Spins</label>
+                <label>Texas holdem</label>
+              </div>
+            </div>
             <div className={joinCss(css.Item, css.Item__Player2)}>
               <PlayerCard
                 userX="right"
@@ -104,12 +110,17 @@ class Game extends Component<GameProps> {
             </div>
 
             <div className={joinCss(css.Item, css.Item__Flop)}>
-              { tableId === 1 && <Prizepool /> }
+              
             </div>
 
             <div className={joinCss(css.Item, css.Item__Flop)}>
-              <Flop label={`Pot: ${pot}`} flopCards={flopCards}/>
+              <Flop label={`POT: $${pot}`} total="$29,425" flopCards={flopCards}/>
               {/* <SvgFlop /> */}
+            </div>
+
+            <div className={joinCss(css.Item, css.Item__Rate)}>
+              <div className={css.Item__Rate__Label}>Rate: 100 / 200</div>
+              <div >Next lvl in 4:00</div>
             </div>
           
             <div className={joinCss(css.Item, css.Item__Player3)}>

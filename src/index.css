@@ -21,6 +21,8 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: SFUIDisplay;
+  letter-spacing: 0.3px;
 }
 
 /* remove focus border from all components */

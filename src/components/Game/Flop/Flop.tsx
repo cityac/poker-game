@@ -35,12 +35,17 @@ class Flop extends Component<any, any> {
     return (
       <div className={classNames}>
       {/* <button className="deal" onClick={this.dealCards}>Deal</button> */}
+      <SvgFlop cards={cards} dashboard={dashboard}/>
       {!dashboard
         ? <div className={css.Flop_Label}>{this.props.label}</div>
         : null
       }
+      {!dashboard
+        ? <div className={css.Flop_Total}>{this.props.total}</div>
+        : null
+      }
       {/* <SvgFlop flop={flop} turn={turn} river={river}/> */}
-      <SvgFlop cards={cards} dashboard={dashboard}/>
+      
       </div>
     );
   }

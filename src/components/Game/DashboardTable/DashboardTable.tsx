@@ -45,7 +45,7 @@ export default class DashboardTable extends Component<DashboardTableProps> {
               dashboard/>
           </div>
           <div className={css.FlopWrapper}>
-            <Flop label={`Pot: ${pot}`} flopCards={flopCards} dashboard/>
+            <Flop label={`POT: ${pot}`} flopCards={flopCards} dashboard/>
           </div>
           {currentTurnProgress
           ? <div className={css.PlayerTurnLabel}>
