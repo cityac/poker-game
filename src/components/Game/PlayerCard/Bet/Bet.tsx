@@ -18,7 +18,7 @@ const StyledBet = styled.div`
     height: 1em;
     width: 1em;
     margin-left: .2rem;
-    background-size: cover;
+    background-size: 115%;
     background-image: url(${img});
   }
   position: absolute;

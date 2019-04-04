@@ -86,7 +86,7 @@ class Game extends Component<GameProps> {
       <div className={css.Game}>
         <div className={boardClasses} >
           <div className={joinCss(css.Item, css.Item__Footer)}>
-            <Footer backPath={'logout' || this.props.backPath} />
+            <Footer backPath={this.props.backPath} />
           </div>
           { !loading ? <React.Fragment>
             <div className={joinCss(css.Item, css.Item__Player1)}>
@@ -120,7 +120,7 @@ class Game extends Component<GameProps> {
 
             <div className={joinCss(css.Item, css.Item__Rate)}>
               <div className={css.Item__Rate__Label}>Rate: 100 / 200</div>
-              <div >Next lvl in 4:00</div>
+              <div className={css.Item__Rate__Label_Next}>Next lvl in 4:00</div>
             </div>
           
             <div className={joinCss(css.Item, css.Item__Player3)}>

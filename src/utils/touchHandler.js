@@ -12,9 +12,9 @@ function vGestureHandler(event) {
   event.preventDefault();
 }
 
-const touchMoveEnabledClasses = /Chat_Emoji|TableType|tableType/;
+const touchMoveEnabledClasses = /Chat_Emoji|TableType|tableType|LobbyCard/;
 function touchMoveHandler(event) {
-  
+  // console.log(event.target.className);
   if (isString(event.target.className) && event.target.className.match(touchMoveEnabledClasses)) {
     return;
   }

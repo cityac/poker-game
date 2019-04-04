@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '~/store/actions';
 
-import Stepper from '~/components/Game/RoundAction/Stepper/Stepper';
+import Stepper from '~/components/Common/Stepper/Stepper';
 import ActionButton from '~/components/Game/RoundAction/ActionButton/ActionButton';
 
 import * as css from './RoundActions.scss';
@@ -18,7 +18,13 @@ const RoundActions = (props) => {
     <button className={css.ChatButton} onClick={() => onShowChat()}></button>
     <div className={css.RoundActions}>
       <div className={css.Stepper}>
-        <Stepper value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
+        <Stepper 
+          styles={{color: '#FFF', opacity: '0.7'}}
+          value={props.raise}
+          onChangeRaise={preselectRaise}
+          min={bet}
+          max={Math.floor(balance)}
+          editable/>
       </div>
       <div className={css.RaiseActions}>
         <ActionButton labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />

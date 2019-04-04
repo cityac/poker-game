@@ -1,22 +1,53 @@
 .NavigationItem {
-    margin: 10px 0;
+    margin: 17px 0;
     box-sizing: border-box;
-    display: block;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.4vmin;
+    text-transform: uppercase;
+    position: relative;
+
+    label {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    
 }
 
 .NavigationItem a {
-    color: #8F5C2C;
+    color: #000;
     text-decoration: none;
     width: 100%;
-    box-sizing: border-box;
     display: block;
+    position: absolute;
+    bottom: 0;
+
+    height: 10vmin;
+    width: 15vmin;
+
+    &::before {
+    height: 6.5vmin;
+    width: 6.5vmin;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
 }
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-    color: #40A4C8;
+    color: #fc4c02;
 }
 
 @media (min-width: 600px) {

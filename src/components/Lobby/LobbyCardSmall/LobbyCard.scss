@@ -1,0 +1,125 @@
+@import '../../../sass/main.scss';
+
+.LobbyCard {
+  position: relative;
+  min-width: 33vw;
+  margin: 5px;
+  background-position-x: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: white;
+  transition: all 0.3s;
+
+  &Blue {
+    background-image: url(../../../assets/images/lobby-card-blue_sm.png);
+  }
+
+  &Green {
+    background-image: url(../../../assets/images/lobby-card-yellow_sm.png);
+  }
+
+  &Yellow{
+    background-image: url(../../../assets/images/lobby-card-green_sm.png);
+  }
+
+  &Red{
+    background-image: url(../../../assets/images/lobby-card-red_sm.png);
+  }
+
+  &_Selected {
+    transform: scale(1.15);
+    z-index: 100;
+    margin-top: 2.8vmin;
+  }
+}
+
+.BuyIn {
+  top: 2vmin;
+  width: fit-content;
+  font-size: 3vmin;
+  font-weight: 500;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+
+  &Selected {
+    top: 3vmin;
+  }
+}
+
+.WinLabel {
+  top: 9vmin;
+  width: fit-content;
+  font-size: 3vmin;
+  font-weight: bold;
+
+  @include horizontal-centered;
+
+  &Selected {
+    top: 11vmin;
+  }
+}
+
+.Prize {
+  top: 13vmin;
+  width: fit-content;
+  font-size: 6vmin;
+  font-family: OpenSans;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+
+  &Selected {
+    top: 15vmin;
+  }
+}
+
+.Game {
+  position: absolute;
+  top: 28vmin;
+  left: 3vmin;
+  width: fit-content;
+  font-size: 3vmin;
+  font-weight: 500;
+  letter-spacing: normal;
+
+  &Selected {
+    top: 28vmin;
+  }
+}
+
+.Tickets {
+  &::before {
+    
+    background-image: 
+    -webkit-image-set(
+      url(@assets/images/lobby-tickets.png) 1x,
+      url(@assets/images/lobby-tickets@2x.png) 2x);
+    content: "";
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: -4vmin;
+    height: 3.5vmin;
+    width: 3.5vmin;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  position: absolute;
+  display: flex;
+  top: 28vmin;
+  right: 3vmin;
+  width: fit-content;
+  font-size: 3vmin;
+  font-family: OpenSans;
+  font-weight: normal;
+  letter-spacing: normal;
+
+  &Selected {
+    top: 28vmin;
+  }
+}

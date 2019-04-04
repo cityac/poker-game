@@ -6,8 +6,6 @@ import * as css from './Auth.css';
 
 import { Redirect } from 'react-router-dom';
 
-import { joinCss } from '~/utils';
-
 import * as actions from '~/store/actions/index';
 
 export interface AuthProps {
@@ -20,8 +18,8 @@ export interface AuthProps {
 class Auth extends Component<AuthProps> {
   login = (path) => {
     const { onLogin, onSetGameBackPath } = this.props;
-    onLogin('game');
-    onSetGameBackPath('/welcome');
+    onLogin(path);
+    onSetGameBackPath('/lobby');
   };
 
   render() {
@@ -30,13 +28,11 @@ class Auth extends Component<AuthProps> {
       authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
 
-    const types = [1, 2, 3, 4, 5, 6];
-
     return (
       <div>
         {authRedirect}
         <div className={css.Auth}>
-          <button onClick={() => this.login('/game')}>Login</button>
+          <button onClick={() => this.login('/lobby')}>Login</button>
         </div>
         {/* <div className={css.TableTypeWrapper}>
         {types.map(type => 

@@ -77,11 +77,15 @@
     
     
     &__Player1 {
-      @include bottom-right;
+      // @include bottom-right;
+      justify-self: right;
+      padding-top: 5.8vh;
     }
 
     &__Player2 {
-      @include bottom-left;
+      justify-self: left;
+      padding-top: 5.8vh;
+      // @include bottom-left;
     
     }
     
@@ -91,10 +95,17 @@
     }
 
     &__Rate {
-      font-size: 3.5vmin;
+      font-size: 3vmin;
+      font-weight: 600;
       display: block;
       &__Label {
         color: white;
+        font-weight: normal;
+      }
+      &__Label_Next{
+        color: white;
+        font-weight: normal;
+        opacity: 0.4;
       }
       grid-area: row-start 3 / col-start 1 / row-end 3 / col-start 1 ;
       @include bottom-right;

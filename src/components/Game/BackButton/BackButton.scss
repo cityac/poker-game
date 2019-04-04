@@ -1,5 +1,5 @@
 @import '../../../sass/mixins';
 .BackButton {
-  background: url(../../../assets/icons/back_button.svg) no-repeat center;
+  background: url(@assets/icons/back_button.svg) no-repeat center;
   @include footer-button;
 }

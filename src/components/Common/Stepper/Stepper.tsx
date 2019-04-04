@@ -5,32 +5,40 @@ import styled from 'styled-components';
 import { joinCss } from '~/utils';
 
 import * as css from './Stepper.scss';
-import * as commonCss from './../Common.scss';
 import { inherits } from 'util';
+import { string } from 'prop-types';
 
 interface StepperProps extends React.HTMLAttributes<any> {
   value: number;
   min: number;
   max: number;
-  onChangeRaise: Function;
+  onChangeRaise?: Function;
+  styles: { color: string, opacity?: string },
+  editable?: boolean,
 }
 
 const BackgroundSlider = styled.div`
   position: absolute;
   background-color: rgba(0, 0, 0, .05);
   border: 1px;
-  border-radius: 5%;
+  border-radius: 4px;
   width: 100%;
   height: 0.5vh;
   top: -0.1vh;
 `;
 
+interface TopSliderProps {
+  color?: string,
+  width?: string,
+  opacity?: string,
+}
 const TopSlider = styled.div`
   position: absolute;
-  background-color: #FFFFFF;
+  background-color: ${(props: TopSliderProps) => `${props.color}`}
+  opacity: ${(props: TopSliderProps) => `${props.opacity}`}
   border: 1px;
-  border-radius: 5%;
-  width: ${(props: {width: string}) => props.width};
+  border-radius: 4px;
+  width: ${(props: TopSliderProps) => props.width};
   height: 0.5vh;
   top: -0.1vh;
 `;
@@ -119,7 +127,7 @@ class Stepper extends Component <StepperProps, any>{
   }
 
   render() {
-    const { value, max } = this.props;
+    const { value, max, editable, styles: {color, opacity} } = this.props;
     const sliderPercent =  `${value / max * 100}%`;
     const sliderWidth = sliderPercent;
     return (
@@ -128,13 +136,15 @@ class Stepper extends Component <StepperProps, any>{
           onClick={() => this.substract()}></button> */}
         <div className={css.Slider}>
           <BackgroundSlider ref={this.slider}/>
-          <TopSlider width={sliderWidth} />
-          <Circle 
-            className={css.Circle}
-            left={sliderPercent}
-            onTouchMove={this.touchHandler} 
-            onTouchStart={this.touchStart}
-            onTouchEnd={this.touchEnd}/>
+          <TopSlider width={sliderWidth} color={color} opacity={opacity || '1'}/>
+          {editable
+            ?<Circle 
+              className={css.Circle}
+              left={sliderPercent}
+              onTouchMove={this.touchHandler} 
+              onTouchStart={this.touchStart}
+              onTouchEnd={this.touchEnd}/>
+            : null}
         </div>
         {/* <button className={joinCss( commonCss.Button, css.Button_Stepper, css.Button_Stepper_Plus)}
           onClick={() => this.add()}></button> */}

@@ -1,4 +1,4 @@
-@import '../../../../sass/main.scss';
+@import '../../../sass/main.scss';
 
 .Stepper {
   display: flex;
@@ -25,19 +25,19 @@
 
     &_Plus {
       float: right;
-      background-image: url(../../../../assets/icons/add.1.svg);
+      background-image: url(../../../assets/icons/add.1.svg);
       margin-left: 5vh;
       
     }
     &_Minus {
       float: left;
-      background-image: url(../../../../assets/icons/substract.1.svg);
+      background-image: url(../../../assets/icons/substract.1.svg);
       margin-right: 5vh;
     } 
   }
 }
 
 .Circle {
-  background  : url(../../../../assets/images/slider-circle.png) no-repeat center;
+  background  : url(../../../assets/images/slider-circle.png) no-repeat center;
   background-size: cover;
 }

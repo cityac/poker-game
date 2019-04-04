@@ -51,3 +51,9 @@
   height: 5vh;
   background-size: 90%;
 }
+
+@mixin horizontal-centered {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,0 +1,128 @@
+.NavigationItems {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row;
+  // align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width:100%;
+}
+
+.Home {
+  a {
+    &::before {
+      background-image: 
+      -webkit-image-set(
+        url(@assets/images/navigation/home.png) 1x,
+        url(@assets/images/navigation/home@2x.png) 2x);
+    }
+  }
+  &_Active {
+    a {
+      &::before {
+        background-image: 
+        -webkit-image-set(
+          url(@assets/images/navigation/home_active.png) 1x,
+          url(@assets/images/navigation/home_active@2x.png) 2x);
+      }
+    }
+  }
+}
+
+.Deposit {
+  a {
+    &::before {
+      background-image: 
+      -webkit-image-set(
+        url(@assets/images/navigation/deposit.png) 1x,
+        url(@assets/images/navigation/deposit@2x.png) 2x);
+    }
+  }
+  &_Active {
+    a {
+      &::before {
+        background-image: 
+        -webkit-image-set(
+          url(@assets/images/navigation/deposit_active.png) 1x,
+          url(@assets/images/navigation/deposit_active@2x.png) 2x);
+      }
+    }
+  }
+}
+
+.Cashback {
+  a {
+    &::before {
+      background-image: 
+      -webkit-image-set(
+        url(@assets/images/navigation/cashback.png) 1x,
+        url(@assets/images/navigation/cashback@2x.png) 2x);
+    }
+  }
+  &_Active {
+    a {
+      &::before {
+        background-image: 
+        -webkit-image-set(
+          url(@assets/images/navigation/cashback_active.png) 1x,
+          url(@assets/images/navigation/cashback_active@2x.png) 2x);
+      }
+    }
+  }
+}
+
+.Offers {
+  a {
+    &::before {
+      background-image: 
+      -webkit-image-set(
+        url(@assets/images/navigation/offers.png) 1x,
+        url(@assets/images/navigation/offers@2x.png) 2x);
+    }
+  }
+  &_Active {
+    a {
+      &::before {
+        background-image: 
+        -webkit-image-set(
+          url(@assets/images/navigation/offers_active.png) 1x,
+          url(@assets/images/navigation/offers_active@2x.png) 2x);
+      }
+    }
+  }
+}
+
+.More {
+  a {
+    &::before {
+      background-image: 
+      -webkit-image-set(
+        url(@assets/images/navigation/more.png) 1x,
+        url(@assets/images/navigation/more@2x.png) 2x);
+    }
+  }
+  // &_Active {
+  //   a {
+  //     &::before {
+  //       background-image: 
+  //       -webkit-image-set(
+  //         url(@assets/images/navigation/more_active.png) 1x,
+  //         url(@assets/images/navigation/more_active@2x.png) 2x);
+  //     }
+  //   }
+  // }
+}
+
+img {
+  width: 46px;
+  height: 44px;
+  object-fit: contain;
+}
+
+@media (min-width: 600px) {
+  .NavigationItems {
+    flex-flow: row;
+  }
+}

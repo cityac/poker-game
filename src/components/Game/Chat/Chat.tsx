@@ -10,7 +10,7 @@ const onClick = (value?) => {
 const Chat = (props) => {
   return (
     <div className={joinCss(props.className, css.Container)}>
-    <button className={css.CloseButton} onClick={() => props.hide()}></button>
+      <button className={css.CloseButton} onClick={() => props.hide()}></button>
       <div className={css.Chat}>
         <div className={css.Emoji_Container}>
           <div className={css.Emoji_Container_Scroll}>

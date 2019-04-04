@@ -12,6 +12,7 @@ export const Item__Player2: string;
 export const Item__Player3: string;
 export const Item__Rate: string;
 export const Item__Rate__Label: string;
+export const Item__Rate__Label_Next: string;
 export const Item__Spin: string;
 export const Item__Spin__Labels: string;
 export const Item__Flop: string;

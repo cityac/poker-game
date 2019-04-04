@@ -16,6 +16,7 @@ import tableReducer from './store/reducers/table';
 import appReducer from './store/reducers/app';
 import authReducer from './store/reducers/auth';
 import playerReducer from './store/reducers/player';
+import lobbyReducer from './store/reducers/lobby';
 
 const rootReducer = combineReducers({
   game: gameReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   player: playerReducer,
   app: appReducer,
   auth: authReducer,
+  lobby: lobbyReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
