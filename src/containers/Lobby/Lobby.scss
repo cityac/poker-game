@@ -1,61 +1,53 @@
+.LobbyWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+.Filter {
+  position: absolute;
+  top: 0px;
+  left: 0;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(.1);
+  transition: 
+    transform .2s ease-out,
+    opacity .5s ease-in,
+    // top .5s,
+    visibility 0s;
+
+  // transition: all 1s;
+  
+  &_Active {
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .Header {
+    justify-content: flex-end;
+  }
+}
 
 .Lobby {
+  position: absolute;
+  // display: none;
+  left: 0;
   width: 100%;
   background-color: #FFF;
   
-  .Header {
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  // transition: all 1s;
 
-    .Label {
-      font-family: OpenSans;
-      font-size: 4.3vmin;
-      font-weight: 600;
-      letter-spacing: normal;
-      text-align: center;
-      color: #000000;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .Icons {
-      display: flex;
-      height: 100%;
-
-      &_Filter {
-        background: url(../../assets/images/lobby-filter-icon.png) no-repeat center;
-        background-size: 100%;
-        margin-right: 15px;
-        width: 24px;
-      }
-
-      &_CardsView {
-        background: url(../../assets/images/lobby-cards-view-icon.png) no-repeat center;
-        background-size: 100%;
-        width: 24px;
-      }
-    }
-
-  }
-
-  .ButtonRegister {
-    color: #FFF;
-    font-family: OpenSans;
-    font-size: 4vmin;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    width: 90%;
-    height: 48px;
-    border: unset;
-    border-radius: 10px;
-    background-color: #fc4c02;
-    margin: 1vw 5vw;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity .5s ease-out;
+  
+  &_Active {
+    visibility: visible;
+    opacity: 1;
   }
 
   .Cards_Container {
@@ -89,56 +81,18 @@
         min-height: 70vw;
         display: flex;
         flex-wrap: wrap;
-        padding: 3vw 3vw;
+        padding: 0vw 3vw;
       }
     }
-  }
-
-  .LobbyComponent {
-    display: flex;
-    height: 6vh;
-    padding: 1vh 5vw 1vh;
-    align-items: center;
   }
 
   .LobbyStepper {
     height: 6vh;
   }
 
-  .LobbyLabel {
-    width: fit-content;
-    font-family: OpenSans;
-    font-size: 3.2vmin;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.31;
-    letter-spacing: normal;
-    color: #949494;
-  }
-
   .SelectGamesLabel {
     text-transform: uppercase;
-    width: 35vw;
-  }
-
-  .GameNumber {
-    width: 12vw;
-    height: 12vw;
-    padding-top: 3.8vw;
-    margin-left: 1.7vw;
-    text-align: center;
-    border-radius: 6px;
-    border: solid 1px #f2f2f2;
-    background-color: #ffffff;
-    font-size: 4vmin;
-    line-height: 1;
-    letter-spacing: 0.5px;
-    box-sizing: border-box;
-
-    &_Selected{
-      border: solid 1.5px #fc4c02;
-    }
+    width: 39vw;
   }
 
   .Summary {
@@ -151,7 +105,7 @@
     padding-bottom: 1vh;
 
     .BuyInLabel {
-      font-size: 4.3vmin;
+      font-size: 16px;
       font-weight: 600;
       line-height: 1.25;
       color: #000
@@ -179,7 +133,138 @@
       height: 5vh;
     }
     .ButtonRegister {
-      margin-top: 2vw 
+      margin-top: 4vw 
     }
   }
 }
+
+// Common styles
+
+.ApplyButtons {
+  width: 100%;
+  display: flex;
+  margin: 2vw 0;
+
+  &_Apply {
+    color: #FFF;
+
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    width: inherit;
+    height: 48px;
+    border: unset;
+    border-radius: 10px;
+    background-color: #fc4c02;
+    
+  }
+  &_Reset {
+    color: #000;
+    
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    width: inherit;
+    height: 48px;
+    border: 1px #e5e5e5 solid;
+    border-radius: 10px;
+    background-color: #FFF;
+    margin-left: 10px;
+  }
+}
+
+.Header {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .Label {
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Icons {
+    display: flex;
+    height: 100%;
+
+    &_Filter {
+      background: url(../../assets/images/lobby-filter-icon.png) no-repeat center;
+      background-size: 100%;
+      margin-right: 15px;
+      width: 24px;
+    }
+
+    &_CardsView {
+      background: url(../../assets/images/lobby-cards-view-icon.png) no-repeat center;
+      background-size: 100%;
+      width: 24px;
+    }
+
+    &_Filter_Close {
+      background: url(../../assets/images/filter-close.png) no-repeat center;
+      background-size: 100%;
+      width: 22px;
+    }
+  }
+}
+
+.LobbyComponent {
+  display: flex;
+  height: 6vh;
+  padding: 1vh 5vw;
+  align-items: center;
+}
+
+.LobbyLabel {
+  width: fit-content;
+  font-family: OpenSans;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+  color: #949494;
+}
+
+.ActionButtons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  :not(:first-child) {
+    margin-left: 1.7vw;
+  }
+}
+
+.SelectButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12vw;
+  height: 12vw;
+  text-align: center;
+  border-radius: 6px;
+  border: solid 1px #f2f2f2;
+  background-color: #ffffff;
+  font-size: 4vmin;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+
+  &_Selected{
+    border: solid 1.5px #fc4c02;
+  }
+}
+

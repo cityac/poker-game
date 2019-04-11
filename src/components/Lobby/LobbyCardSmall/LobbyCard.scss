@@ -3,12 +3,13 @@
 .LobbyCard {
   position: relative;
   min-width: 33vw;
+  max-height: 142px;
   margin: 5px;
   background-position-x: center;
   background-size: 100%;
   background-repeat: no-repeat;
   color: white;
-  transition: all 0.3s;
+  @include lobby-card-transition;
 
   &Blue {
     background-image: url(../../../assets/images/lobby-card-blue_sm.png);
@@ -41,6 +42,7 @@
   letter-spacing: normal;
 
   @include horizontal-centered;
+  @include lobby-card-transition;
 
   &Selected {
     top: 3vmin;
@@ -54,6 +56,7 @@
   font-weight: bold;
 
   @include horizontal-centered;
+  @include lobby-card-transition;
 
   &Selected {
     top: 11vmin;
@@ -70,6 +73,7 @@
   letter-spacing: normal;
 
   @include horizontal-centered;
+  @include lobby-card-transition;
 
   &Selected {
     top: 15vmin;
@@ -84,6 +88,7 @@
   font-size: 3vmin;
   font-weight: 500;
   letter-spacing: normal;
+  @include lobby-card-transition;
 
   &Selected {
     top: 28vmin;
@@ -118,6 +123,8 @@
   font-family: OpenSans;
   font-weight: normal;
   letter-spacing: normal;
+
+  @include lobby-card-transition;
 
   &Selected {
     top: 28vmin;

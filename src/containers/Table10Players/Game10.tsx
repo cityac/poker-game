@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { isMobile, isIOS } from 'react-device-detect';
 
 import { switchGameMode, initGame, selectTable } from '~/store/actions';
-import { fullScreen, joinCss } from '~/utils';
+import { fullScreen, cn } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
@@ -92,7 +92,7 @@ class Game extends Component<GameProps> {
 
     const isIPoneWeb = isIOS && !standalone;
 
-    const boardClasses = joinCss(
+    const boardClasses = cn(
       css.Board, 
       isMobile ? css.Board_Mobile : css.Board_Browser, 
       isIPoneWeb ? css.Board_IPhoneWeb  : ''
@@ -101,75 +101,75 @@ class Game extends Component<GameProps> {
     return (
       <div className={css.Game}>
         <div className={boardClasses} >
-          <div className={joinCss(css.Item, css.Item__Footer)}>
+          <div className={cn(css.Item, css.Item__Footer)}>
             <Footer backPath={'logout' || this.props.backPath} />
           </div>
-          <div className={joinCss(css.Item, css.Item__Player10)}>
+          <div className={cn(css.Item, css.Item__Player10)}>
             <PlayerCard
               userX="left"
               betY="bottom"
               player={playerByPlace(10)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player1)}>
+          <div className={cn(css.Item, css.Item__Player1)}>
             <PlayerCard
               userX="center"
               betY="bottom"
               player={playerByPlace(1)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player2)}>
+          <div className={cn(css.Item, css.Item__Player2)}>
             <PlayerCard
               userX="right"
               betY="bottom"
               player={playerByPlace(2)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player9)}>
+          <div className={cn(css.Item, css.Item__Player9)}>
             <PlayerCard
               userX="left"
               betY="center"
               player={playerByPlace(9)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Flop)}>
+          <div className={cn(css.Item, css.Item__Flop)}>
             <Flop label={`Pot: ${pot}`}/>
             {/* <SvgFlop /> */}
           </div>
-          <div className={joinCss(css.Item, css.Item__Player3)}>
+          <div className={cn(css.Item, css.Item__Player3)}>
             <PlayerCard
               userX="right"
               betY="center"
               player={playerByPlace(3)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player8)}>
+          <div className={cn(css.Item, css.Item__Player8)}>
             <PlayerCard
               userX="left"
               betY="center"
               player={playerByPlace(8)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player4)}>
+          <div className={cn(css.Item, css.Item__Player4)}>
             <PlayerCard
               userX="right"
               betY="center"
               player={playerByPlace(4)}/>
             </div>
-          <div className={joinCss(css.Item, css.Item__Player7)}>
+          <div className={cn(css.Item, css.Item__Player7)}>
             <PlayerCard
               userX="left"
               betY="top"
               player={playerByPlace(7)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player6)}>
+          <div className={cn(css.Item, css.Item__Player6)}>
             <PlayerCard
                 userX="center"
                 betY="top"
                 player={playerByPlace(6)}/>
           </div>
-          <div className={joinCss(css.Item, css.Item__Player5)}>
+          <div className={cn(css.Item, css.Item__Player5)}>
             <PlayerCard
               userX="right"
               betY="top"
               player={playerByPlace(5)}/>
           </div>
-          {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
-          <div className={joinCss(css.Item, css.Item__RoundActions)}>
+          {/* <div className={cn(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
+          <div className={cn(css.Item, css.Item__RoundActions)}>
             <RoundActions />
           </div>
           

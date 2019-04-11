@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { isMobile, isIOS } from 'react-device-detect';
 
 import { switchGameMode, initGame, selectTable, switchChatMode } from '~/store/actions';
-import { fullScreen, joinCss, playerByPlace as getPlayer } from '~/utils';
+import { fullScreen, cn, playerByPlace as getPlayer } from '~/utils';
 import PlayerCard from '~/components/Game/PlayerCard/PlayerCard';
 import Flop from '~/components/Game/Flop/Flop';
 import Player from '~/models/player';
@@ -76,7 +76,7 @@ class Game extends Component<GameProps> {
 
     const isIPoneWeb = isIOS && !standalone;
 
-    const boardClasses = joinCss(
+    const boardClasses = cn(
       css.Board, 
       isMobile ? css.Board_Mobile : css.Board_Browser, 
       isIPoneWeb ? css.Board_IPhoneWeb  : ''
@@ -85,45 +85,45 @@ class Game extends Component<GameProps> {
     return (
       <div className={css.Game}>
         <div className={boardClasses} >
-          <div className={joinCss(css.Item, css.Item__Footer)}>
+          <div className={cn(css.Item, css.Item__Footer)}>
             <Footer backPath={this.props.backPath} />
           </div>
           { !loading ? <React.Fragment>
-            <div className={joinCss(css.Item, css.Item__Player1)}>
+            <div className={cn(css.Item, css.Item__Player1)}>
               <PlayerCard
                 userX="left"
                 betY="top"
                 player={playerByPlace(1)}/>
             </div>
-            <div className={joinCss(css.Item, css.Item__Spin)}>
+            <div className={cn(css.Item, css.Item__Spin)}>
               { tableId === 1 && <SimplePrizepool /> }
               <div className={css.Item__Spin__Labels}>
                 <label>$5 Spins</label>
                 <label>Texas holdem</label>
               </div>
             </div>
-            <div className={joinCss(css.Item, css.Item__Player2)}>
+            <div className={cn(css.Item, css.Item__Player2)}>
               <PlayerCard
                 userX="right"
                 betY="top"
                 player={playerByPlace(2)}/>
             </div>
 
-            <div className={joinCss(css.Item, css.Item__Flop)}>
+            <div className={cn(css.Item, css.Item__Flop)}>
               
             </div>
 
-            <div className={joinCss(css.Item, css.Item__Flop)}>
+            <div className={cn(css.Item, css.Item__Flop)}>
               <Flop label={`POT: $${pot}`} total="$29,425" flopCards={flopCards}/>
               {/* <SvgFlop /> */}
             </div>
 
-            <div className={joinCss(css.Item, css.Item__Rate)}>
+            <div className={cn(css.Item, css.Item__Rate)}>
               <div className={css.Item__Rate__Label}>Rate: 100 / 200</div>
               <div className={css.Item__Rate__Label_Next}>Next lvl in 4:00</div>
             </div>
           
-            <div className={joinCss(css.Item, css.Item__Player3)}>
+            <div className={cn(css.Item, css.Item__Player3)}>
               <PlayerCard
                 userX="center"
                 betY="top"
@@ -132,15 +132,15 @@ class Game extends Component<GameProps> {
           </React.Fragment>
           : <Loader />  }
           
-          {/* <div className={joinCss(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
-          <div className={joinCss(css.Item, css.Item__RoundActions)}>
+          {/* <div className={cn(css.Item, css.Item__Next)}>Next level in 4:00pm</div> */}
+          <div className={cn(css.Item, css.Item__RoundActions)}>
             { !showChat ? <RoundActions /> : null }
           </div>
         </div>
         
         { showChat 
           ? <Chat hide={onCloseChat} 
-              className={joinCss(css.Chat, isIOS ? css.Chat_iPhone : '', isIPoneWeb ? css.Chat_iPhone_Web : '')}/> 
+              className={cn(css.Chat, isIOS ? css.Chat_iPhone : '', isIPoneWeb ? css.Chat_iPhone_Web : '')}/> 
           : null}
       </div>
     );

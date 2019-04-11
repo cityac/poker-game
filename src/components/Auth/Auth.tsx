@@ -37,7 +37,7 @@ class Auth extends Component<AuthProps> {
         {/* <div className={css.TableTypeWrapper}>
         {types.map(type => 
           <button key={type} className={css.TableTypeLink} onClick={() => this.login('game', type)} >
-            <div className={joinCss(css.TableType, css[`tableType_${type}`])} />
+            <div className={cn(css.TableType, css[`tableType_${type}`])} />
           </button>)}
         </div> */}
       </div>

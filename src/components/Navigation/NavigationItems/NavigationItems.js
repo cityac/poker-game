@@ -5,7 +5,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import { withRouter } from 'react-router-dom';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 // import {
 //   home_src,
@@ -21,23 +21,23 @@ import { joinCss } from '~/utils';
 
 const renderAuthenticated = (path) => (
   <React.Fragment>
-    <NavigationItem link="/lobby" exact className={joinCss(css.Home, path === '/lobby' && css.Home_Active)}>
+    <NavigationItem link="/lobby" exact className={cn(css.Home, path === '/lobby' && css.Home_Active)}>
       <label>home</label>
     </NavigationItem>
 
-    <NavigationItem link="/cashback" exact className={joinCss(css.Cashback, path === '/cashback' && css.Cashback_Active)}>
+    <NavigationItem link="/cashback" exact className={cn(css.Cashback, path === '/cashback' && css.Cashback_Active)}>
       <label>cashback</label>
     </NavigationItem>
 
-    <NavigationItem link="/deposit" exact className={joinCss(css.Deposit, path === '/deposit' && css.Deposit_Active)}>
+    <NavigationItem link="/deposit" exact className={cn(css.Deposit, path === '/deposit' && css.Deposit_Active)}>
       <label>deposit</label>
     </NavigationItem>
 
-    <NavigationItem link="/offers" exact className={joinCss(css.Offers, path === '/offers' && css.Offers_Active)}>
+    <NavigationItem link="/offers" exact className={cn(css.Offers, path === '/offers' && css.Offers_Active)}>
       <label>offers</label>
     </NavigationItem>
 
-    <NavigationItem link="/more" exact className={joinCss(css.More, path === '/more' && css.More_Active)}>
+    <NavigationItem link="/more" exact className={cn(css.More, path === '/more' && css.More_Active)}>
       <label>more</label>
     </NavigationItem>
   </React.Fragment>

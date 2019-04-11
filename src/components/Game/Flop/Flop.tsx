@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import { isMobile } from 'react-device-detect';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './Flop.scss';
 import SvgFlop from '../SvgFlop/SvgFlop';
@@ -26,7 +26,7 @@ class Flop extends Component<any, any> {
   render() {
     const { cards, dashboard } = this.state;
 
-    const classNames = joinCss(
+    const classNames = cn(
       css.Flop, 
       isMobile ? css.Flop_Mobile : css.Flop_Browser,
       dashboard ? css.Flop_Dashboard : ''

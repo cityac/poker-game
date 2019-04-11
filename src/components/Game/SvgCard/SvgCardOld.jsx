@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as css from './SvgCard.scss';
 
 import  icons from "~/assets/images/svg-cards.svg";
-import { joinCss } from '~/utils'
+import { cn } from '~/utils'
 
 
 const SvgCard = (props) => {
@@ -20,7 +20,7 @@ const SvgCard = (props) => {
   return (
       <use xlinkHref={`${icons}#${props.name}`} x={x} y={y} 
       transform={`scale(${scale})`}
-      className={joinCss(classNames)} 
+      className={cn(classNames)} 
       fill={fill} />
   )
 };

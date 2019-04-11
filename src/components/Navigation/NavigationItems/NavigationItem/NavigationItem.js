@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classes from './NavigationItem.scss';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 const navigationItem = (props) => (
-  <li className={joinCss(props.className, classes.NavigationItem)}>
+  <li className={cn(props.className, classes.NavigationItem)}>
     <NavLink to={props.link} exact={props.exact} activeClassName={classes.active}>
       {props.children}
     </NavLink>

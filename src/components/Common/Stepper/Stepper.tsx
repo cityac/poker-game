@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import styled from 'styled-components';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './Stepper.scss';
 import { inherits } from 'util';
@@ -132,7 +132,7 @@ class Stepper extends Component <StepperProps, any>{
     const sliderWidth = sliderPercent;
     return (
       <div className={css.Stepper}>
-        {/* <button className={joinCss(commonCss.Button, css.Button_Stepper, css.Button_Stepper_Minus)}
+        {/* <button className={cn(commonCss.Button, css.Button_Stepper, css.Button_Stepper_Minus)}
           onClick={() => this.substract()}></button> */}
         <div className={css.Slider}>
           <BackgroundSlider ref={this.slider}/>
@@ -146,7 +146,7 @@ class Stepper extends Component <StepperProps, any>{
               onTouchEnd={this.touchEnd}/>
             : null}
         </div>
-        {/* <button className={joinCss( commonCss.Button, css.Button_Stepper, css.Button_Stepper_Plus)}
+        {/* <button className={cn( commonCss.Button, css.Button_Stepper, css.Button_Stepper_Plus)}
           onClick={() => this.add()}></button> */}
       </div>
     );

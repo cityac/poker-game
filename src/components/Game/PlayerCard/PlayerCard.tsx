@@ -4,7 +4,7 @@ import { Component } from 'react';
 import Bet from './Bet/Bet';
 import Player, { PlayerStatus } from '~/models/player';
 import Avatar from './Avatar/Avatar';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
@@ -76,7 +76,7 @@ export default class PlayerCard extends Component<PlayerCardProps> {
 
   renderUserInfo() {
     const { userX, player: { balance, status}, dashboard } = this.props;
-    const classesUser = joinCss(
+    const classesUser = cn(
       css.User,
       userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,
       status !== PlayerStatus.ACTIVE ? css.UserInactive : '');

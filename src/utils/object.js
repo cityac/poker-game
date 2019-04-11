@@ -3,7 +3,7 @@ export const isString = function(obj) {
 }
 
 
-export const toCurrency = (value, digits = 2, params={currency: '$', before: true}) => 
+export const toCurrency = (value, digits = 0, params={currency: '$', before: true}) => 
   `${params.before ? params.currency : ''}${value.toLocaleString(
     undefined, // to use the browser's locale,
     { minimumFractionDigits: digits }

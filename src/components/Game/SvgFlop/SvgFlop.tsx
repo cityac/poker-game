@@ -3,7 +3,7 @@ import { Component, RefObject } from 'react';
 import SvgCard from '../SvgCard/SvgCard';
 
 import { isMobile } from 'react-device-detect';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './SvgFlop.scss';
 import Card from '../../../models/card';
@@ -139,7 +139,7 @@ class SvgFlop extends Component<SvgFlopProps> {
       setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight,  style.scale);
     }
 
-    const classNames = joinCss(
+    const classNames = cn(
       css.SvgFlop, 
       isMobile ? css.SvgFlop_Mobile : css.SvgFlop_Browser,
       dashboard ? css.SvgFlop_Dashboard : ''

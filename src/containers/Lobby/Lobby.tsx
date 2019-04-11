@@ -3,16 +3,17 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { toCurrency, joinCss } from '~/utils';
+import { toCurrency, cn } from '~/utils';
 import { jess } from '~/utils/images';
+
+import { selectSpin, selectNextSpin, selectSpinGamesNumber, switchView } from "~/store/actions";
 
 import LobbyCard from '~/components/Lobby/LobbyCard';
 import LobbyCardSmall from '~/components/Lobby/LobbyCardSmall/index.tsx';
 import Avatar from '~/components/Lobby/LobbyAvatar';
 import Stepper from '~/components/Common/Stepper/Stepper';
 
-import { selectSpin, selectNextSpin, selectSpinGamesNumber, switchView } from "~/store/actions";
-
+import Filter from './Filter';
 import * as css from './Lobby.scss';
 
 interface LobbyProps {
@@ -28,12 +29,18 @@ interface LobbyProps {
   onSelectGame(spinId, gamesNumber: number): void,
 }
 
-class Lobby extends Component<LobbyProps>{
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+interface LobbyState {
+  filter: boolean,
+}
 
+class Lobby extends Component<LobbyProps, LobbyState>{
+  scrollContainerRef: React.RefObject<HTMLDivElement>;
   constructor(props) {
     super(props);
     this.scrollContainerRef = React.createRef<HTMLDivElement>();
+    this.state = {
+      filter: false,
+    }
   }
 
   componentDidMount() {
@@ -108,6 +115,14 @@ class Lobby extends Component<LobbyProps>{
     const { onSelectGame, selectedSpin } = this.props;
     onSelectGame(selectedSpin.id, gamesNumber);
   }
+
+  closeFilter = () => {
+    this.setState({filter: false});
+  }
+
+  showFilter = () => {
+    this.setState({filter: true})
+  }
   
   selectGames = [1,2,3,4];
 
@@ -122,86 +137,93 @@ class Lobby extends Component<LobbyProps>{
       smallView} = this.props;
 
     return (
-      <div className={css.Lobby}>
-        <div className={css.Header}>
-          <Avatar url={jess}/>
-          <div className={css.Label}>Spins</div>
-          <div className={css.Icons}>
-            <div className={css.Icons_Filter} />
-            <div className={css.Icons_CardsView} onClick={onSwitchView}/>
+      <div className={css.LobbyWrapper}>
+        <div className={cn(css.Lobby, !this.state.filter && css.Lobby_Active)}>
+          <div className={css.Header}>
+            <Avatar url={jess}/>
+            <div className={css.Label}>Spins</div>
+            <div className={css.Icons}>
+              <div className={css.Icons_Filter} onClick={this.showFilter} />
+              <div className={css.Icons_CardsView} onClick={onSwitchView}/>
+            </div>
           </div>
-        </div>
-        <div className={css.Cards_Container}>
-        { !smallView
-          ? (<div ref={this.scrollContainerRef}
-            className={css.Cards_Container_Scroll}>
-              {
-                spins.map((spin:any) => 
-                  <LobbyCard 
-                    key={spin.id}
-                    selected={spin.id === selectedSpin.id}
-                    spin={spin}
-                    onSelect={onSelectSpin}
-                    />)
-              }
-          </div>)
-          : 
-          (<div ref={this.scrollContainerRef}
-            className={css.Cards_Container_Scroll_Sm}>
-            <div className={css.TwoRowsWrapper}>
-              {
-                spins.map((spin:any) => 
-                  <LobbyCardSmall
-                    key={spin.id}
-                    selected={spin.id === selectedSpin.id}
-                    spin={spin}
-                    onSelect={onSelectSpin}
-                    />)
-              }
-              </div>
-          </div>)
-        }
-        </div>
-
-        <div className={joinCss(css.LobbyComponent)}>
-          <div className={css.LobbyLabel}>{toCurrency(minBuyIn, 0)}</div>
-          <Stepper
-            key={selectedSpin.id}
-            styles={{color: '#FF0000'}}
-            max={maxBuyIn}
-            min={0}
-            value={selectedSpin.buyIn} />
-            <div className={css.LobbyLabel}>{toCurrency(maxBuyIn, 0)}</div>
-        </div>
-
-        <div className={css.LobbyComponent}>
-          <div className={joinCss(css.LobbyLabel, css.SelectGamesLabel)}>select number of games</div>
-          {
-            this.selectGames.map(num => (
-              <div key={num} className={joinCss(css.GameNumber, selectedSpin.gameNumber === num && css.GameNumber_Selected)}
-                onClick={() => this.selectGameNumber(num)}
-              >{num}</div>
-            ))
+          <div className={css.Cards_Container}>
+          { !smallView
+            ? (<div ref={this.scrollContainerRef}
+              className={css.Cards_Container_Scroll}>
+                {
+                  spins.map((spin:any) => 
+                    <LobbyCard 
+                      key={spin.id}
+                      selected={spin.id === selectedSpin.id}
+                      spin={spin}
+                      onSelect={onSelectSpin}
+                      />)
+                }
+            </div>)
+            : 
+            (<div ref={this.scrollContainerRef}
+              className={css.Cards_Container_Scroll_Sm}>
+              <div className={css.TwoRowsWrapper}>
+                {
+                  spins.map((spin:any) => 
+                    <LobbyCardSmall
+                      key={spin.id}
+                      selected={spin.id === selectedSpin.id}
+                      spin={spin}
+                      onSelect={onSelectSpin}
+                      />)
+                }
+                </div>
+            </div>)
           }
-        </div>
-
-        <hr/>
-
-        <div className={joinCss(css.LobbyComponent, css.Summary)}>
-          <div className={css.LabelRow}>
-            <div className={joinCss(css.LobbyLabel, css.BuyInLabel)}>Total Buy-in</div>
-            <div className={joinCss(css.LobbyLabel, css.BuyInLabel)}>{toCurrency(40,2, {currency: 'USD', after: true})}</div>
           </div>
-          <div className={css.LabelRow}>
-            <div className={joinCss(css.LobbyLabel)}>2 x $10 tickets</div>
-            <div className={joinCss(css.LobbyLabel)}>{toCurrency(20,2, {currency: 'USD', after: true})}</div>
+
+          <div className={cn(css.LobbyComponent)}>
+            <div className={css.LobbyLabel}>{toCurrency(minBuyIn)}</div>
+            <Stepper
+              key={selectedSpin.id}
+              styles={{color: '#FF0000'}}
+              max={maxBuyIn}
+              min={0}
+              value={selectedSpin.buyIn} />
+              <div className={css.LobbyLabel}>{toCurrency(maxBuyIn)}</div>
           </div>
+
+          <div className={css.LobbyComponent}>
+            <div className={cn(css.LobbyLabel, css.SelectGamesLabel)}>select number of games</div>
+            <div className={css.ActionButtons}>
+              {
+                this.selectGames.map(num => (
+                  <div key={num} className={cn(css.SelectButton, selectedSpin.gameNumber === num && css.SelectButton_Selected)}
+                    onClick={() => this.selectGameNumber(num)}
+                  >{num}</div>
+                ))
+              }
+            </div>
+          </div>
+
+          <hr/>
+
+          <div className={cn(css.LobbyComponent, css.Summary)}>
+            <div className={css.LabelRow}>
+              <div className={cn(css.LobbyLabel, css.BuyInLabel)}>Total Buy-in</div>
+              <div className={cn(css.LobbyLabel, css.BuyInLabel)}>{toCurrency(40,2, {currency: 'USD', after: true})}</div>
+            </div>
+            <div className={css.LabelRow}>
+              <div className={cn(css.LobbyLabel)}>2 x $10 tickets</div>
+              <div className={cn(css.LobbyLabel)}>{toCurrency(20,2, {currency: 'USD', after: true})}</div>
+            </div>
+          </div>
+
+          <div className={css.LobbyComponent}>
+            <NavLink to='/game' style={{width: '100%', paddingTop:'20px'}}>
+              <button className={css.ApplyButtons_Apply}>Register</button>
+            </NavLink>
+          </div>
+
         </div>
-
-        <NavLink to='/game'>
-          <button className={css.ButtonRegister}>Register</button>
-        </NavLink>
-
+        <Filter className={cn(css.Filter, this.state.filter && css.Filter_Active)} onClose={this.closeFilter}/>
       </div>
     );
   }
@@ -211,8 +233,8 @@ const mapStateToProps = ({lobby}) => ({
   selectedSpin: lobby.selectedSpin,
   spins: lobby.spins,
   smallView: lobby.smallView,
-  minBuyIn: lobby.spins[0].buyIn,
-  maxBuyIn: lobby.spins[lobby.spins.length-1].buyIn
+  minBuyIn: lobby.spins.length && lobby.spins[0].buyIn,
+  maxBuyIn: lobby.spins.length && lobby.spins[lobby.spins.length-1].buyIn
 })
 
 const mapDispatchToProps = (dispatch) => {

@@ -8,7 +8,7 @@ import ActionButton from '~/components/Game/RoundAction/ActionButton/ActionButto
 
 import * as css from './RoundActions.scss';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 const RoundActions = (props) => {
   const { balance, bet = 0, raise = 0, pot, preselectRaise, onShowChat } = props;
@@ -35,22 +35,22 @@ const RoundActions = (props) => {
       
       <div className={css.FoldActions}>
         <div className={css.Button_Wrapper} >
-          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Fold_Back)} /> */}
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Fold_Back)} /> */}
           <ActionButton labels={['fold']}
-            className={joinCss(css.Button, css.Button_Fold)}
+            className={cn(css.Button, css.Button_Fold)}
             onClick={ () => {} } />
         </div>
         
-        <div className={joinCss(css.Button_Wrapper, css.Button_Wrapper_Middle)} >
-          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Call_Back)} /> */}
+        <div className={cn(css.Button_Wrapper, css.Button_Wrapper_Middle)} >
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Call_Back)} /> */}
           <ActionButton labels={[bet.toString(), 'call']}
-            className={joinCss(css.Button, css.Button_Call)} onClick={ () => {} } />
+            className={cn(css.Button, css.Button_Call)} onClick={ () => {} } />
         </div>
         
         <div className={css.Button_Wrapper} >
-          {/* <div className={joinCss(css.Button, css.Button_Back, css.Button_Raise_Back)} /> */}
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Raise_Back)} /> */}
           <ActionButton labels={[raise.toString(), 'raise to']}
-            className={joinCss(css.Button, css.Button_Raise)}
+            className={cn(css.Button, css.Button_Raise)}
             onClick={ () => {} } />
         </div>
       </div>

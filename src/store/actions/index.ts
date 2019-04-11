@@ -31,4 +31,8 @@ export {
   selectNextSpin,
   selectSpinGamesNumber,
   switchView,
+  changeGameFilter,
+  changeBuyInFilter,
+  applyFilter,
+  resetFilter,
 } from './lobby';

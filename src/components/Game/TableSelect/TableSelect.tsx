@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 import TwoCardsFront from '../PlayerCard/TwoCards/TwoFronts';
 import TableAway from './TableAway';
 import { PlayerStatus } from '~/models/player';
@@ -36,7 +36,7 @@ export default class TableSelect extends Component<TableSelectProps> {
     if (table) {
       const { playerCards, playerStatus, id } = table;
       const current = currentTableId === id;
-      const classNames = joinCss(css.TableSelect, current ? css.TableSelect_Current : '');
+      const classNames = cn(css.TableSelect, current ? css.TableSelect_Current : '');
       return (
         <div className={classNames} onClick={() => this.selectTable()}>
           {playerStatus === PlayerStatus.AWAY 
@@ -49,7 +49,7 @@ export default class TableSelect extends Component<TableSelectProps> {
         </div>)
     }
 
-    return (<button className={joinCss(css.TableSelect, css.TableSelect_New)} />)
+    return (<button className={cn(css.TableSelect, css.TableSelect_New)} />)
   }
 
   render() {

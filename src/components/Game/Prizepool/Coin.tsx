@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './Coin.scss';
 
@@ -16,7 +16,7 @@ const CoinImg = styled.div`
 
 const Coin = (props) => {
   // return <CoinImg size={props.size} />
-  return <div style={getStyle(props.bottom, props.left)} className={joinCss(classBySize(props.size), props.className)} />
+  return <div style={getStyle(props.bottom, props.left)} className={cn(classBySize(props.size), props.className)} />
 }
 
 const getStyle = (bottom, left) => ({

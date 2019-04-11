@@ -57,3 +57,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+@mixin lobby-card-transition {
+  transition: all .3s .1s;
+}

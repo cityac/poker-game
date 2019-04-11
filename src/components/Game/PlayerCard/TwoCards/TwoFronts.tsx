@@ -3,7 +3,7 @@ import { Component } from 'react';
 import SvgCard from '../../SvgCard/SvgCard';
 
 import { isMobile } from 'react-device-detect';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './TwoFronts.scss';
 import Card from '~/models/card';
@@ -115,7 +115,7 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
     } else {
       classes.push(dashboard ? css.SVGContainer_Small_Browser_Dashboard : css.SVGContainer_Small_Browser);
     }
-   return joinCss(classes);
+   return cn(classes);
   }
 
   renderCards = () => {
@@ -126,9 +126,9 @@ class TwoCardsFront extends Component<TwoFrontsProps, TwoFrontsState> {
 
     let classNames;
     if (type === 'small') {
-      classNames = joinCss(className, this.getSmallClasses());
+      classNames = cn(className, this.getSmallClasses());
     } else {
-      classNames = joinCss(className, css.SVGContainer, isMobile ? css.SVGContainer_Large_Mobile : css.SVGContainer_Large_Browser);
+      classNames = cn(className, css.SVGContainer, isMobile ? css.SVGContainer_Large_Mobile : css.SVGContainer_Large_Browser);
     }
 
     return (

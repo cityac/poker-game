@@ -3,7 +3,7 @@ import { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { joinCss, toCurrency } from '~/utils';
+import { cn, toCurrency } from '~/utils';
 
 import * as css from './LobbyCard.scss';
 
@@ -40,7 +40,7 @@ class LobbyCard extends Component<LobbyCardProps> {
     }
 
     if (selected) {
-      return joinCss(classnames, css.LobbyCard_Selected)
+      return cn(classnames, css.LobbyCard_Selected)
     }
 
     return classnames;
@@ -57,12 +57,12 @@ class LobbyCard extends Component<LobbyCardProps> {
     
     return (
       <div ref={this.view} 
-        className={joinCss(css.LobbyCard, classnames)} onClick={() => { onSelect(id); this.scroll()}}>
-        <div className={joinCss(css.BuyIn, selected && css.BuyInSelected)}>Buy-in {toCurrency(buyIn, 0)}</div>
-        <div className={joinCss(css.WinLabel, selected && css.WinLabelSelected)}>WIN UP TO</div>
-        <div className={joinCss(css.Prize, selected && css.PrizeSelected)}>{prize}</div>
-        <div className={joinCss(css.Game, selected && css.GameSelected)}>{game}</div>
-        <div className={joinCss(css.Tickets, selected && css.TicketsSelected)}>{ticketsLeft} tickets left</div>
+        className={cn(css.LobbyCard, classnames)} onClick={() => { onSelect(id); this.scroll()}}>
+        <div className={cn(css.BuyIn, selected && css.BuyInSelected)}>Buy-in {toCurrency(buyIn)}</div>
+        <div className={cn(css.WinLabel, selected && css.WinLabelSelected)}>WIN UP TO</div>
+        <div className={cn(css.Prize, selected && css.PrizeSelected)}>{prize}</div>
+        <div className={cn(css.Game, selected && css.GameSelected)}>{game}</div>
+        <div className={cn(css.Tickets, selected && css.TicketsSelected)}>{ticketsLeft} tickets left</div>
       </div>
 
     )
