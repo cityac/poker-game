@@ -58,11 +58,11 @@ class LobbyCard extends Component<LobbyCardProps> {
     return (
       <div ref={this.view} 
         className={cn(css.LobbyCard, classnames)} onClick={() => { onSelect(id); this.scroll()}}>
-        <div className={cn(css.BuyIn, selected && css.BuyInSelected)}>Buy-in {toCurrency(buyIn)}</div>
-        <div className={cn(css.WinLabel, selected && css.WinLabelSelected)}>WIN UP TO</div>
-        <div className={cn(css.Prize, selected && css.PrizeSelected)}>{prize}</div>
-        <div className={cn(css.Game, selected && css.GameSelected)}>{game}</div>
-        <div className={cn(css.Tickets, selected && css.TicketsSelected)}>{ticketsLeft} tickets left</div>
+        <div className={cn(css.BuyIn)}>Buy-in {toCurrency(buyIn)}</div>
+        <div className={cn(css.WinLabel)}>WIN UP TO</div>
+        <div className={cn(css.Prize)}>{prize}</div>
+        <div className={cn(css.Game)}>{game}</div>
+        <div className={cn(css.Tickets)}>{ticketsLeft} tickets left</div>
       </div>
 
     )

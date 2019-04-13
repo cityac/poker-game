@@ -38,8 +38,7 @@
 }
 
 .BuyIn {
-  // top: 8vmin;
-  top: 13vmin;
+  top: 12vmin;
   width: fit-content;
   font-size: 3.5vmin;
   font-weight: 500;
@@ -47,14 +46,9 @@
 
   @include horizontal-centered;
   @include lobby-card-transition;
-
-  &Selected {
-    top: 13vmin;
-  }
 }
 
 .WinLabel {
-  // top: 22vmin;
   top: 26vmin;
   width: fit-content;
   font-size: 4.2vmin;
@@ -62,14 +56,9 @@
 
   @include horizontal-centered;
   @include lobby-card-transition;
-
-  &Selected {
-    top: 26vmin;
-  }
 }
 
 .Prize {
-  // top: 27vmin;
   top: 30vmin;
   width: fit-content;
   font-size: 4.5vh;
@@ -80,14 +69,9 @@
 
   @include horizontal-centered;
   @include lobby-card-transition;
-
-  &Selected {
-    top: 30vmin;
-  }
 }
 
 .Game {
-  // top: 45vmin;
   top: 49vmin;
   width: fit-content;
   font-size: 3.5vmin;
@@ -96,15 +80,10 @@
 
   @include horizontal-centered;
   @include lobby-card-transition;
-  
-  &Selected {
-    top: 49vmin;
-  }
 }
 
 .Tickets {
-  // top: 56vmin;
-  top: 60vmin;
+  top: 56vmin;
   width: fit-content;
   font-size: 3.5vmin;
   font-family: OpenSans;
@@ -113,8 +92,4 @@
 
   @include horizontal-centered;
   @include lobby-card-transition;
-
-  &Selected {
-    top: 60vmin;
-  }
 }
