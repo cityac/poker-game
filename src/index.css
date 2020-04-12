@@ -2,19 +2,69 @@
   font-family: 'SFUIDisplay';
   font-style: normal;
   font-weight: bold;
-  src: url('./assets/fonts/SF-UI-Display-Bold.otf'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/SF-UI-Display-Bold.otf'); 
+  /* IE9 Compat Modes */
   src: local('SFUIDisplay'),
        url('./assets/fonts/SF-UI-Display-Bold.otf');
 }
+@font-face {
+  font-family: 'SFUIDisplay-Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./assets/fonts/SF-UI-Display-Bold.otf'); 
+  /* IE9 Compat Modes */
+  src: local('SFUIDisplay'),
+       url('./assets/fonts/SF-UI-Display-Bold.otf');
+}
+
 @font-face {
   font-family: "SFUIDisplay";
   font-weight: 500;
   src: url('./assets/fonts/SF-UI-Display-Medium.otf');
 }
 
+@font-face {
+  font-family: "SFUIDisplay";
+  font-weight: 600;
+  src: url('./assets/fonts/SF-UI-Display-Semibold.otf');
+}
+
+@font-face {
+  font-family: "Rockwell";
+  font-weight: bold;
+  src: url('./assets/fonts/Rockwell-Bold.ttf');
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: normal;
+  src: url('./assets/fonts/OpenSans.ttf');
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: bold;
+  src: url('./assets/fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: 600;
+  src: url('./assets/fonts/OpenSans-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: "OpenSans";
+  font-weight: 800;
+  src: url('./assets/fonts/OpenSans-ExtraBold.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
+  font-family: SFUIDisplay;
+  letter-spacing: 0.3px;
+  scroll-behavior: smooth;
 }
 
 /* remove focus border from all components */

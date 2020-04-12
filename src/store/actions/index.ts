@@ -25,3 +25,14 @@ export {
   setGameBackPath,
   setStandalone,
 } from './app';
+
+export {
+  selectSpin,
+  selectNextSpin,
+  selectSpinGamesNumber,
+  switchView,
+  changeGameFilter,
+  changeBuyInFilter,
+  applyFilter,
+  resetFilter,
+} from './lobby';

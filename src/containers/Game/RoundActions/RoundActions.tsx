@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import * as actions from '~/store/actions';
 
-import Stepper from '~/components/Game/RoundAction/Stepper/Stepper';
+import Stepper from '~/components/Common/Stepper/Stepper';
 import ActionButton from '~/components/Game/RoundAction/ActionButton/ActionButton';
 
 import * as css from './RoundActions.scss';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 const RoundActions = (props) => {
   const { balance, bet = 0, raise = 0, pot, preselectRaise, onShowChat } = props;
@@ -18,7 +18,13 @@ const RoundActions = (props) => {
     <button className={css.ChatButton} onClick={() => onShowChat()}></button>
     <div className={css.RoundActions}>
       <div className={css.Stepper}>
-        <Stepper  value={props.raise} onChangeRaise={preselectRaise} min={bet} max={Math.floor(balance)}/>
+        <Stepper 
+          styles={{color: '#FFF', opacity: '0.7'}}
+          value={props.raise}
+          onChangeRaise={preselectRaise}
+          min={bet}
+          max={Math.floor(balance)}
+          editable/>
       </div>
       <div className={css.RaiseActions}>
         <ActionButton labels={['1/2']} onClick={ () => preselectRaise(Math.floor(balance / 2)) } />
@@ -28,16 +34,25 @@ const RoundActions = (props) => {
       </div>
       
       <div className={css.FoldActions}>
-        <ActionButton labels={['fold']}
-          className={joinCss(css.Button, css.Button_Fold)}
-          onClick={ () => {} } />
-          
-        <ActionButton labels={[bet.toString(), 'call']}
-          className={joinCss(css.Button, css.Button_Call)} onClick={ () => {} } />
-
-        <ActionButton labels={[raise.toString(), 'raise to']}
-        className={joinCss(css.Button, css.Button_Raise)}
-          onClick={ () => {} } />
+        <div className={css.Button_Wrapper} >
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Fold_Back)} /> */}
+          <ActionButton labels={['fold']}
+            className={cn(css.Button, css.Button_Fold)}
+            onClick={ () => {} } />
+        </div>
+        
+        <div className={cn(css.Button_Wrapper, css.Button_Wrapper_Middle)} >
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Call_Back)} /> */}
+          <ActionButton labels={[bet.toString(), 'call']}
+            className={cn(css.Button, css.Button_Call)} onClick={ () => {} } />
+        </div>
+        
+        <div className={css.Button_Wrapper} >
+          {/* <div className={cn(css.Button, css.Button_Back, css.Button_Raise_Back)} /> */}
+          <ActionButton labels={[raise.toString(), 'raise to']}
+            className={cn(css.Button, css.Button_Raise)}
+            onClick={ () => {} } />
+        </div>
       </div>
     </div>
   </div>

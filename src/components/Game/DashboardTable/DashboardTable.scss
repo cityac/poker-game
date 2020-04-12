@@ -1,7 +1,7 @@
 .DashboardTable {
   position: relative;
   cursor: pointer;
-  background: url(../../../assets/images/dashboard_item.png) no-repeat center;
+  background: url(../../../assets/images/table.png) no-repeat center;
   background-size: cover;
 
   text-decoration: none;
@@ -40,8 +40,17 @@
   top: 40%;
 }
 
+.PlayerTurnLabel {
+  position: absolute;
+  color: #FFF;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .PlayerCardsWrapper {
   position: absolute;
+  height: 5.5vh;
+  width: 17vw;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);

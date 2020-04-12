@@ -1,6 +1,5 @@
 import * as React from 'react';
 import CircularProgressbar from 'react-circular-progressbar';
-// import './styles.css';
 
 import styled from 'styled-components';
 
@@ -9,11 +8,15 @@ const Div = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 const Img = styled.img`
   position: absolute;
-  top: 0.85vh;
-  left: 0.75vh;
-  width: 6vh;
+  box-sizing: border-box;
+  top: 1vh;
+  left: 1.1vh;
+  width: 8vh;
+  height: 8vh;
+  border: 2px solid #FFFFFF;
   border-radius: 50%;
 `;
 

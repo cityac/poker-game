@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './ActionButton.scss';
 import * as commonCss from '../Common.scss';
@@ -12,7 +12,7 @@ interface ActionButtonProps {
 }
 
 const ActionButton = (props: ActionButtonProps) => (
-  <button className={joinCss(commonCss.Button, css.Button, props.className)} onClick={() => props.onClick()}>
+  <button className={cn(commonCss.Button, css.Button, props.className)} onClick={() => props.onClick()}>
     {props.labels.map(el => <div className={css.Button_LabelWrap} key={el}>{el}</div>)}
   </button>
 );

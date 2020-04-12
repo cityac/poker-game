@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as classes from './Auth.css';
+import * as css from './Auth.css';
 
 import { Redirect } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ class Auth extends Component<AuthProps> {
   login = (path) => {
     const { onLogin, onSetGameBackPath } = this.props;
     onLogin(path);
-    onSetGameBackPath('/welcome');
+    onSetGameBackPath('/lobby');
   };
 
   render() {
@@ -28,9 +29,17 @@ class Auth extends Component<AuthProps> {
     }
 
     return (
-      <div className={classes.Auth}>
+      <div>
         {authRedirect}
-        <button onClick={() => this.login('/game')}>Login</button>
+        <div className={css.Auth}>
+          <button onClick={() => this.login('/lobby')}>Login</button>
+        </div>
+        {/* <div className={css.TableTypeWrapper}>
+        {types.map(type => 
+          <button key={type} className={css.TableTypeLink} onClick={() => this.login('game', type)} >
+            <div className={cn(css.TableType, css[`tableType_${type}`])} />
+          </button>)}
+        </div> */}
       </div>
     );
   }

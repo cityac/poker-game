@@ -1,5 +1,19 @@
 $main-background:  rgb(20, 146, 20);
+$main-background-image: radial-gradient(circle at 50% 16%, #1bb36f, #0e4621);
+
 $fold-action-button-bck-color: rgba(white, 0.1);
 
 $action-buttons-border-color:rgba(0, 0, 0, .05);
 $border: 1px #{$action-buttons-border-color} solid;
+
+$action-buttons-border-color1:rgba(256, 256,256, .2);
+$border1: 1px #{$action-buttons-border-color1} solid;
+
+$box-shadow-full:
+  0 2px 4px 0 rgba(0,0,0, .5),
+  inset 0 1px 0 0 rgba(255, 255, 255, .5),
+  inset 0 -1px 0 0 rgba(0,0, 0, .19);
+
+$box-shadow-light:
+  inset 0 1px 0 0 rgba(255, 255, 255, .5),
+  inset 0 -1px 0 0 rgba(0,0, 0, .19);

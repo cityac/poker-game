@@ -16,11 +16,11 @@ const Div = styled.div`
   }}
 
   left: ${(props:DivProps) => {
-    return props.position === 'left' ? '8vmin' : 'unset'
+    return props.position === 'left' ? '9vmin' : 'unset'
   }}
 
   right: ${(props:DivProps) => {
-    return props.position === 'right' ? '8vmin' : 'unset'
+    return props.position === 'right' ? '9vmin' : 'unset'
   }}
 `;
 
@@ -31,7 +31,7 @@ const getSVGStyle = () => {
 
   if (mw.matches || mh.matches) {
     style = {
-      width: '30px',
+      width: '32px',
       height: '25px',
       scale: 0.4,
     }
@@ -50,19 +50,18 @@ const TwoCardsBack = (props) => {
   const position = props.position && props.position.x || 'center';
   const svgStyle = getSVGStyle();
   if (position === 'left' || position === 'center') {
-    source = `${cards.back_cards}#back_cards`;
+    source = `${cards.four_back_cards}#back_cards`;
     
   } else {
-    source = `${cards.back_cards_reverse}#back_cards_reverse`;
+    source = `${cards.four_back_cards_reverse}#back_cards_reverse`;
   }
 
   const backs = <use xlinkHref={source} transform={`scale(${svgStyle.scale})`} key="1" />;
 
   return (
-    <Div position={position} top={props.style && props.style.top || '4vh'}>
+    <Div className={props.className} position={position} top={props.style && props.style.top || '6vh'}>
       <svg 
-        style={svgStyle}
-      >
+        style={svgStyle}>
         {backs}
       </svg>
   </Div>

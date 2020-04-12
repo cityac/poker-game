@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import { isMobile } from 'react-device-detect';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './Flop.scss';
 import SvgFlop from '../SvgFlop/SvgFlop';
@@ -26,7 +26,7 @@ class Flop extends Component<any, any> {
   render() {
     const { cards, dashboard } = this.state;
 
-    const classNames = joinCss(
+    const classNames = cn(
       css.Flop, 
       isMobile ? css.Flop_Mobile : css.Flop_Browser,
       dashboard ? css.Flop_Dashboard : ''
@@ -35,12 +35,17 @@ class Flop extends Component<any, any> {
     return (
       <div className={classNames}>
       {/* <button className="deal" onClick={this.dealCards}>Deal</button> */}
+      <SvgFlop cards={cards} dashboard={dashboard}/>
       {!dashboard
         ? <div className={css.Flop_Label}>{this.props.label}</div>
         : null
       }
+      {!dashboard
+        ? <div className={css.Flop_Total}>{this.props.total}</div>
+        : null
+      }
       {/* <SvgFlop flop={flop} turn={turn} river={river}/> */}
-      <SvgFlop cards={cards} dashboard={dashboard}/>
+      
       </div>
     );
   }

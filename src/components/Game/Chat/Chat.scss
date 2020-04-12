@@ -9,7 +9,7 @@
   .CloseButton {
     position:absolute;
     right: 2vw;
-    top: -6vh;
+    top: -7vh;
     width: 5vh;
     height: 5vh;
     border: unset;
@@ -104,8 +104,6 @@
         display: flex;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
-        // -webkit-transform: translateZ(0);
-        // transform: translateZ(0);
         max-height: 22vw;
       }
     }

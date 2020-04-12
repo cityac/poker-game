@@ -1,15 +1,58 @@
 .Auth {
-    margin: 20px auto;
-    width: 80%;
-    text-align: center;
-    box-shadow: 0 2px 3px #ccc;
-    border: 1px solid #eee;
-    padding: 10px;
-    box-sizing: border-box;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 600px) {
-    .Auth {
-        width: 500px;
-    }
+  .Auth {
+      width: 500px;
+  }
 }
+/* 
+.TableTypeWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.TableTypeLink {
+  margin: 6px;
+  width: 46vw;
+  height: 58vw;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.TableType {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.tableType_1 {
+  background-image: url(../../assets/images/table-type_1.png);
+  
+}
+.tableType_2 {
+  background-image: url(../../assets/images/table-type_2.png);
+}
+.tableType_3 {
+  background-image: url(../../assets/images/table-type_3.png);
+}
+.tableType_4 {
+  background-image: url(../../assets/images/table-type_4.png);
+}
+.tableType_5 {
+  background-image: url(../../assets/images/table-type_5.png);
+}
+.tableType_6 {
+  background-image: url(../../assets/images/table-type_6.png);
+} */

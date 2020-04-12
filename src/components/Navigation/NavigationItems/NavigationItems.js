@@ -1,18 +1,45 @@
 import React from 'react';
 
-import classes from './NavigationItems.css';
+import * as css from './NavigationItems.scss';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-const renderAuthenticated = () => (
+import { withRouter } from 'react-router-dom';
+
+import { cn } from '~/utils';
+
+// import {
+//   home_src,
+//   home_src_2x,
+//   deposit_src,
+//   deposit_src_2x,
+//   offers_src,
+//   offers_src_2x,
+//   more_src,
+//   more_src_2x,
+//   cashback_src,
+//   cashback_src_2x} from '~/utils/images'
+
+const renderAuthenticated = (path) => (
   <React.Fragment>
-    <NavigationItem link="/real-money" exact>Real Money</NavigationItem>
-    <NavigationItem link="/fast-forward" exact>Fast Forward</NavigationItem>
-    <NavigationItem link="/tournaments" exact>Tournaments</NavigationItem>
-    <NavigationItem link="/sit-and-go" exact>Sit and Go</NavigationItem>
-    <NavigationItem link="/my-tournaments" exact>My Tournaments</NavigationItem>
-    <NavigationItem link="/casino" exact>Casino</NavigationItem>
-    <NavigationItem link="/game" exact>Game</NavigationItem>
-    <NavigationItem link="/logout">Logout</NavigationItem>
+    <NavigationItem link="/lobby" exact className={cn(css.Home, path === '/lobby' && css.Home_Active)}>
+      <label>home</label>
+    </NavigationItem>
+
+    <NavigationItem link="/cashback" exact className={cn(css.Cashback, path === '/cashback' && css.Cashback_Active)}>
+      <label>cashback</label>
+    </NavigationItem>
+
+    <NavigationItem link="/deposit" exact className={cn(css.Deposit, path === '/deposit' && css.Deposit_Active)}>
+      <label>deposit</label>
+    </NavigationItem>
+
+    <NavigationItem link="/offers" exact className={cn(css.Offers, path === '/offers' && css.Offers_Active)}>
+      <label>offers</label>
+    </NavigationItem>
+
+    <NavigationItem link="/more" exact className={cn(css.More, path === '/more' && css.More_Active)}>
+      <label>more</label>
+    </NavigationItem>
   </React.Fragment>
   );
 
@@ -21,11 +48,12 @@ const renderShared = () => (
 )
 
 const navigationItems = (props) => (
-  <ul className={classes.NavigationItems}>
+  <ul className={css.NavigationItems}>
     {
-      props.isAuthenticated ? renderAuthenticated() : renderShared()
+      props.isAuthenticated ? renderAuthenticated(props.location.pathname) : renderShared()
     }
   </ul>
 );
 
-export default navigationItems;
+
+export default withRouter(navigationItems);

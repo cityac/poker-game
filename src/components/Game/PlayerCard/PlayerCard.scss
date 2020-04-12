@@ -21,6 +21,7 @@
 
       .Balance {
         order: 1;
+        color: white;
       }
     }
     &Inactive {
@@ -38,5 +39,77 @@
 
   .FloatCenter{
     display: unset;
+  }
+}
+
+.TwoBacksLeft {
+  animation: backsToLeft 1s;
+  animation-delay: .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes backsToLeft {
+  0% {
+    opacity: 0;
+    transform: translate(100px, -80px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+.TwoBacksRight {
+  animation: backsToRight 1s;
+  animation-delay: .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes backsToRight {
+  0% {
+    opacity: 0;
+    transform: translate(-100px, -80px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(10px, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+.TwoFrontsDown {
+  animation: twoFrontsDown 1s;
+  animation-delay: .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes twoFrontsDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

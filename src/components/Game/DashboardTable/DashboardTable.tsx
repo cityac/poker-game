@@ -23,6 +23,9 @@ interface DashboardTableProps {
 export default class DashboardTable extends Component<DashboardTableProps> {
   render() {
     const {tableId, pot, flopCards, playerCards, players} =  this.props;
+    
+    const currentTurnProgress = players && players.find(player => player.currentUser).currentTurnProgress;
+
     return tableId && players
       ? (<NavLink className={css.DashboardTable} to={`/game/${tableId}`}>
           <div className={css.Labels}> 
@@ -33,17 +36,31 @@ export default class DashboardTable extends Component<DashboardTableProps> {
             <PlayerCard
               userX="left"
               betY="top"
-              player={playerByPlace(players, 1)}/>
+              player={playerByPlace(players, 1)}
+              dashboard/>
             <PlayerCard
               userX="right"
               betY="top"
-              player={playerByPlace(players, 2)}/>
+              player={playerByPlace(players, 2)}
+              dashboard/>
           </div>
           <div className={css.FlopWrapper}>
-            <Flop label={`Pot: ${pot}`} flopCards={flopCards} dashboard/>
+            <Flop label={`POT: ${pot}`} flopCards={flopCards} dashboard/>
           </div>
+          {currentTurnProgress
+          ? <div className={css.PlayerTurnLabel}>
+            Your Turn
+          </div>
+          : null}
           <div className={css.PlayerCardsWrapper}>
-            {playerCards? <TwoCardsFront dashboard cards={playerCards} type="small"/> : null}
+            {playerCards
+              ? <TwoCardsFront 
+                cards={playerCards} 
+                type="small"
+                dashboard 
+                progress={currentTurnProgress}
+                />
+              : null}
           </div>
           </NavLink>)
         : (<NavLink className={css.DashboardTable} to={`/game`}>

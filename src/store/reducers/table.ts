@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 import Card from '~/models/card';
 
 const initialState = {
-  loading: false,
+  loading: true,
   players: [],
   id: undefined,
   bet: undefined,

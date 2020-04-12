@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/11.5.0/bin/node /usr/local/Cellar/yarn/1.12.3/libexec/bin/yarn.js heroku:deploy
+  /usr/local/Cellar/node/11.5.0/bin/node /usr/local/Cellar/yarn/1.12.3/libexec/bin/yarn.js add smoothscro
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/env/pgsql/bin
@@ -14,13 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/stanislav/dev/partypoker/poker-game/package.json: Unexpected string in JSON at position 2993
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:1631:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:304:30)
-      at /usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:315:13
-      at <anonymous>
+  Error: https://registry.yarnpkg.com/smoothscro: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:65894:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129018:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129990:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129912:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
 
 npm manifest: 
   {
@@ -119,7 +123,7 @@ npm manifest:
       "node": "8.14.1"
     },
     "scripts": {
-      "heroku:deploy": "bash "
+      "heroku:deploy": "bash deploy-heroku.sh",
       "start": "node scripts/start.js",
       "build": "node scripts/build.js",
       "test": "node scripts/test.js",

@@ -1,0 +1,95 @@
+@import '../../../sass/main.scss';
+
+.LobbyCard {
+  position: relative;
+  min-width: 71vw;
+  background-position-x: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: white;
+  transition: all 0.2s 0.1s;
+
+  &Blue {
+    background-image: url(../../../assets/images/lobby-card-blue.png);
+  }
+
+  &Green {
+    background-image: url(../../../assets/images/lobby-card-yellow.png);
+  }
+
+  &Yellow{
+    background-image: url(../../../assets/images/lobby-card-green.png);
+  }
+
+  &Red{
+    background-image: url(../../../assets/images/lobby-card-red.png);
+  }
+
+  &_Selected {
+    background-position-y: 5vmin;
+    transform: scale(1.2)
+  }
+}
+
+@media all and (display-mode: browser) {
+  .LobbyCard {
+    margin-top: -4vw;
+  }
+}
+
+.BuyIn {
+  top: 12vmin;
+  width: fit-content;
+  font-size: 3.5vmin;
+  font-weight: 500;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+  @include lobby-card-transition;
+}
+
+.WinLabel {
+  top: 26vmin;
+  width: fit-content;
+  font-size: 4.2vmin;
+  font-weight: bold;
+
+  @include horizontal-centered;
+  @include lobby-card-transition;
+}
+
+.Prize {
+  top: 30vmin;
+  width: fit-content;
+  font-size: 4.5vh;
+  font-family: OpenSans;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+  @include lobby-card-transition;
+}
+
+.Game {
+  top: 49vmin;
+  width: fit-content;
+  font-size: 3.5vmin;
+  font-weight: 500;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+  @include lobby-card-transition;
+}
+
+.Tickets {
+  top: 56vmin;
+  width: fit-content;
+  font-size: 3.5vmin;
+  font-family: OpenSans;
+  font-weight: normal;
+  letter-spacing: normal;
+
+  @include horizontal-centered;
+  @include lobby-card-transition;
+}

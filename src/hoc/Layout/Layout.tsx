@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 
 import * as classes from './Layout.scss';
 import Toolbar from '~/components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '~/components/Navigation/SideDrawer/SideDrawer';
 
 interface LayoutProps {
   isAuthenticated: boolean,
   showToolbar: boolean,
+  standalone: boolean,
 }
 
 interface LayoutState {
@@ -31,28 +31,27 @@ class Layout extends Component<LayoutProps, LayoutState> {
   };
 
   render() {
-    const { showToolbar, isAuthenticated, children } = this.props;
+    const { showToolbar, isAuthenticated, children, standalone } = this.props;
     const mainClasses = [classes.Content];
     
     mainClasses.push(showToolbar ? classes.Margin : classes.NoMargin);
 
     return (
       <div >
-        {showToolbar ? <Toolbar isAuth={isAuthenticated} drawerToggleClicked={this.sideDrawerToggleHandler}/> : null}
-        <SideDrawer
-          isAuth={this.props.isAuthenticated}
-          open={this.state.showSideDrawer}
-          closed={this.sideDrawerClosedHandler} />
+        {/* {showToolbar ? <Toolbar isAuth={isAuthenticated} drawerToggleClicked={this.sideDrawerToggleHandler}/> : null} */}
+        
         <main className={mainClasses.join(' ')}>{children}</main>
+        { showToolbar ? <Toolbar isAuth={isAuthenticated} standalone={standalone} /> : null }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({app, auth}) => {
   return {
-    isAuthenticated: state.auth.token !== null,
-    showToolbar: !state.app.game,
+    standalone: app.standalone,
+    isAuthenticated: auth.token !== null,
+    showToolbar: !app.game,
   };
 };
 

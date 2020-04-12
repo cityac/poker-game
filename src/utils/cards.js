@@ -41,6 +41,9 @@ import diamond_a  from "~/assets/cards/diamond_a.svg";
 import back_cards from "~/assets/cards/back_cards.svg";
 import back_cards_reverse from "~/assets/cards/back_cards_reverse.svg";
 
+import four_back_cards from "~/assets/cards/four_back_cards.svg";
+import four_back_cards_reverse from "~/assets/cards/four_back_cards_reverse.svg";
+
 export default {
   club_6,
   club_7,
@@ -84,4 +87,6 @@ export default {
 
   back_cards,
   back_cards_reverse,
+  four_back_cards,
+  four_back_cards_reverse,
 }

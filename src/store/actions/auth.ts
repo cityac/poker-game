@@ -9,6 +9,6 @@ export const logout = () => {
 export const login = (path: string) => {
   return {
     type: actionTypes.LOGIN,
-    path,
+    payload : path
   };
 };

@@ -12,24 +12,24 @@ interface BetProps {
 }
 
 const StyledBet = styled.div`
-  &::before {
+  &::after {
     content: "";
     display: inline-block;
     height: 1em;
     width: 1em;
-    margin-right: .1rem;
-    background-size: cover;
+    margin-left: .2rem;
+    background-size: 115%;
     background-image: url(${img});
   }
   position: absolute;
   top: ${(props: {top: string}) => props.top}
 
   left: ${(props: any) => {
-    return props.position === 'left' ? '14vmin' : props.position === 'center' ? '50%' : 'unset';
+    return props.position === 'left' ? '18vmin' : props.position === 'center' ? '50%' : 'unset';
   }}
 
   right: ${(props: any) => {
-    return props.position === 'right' ? '14vmin' : 'unset';
+    return props.position === 'right' ? '18vmin' : 'unset';
   }}
 
   transform: ${(props: any) => {
@@ -43,7 +43,7 @@ const StyledBet = styled.div`
 `;
 
 const Bet = (props: BetProps) => {
-  let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '0';
+  let top = props.position.y === 'bottom' ? '4vh' : props.position.y === 'center' ? '2vh' : '1vh';
 
   if (props.position.x === 'center') {
     top = props.position.y === 'top' ? '-3vh' : '12vh';

@@ -3,7 +3,7 @@ import { Component, RefObject } from 'react';
 import SvgCard from '../SvgCard/SvgCard';
 
 import { isMobile } from 'react-device-detect';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './SvgFlop.scss';
 import Card from '../../../models/card';
@@ -29,7 +29,7 @@ const setCoords = (cards, width, height, scale) => {
   const cardWidth = 72;
   const cardHeight = 100;
   // const gap = (svgHeight / 2 - cardHeight) / 2;
-  const gap = 20;
+  const gap = 10;
 
   const hCenter = svgWidht / 2;
   // const vCenter = svgHeight / 2;
@@ -57,7 +57,7 @@ const setCoords = (cards, width, height, scale) => {
       // break;
     }
 
-    xOffset = index * (cardWidth + gap);
+    xOffset = index * (cardWidth + gap) + 20;
 
     if (card) {
       card.coord = card.coord || {};
@@ -139,7 +139,7 @@ class SvgFlop extends Component<SvgFlopProps> {
       setCoords(cards, this.root.current.clientWidth, this.root.current.clientHeight,  style.scale);
     }
 
-    const classNames = joinCss(
+    const classNames = cn(
       css.SvgFlop, 
       isMobile ? css.SvgFlop_Mobile : css.SvgFlop_Browser,
       dashboard ? css.SvgFlop_Dashboard : ''

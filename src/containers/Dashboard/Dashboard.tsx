@@ -35,7 +35,7 @@ class Dashboard extends Component<DashboardProps> {
       <div className={css.Dashboard}>
       {this.props.tables.map(table => 
         <DashboardTable key={table.id} 
-          tableId={table.id} 
+          tableId={table.id}
           pot={table.pot} 
           players={table.players}
           playerCards={table.playerCards}
@@ -48,7 +48,7 @@ class Dashboard extends Component<DashboardProps> {
   }
 }
 
-const mapStateToProps = ({ player }) => {
+const mapStateToProps = ({ player, auth}) => {
   return {
     tables: player.tables || [],
     initialized: player.tables && player.tables.length,

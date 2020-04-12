@@ -4,7 +4,7 @@ import { Component } from 'react';
 import Bet from './Bet/Bet';
 import Player, { PlayerStatus } from '~/models/player';
 import Avatar from './Avatar/Avatar';
-import { joinCss } from '~/utils';
+import { cn } from '~/utils';
 
 import * as css from './PlayerCard.scss';
 import DealerButton from './DealerButton/DealerButton';
@@ -16,6 +16,7 @@ export interface PlayerCardProps {
   player: Player;
   betY: string;
   userX: string;
+  dashboard?: boolean;
 }
 
 export default class PlayerCard extends Component<PlayerCardProps> {
@@ -38,14 +39,21 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderTwoCards() {
-    const { userX , player: { currentUser, cards }} = this.props;
+    const { dashboard, userX , player: { currentUser, currentTurnProgress, cards }} = this.props;
     return (
       // TODO: add condition here. More requirements needed
       currentUser
-      ? <TwoCardsFront cards={cards} type={'large'} />
-      : <TwoCardsBack position={{x: userX}} />
+      ? <TwoCardsFront cards={cards} type={'large'} className={css.TwoFrontsDown}/>
+      : <TwoCardsBack position={{x: userX}}  className={this.getAnimationClassName()}/>
     );
+  }
 
+  getAnimationClassName() {
+    const { dashboard, userX} = this.props;
+    if(dashboard) {
+      return;
+    }
+    return userX === 'left' ? css.TwoBacksLeft : css.TwoBacksRight;
   }
 
   renderName() {
@@ -67,8 +75,8 @@ export default class PlayerCard extends Component<PlayerCardProps> {
   }
 
   renderUserInfo() {
-    const { userX, player: { balance, status} } = this.props;
-    const classesUser = joinCss(
+    const { userX, player: { balance, status}, dashboard } = this.props;
+    const classesUser = cn(
       css.User,
       userX === 'left' ? css.FloatLeft : userX === 'center' ? css.FloatCenter : css.FloatRight,
       status !== PlayerStatus.ACTIVE ? css.UserInactive : '');
@@ -77,13 +85,13 @@ export default class PlayerCard extends Component<PlayerCardProps> {
     if (status === PlayerStatus.ACTIVE) {
       info = (
         <React.Fragment>
-          {this.renderName()}
-          <div className={css.Balance}>{balance}</div>
+          {!dashboard ? this.renderName() : null}
+          {!dashboard ? <div className={css.Balance}>{balance}</div> : null}
           {this.renderDealerButton()}
           {this.renderTwoCards()}
         </React.Fragment>
       );
-    } else {
+    } else if (!dashboard) {
       info = (
         <div>{status}</div>
       );

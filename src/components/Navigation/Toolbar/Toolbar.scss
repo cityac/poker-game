@@ -1,0 +1,36 @@
+.Toolbar {
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 90;
+
+  &_iPhone {
+    bottom: 20px;
+
+      /* Phone X  */
+    @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) { 
+      bottom: 20px;
+    }
+    
+    &_Web {
+      bottom: 0px;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 3px;
+  }
+}
+
+.Toolbar nav {
+    height: 100%;
+    width: 100%;
+}
+
+.Logo {
+    height: 80%;
+}

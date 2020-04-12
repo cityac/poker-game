@@ -1,0 +1,29 @@
+.PrizePool {
+  width: 40vw;
+  height: 7vw;
+  // margin: -17px;
+
+  display: flex;
+  background-image: -webkit-image-set(
+    url(../../../assets/images/prizepool_back.png) 1x,
+    url(../../../assets/images/prizepool_back@2x.png) 2x);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  color: white;
+
+  label {
+    margin: auto;
+    // font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  &_Prize {
+    font-size: 3vmin;
+  }
+  &_Money {
+    font-size: 3vmin;
+  }
+}

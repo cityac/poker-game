@@ -1,4 +1,11 @@
 .Cloud {
+  margin: 0;
+  padding-top: 2.3vh;
+  color: #000;
+  text-align: center;
+  width: 19vh;
+  height: 9vh;
+  box-sizing: border-box;
   background-image: 
     -webkit-image-set(
       url(../../../assets/images/chat-bubble.png) 1x,
@@ -6,17 +13,12 @@
       // url(../../../assets/images/chat-cloud@3x.png) 3x);
   background-position: center;
   background-size: cover;
-  width: 19vh;
-  height: 9vh;
-  box-sizing: border-box;
   font-family: SFUIDisplay;
-  font-size: 1.5vh;
-  font-weight: 500;
+  font-size: 3.2vmin;
+  font-weight: 600;
   letter-spacing: 0.4px;
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding-top: 2.3vh;
+  
+  
 }
 
 .Cloud2 {

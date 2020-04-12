@@ -6,10 +6,10 @@ const initialState = {
   authRedirectPath: '/',
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, {type, payload}) => {
+  switch (type) {
     case actionTypes.LOGIN:
-      return { ...state, token: 'AUTH_TOKEN', authRedirectPath: action.path };
+      return { ...state, token: 'AUTH_TOKEN', authRedirectPath: payload};
     case actionTypes.LOGOUT:
       return { ...state, token: null, authRedirectPath: '/auth' };
     default:
